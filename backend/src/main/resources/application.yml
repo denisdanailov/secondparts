@@ -3,7 +3,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/secondparts_db?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
-    password: starwars2005
+    password: 
   sql:
     init:
       mode: always
@@ -33,8 +33,7 @@ logging:
 
 # App Properties
 jwt:
-  bezkoder.app.jwtSecret= bezKoderSecretKey
-  bezkoder.app.jwtExpirationMs= 86400000
+
 
 
 management:
