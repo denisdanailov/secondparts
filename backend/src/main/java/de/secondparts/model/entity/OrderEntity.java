@@ -15,13 +15,5 @@ public class OrderEntity extends BaseEntity {
 
     private String description;
 
-    private BrandEntity brand;
-
-    private ModelEntity model;
-
-
-
-
-
 
 }

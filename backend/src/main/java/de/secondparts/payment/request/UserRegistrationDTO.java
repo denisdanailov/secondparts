@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-public class SignupRequest {
+public class UserRegistrationDTO {
     @NotBlank
     @Size(min = 3, max = 20)
     private String username;
@@ -14,6 +14,10 @@ public class SignupRequest {
     @Size(max = 50)
     @Email
     private String email;
+
+    private String firstName;
+
+    private String lastName;
 
     private Set<String> role;
 
@@ -43,6 +47,24 @@ public class SignupRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public UserRegistrationDTO setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserRegistrationDTO setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
     public Set<String> getRole() {

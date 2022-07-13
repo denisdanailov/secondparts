@@ -31,11 +31,13 @@ export default function Register() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
+    const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
+    const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
-    const username = formData.get("username");
 
-    AuthService.register(username, email, password);
+    AuthService.register(firstName, lastName, username, email, password);
 
     // TODO: change formData with useRef
 
@@ -109,7 +111,6 @@ export default function Register() {
                   <TextField
                     autoComplete="given-name"
                     name="firstName"
-                    required
                     fullWidth
                     id="firstName"
                     label="First Name"
@@ -117,6 +118,15 @@ export default function Register() {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="lastName"
+                  />
+                </Grid>
+                <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth

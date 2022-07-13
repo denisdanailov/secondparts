@@ -9,7 +9,6 @@ import javax.persistence.Table;
 public class ModelEntity extends BaseEntity {
 
 
-
     @ManyToOne
     private BrandEntity brand;
 }

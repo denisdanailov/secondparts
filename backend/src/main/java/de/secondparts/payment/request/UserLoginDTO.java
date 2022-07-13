@@ -3,7 +3,7 @@ package de.secondparts.payment.request;
 
 import javax.validation.constraints.NotBlank;
 
-public class LoginRequest {
+public class UserLoginDTO {
     @NotBlank
     private String username;
 

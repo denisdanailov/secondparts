@@ -1,22 +1,14 @@
 import { useState, useEffect } from "react";
+import UserService from "../../services/user.service";
 import "./AdminPanel.css";
 
 import { UserItem } from "../UserItem";
 
 export const AdminPanel = () => {
-  const API_URL = "http://localhost:8080/api/users/all";
-
-  const getAll = async () => {
-    const response = await fetch(API_URL);
-    const result = await response.json();
-
-    return result;
-  };
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    getAll().then((users) => setUsers(users));
+    UserService.getAdminBoard().then((users) => setUsers(users.data));
   }, []);
 
   return (

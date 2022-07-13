@@ -1,12 +1,12 @@
 export const UserItem = ({ user, onActionClick }) => {
-  const blankProfilUrl =
+  const BLANK_PROFIL_URL =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
 
   return (
     <>
       <td>
         <img
-          src={user.imageUrl || blankProfilUrl}
+          src={user.imageUrl || BLANK_PROFIL_URL}
           alt={`${user.id}'s profile`}
           className="image"
         />
