@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Michroma&family=Quicksand&display=swap");
+
 body {
   font-family: "Quicksand", sans-serif;
 
@@ -295,9 +296,9 @@ a:focus {
   -ms-flex-align: center;
   align-items: center;
   padding: 45px 0;
-  background-color: #f0d43a;
+  background-color: #a69f8a;
   border-radius: 0 0 0 250px;
-  background: #333;
+  background: #0d0d0d;
 }
 
 .slider_section .row {
@@ -337,12 +338,12 @@ a:focus {
 .slider_section .detail-box .btn-box .btn1 {
   display: inline-block;
   padding: 12px 15px;
-  background-color: #e6c511;
+  background-color: #a69f8a;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #e6c511;
+  border: 1px solid #a69f8a;
 }
 
 .slider_section .detail-box .btn-box .btn1:hover {
@@ -378,7 +379,7 @@ a:focus {
 .slider_section .carousel-indicators li.active {
   width: 23px;
   height: 23px;
-  background-color: #f0d43a;
+  background-color: #a69f8a;
 }
 
 .shop_section .heading_container {
@@ -392,6 +393,7 @@ a:focus {
   margin-top: 25px;
   border-radius: 15px;
   overflow: hidden;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .shop_section .box a {
@@ -436,7 +438,7 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #f0d43a;
+  background-color: #333;
   color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -771,7 +773,7 @@ a:focus {
 }
 
 .footer_section {
-  background-color: #333;
+  background-color: #0d0d0d;
   color: #ffffff;
   padding-top: 60px;
 }

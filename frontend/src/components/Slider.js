@@ -15,7 +15,7 @@ export const Slider = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="detail-box">
-                      <h1>Smart Watches</h1>
+                      <h1>Mercedes-Benz</h1>
                       <p>
                         Aenean scelerisque felis ut orci condimentum laoreet.
                         Integer nisi nisl, convallis et augue sit amet, lobortis
@@ -24,14 +24,14 @@ export const Slider = () => {
                       <div className="btn-box">
                         <a href="/" className="btn1">
                           {" "}
-                          Contact Us{" "}
+                          View Parts{" "}
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="img-box">
-                      <img src="images/heroImg.png" alt="" />
+                      <img src="images/mercedes-car-5.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -42,7 +42,7 @@ export const Slider = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="detail-box">
-                      <h1>Smart Watches</h1>
+                      <h1>Audi</h1>
                       <p>
                         Aenean scelerisque felis ut orci condimentum laoreet.
                         Integer nisi nisl, convallis et augue sit amet, lobortis
@@ -51,14 +51,14 @@ export const Slider = () => {
                       <div className="btn-box">
                         <a href="/" className="btn1">
                           {" "}
-                          Contact Us{" "}
+                          View Parts{" "}
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="img-box">
-                      <img src="images/hero-1.png" alt="" />
+                      <img src="images/audi-car.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export const Slider = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="detail-box">
-                      <h1>Smart Watches</h1>
+                      <h1>Prosche</h1>
                       <p>
                         Aenean scelerisque felis ut orci condimentum laoreet.
                         Integer nisi nisl, convallis et augue sit amet, lobortis
@@ -78,14 +78,14 @@ export const Slider = () => {
                       <div className="btn-box">
                         <a href="/" className="btn1">
                           {" "}
-                          Contact Us{" "}
+                          View Parts{" "}
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="img-box">
-                      <img src="images/slider-img.png" alt="" />
+                      <img src="images/porshe-12.png" alt="" />
                     </div>
                   </div>
                 </div>

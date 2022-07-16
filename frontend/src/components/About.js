@@ -5,7 +5,7 @@ export const About = () => {
         <div className="row">
           <div className="col-md-6 col-lg-5">
             <div className="img-box">
-              <img src="images/about-img.png" alt="" />
+              <img src="images/mechanic.png" alt="" />
             </div>
           </div>
           <div className="col-md-6 col-lg-7">

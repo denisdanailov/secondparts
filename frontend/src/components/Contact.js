@@ -33,7 +33,7 @@ export const Contact = () => {
           </div>
           <div className="col-md-6">
             <div className="img-box">
-              <img src="images/contact-img.jpg" alt="" />
+              <img src="images/mercedes-car-1.png" alt="" />
             </div>
           </div>
         </div>

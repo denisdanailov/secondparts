@@ -191,7 +191,7 @@ ul {
   z-index: 1;
 }
 .table thead tr {
-  background-color: #2a87a5;
+  background-color: #333;
   color: white;
 }
 .table th {
