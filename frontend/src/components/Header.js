@@ -1,27 +1,18 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { CurrentUserNavigation } from "../components/navigation/CurrentUserNavigation";
-import { GuestNavigation } from "../components/navigation/GuestNavigation";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import AuthService from "../services/auth.service";
 
-export const Header = ({ username }) => {
-  const [error, setError] = useState("");
-
-  // const { logout } = useAuth();
+export const Header = () => {
   const navigate = useNavigate();
 
-  async function handleLogout() {
-    setError("");
+  const currentUser = AuthService.getCurrentUser();
 
+  async function handleLogout() {
     try {
       AuthService.logout();
       navigate("/");
     } catch {
-      setError("Failed to log out");
+      alert("Failed to log out, Please try again");
     }
   }
 
@@ -69,7 +60,7 @@ export const Header = ({ username }) => {
               </li>
             </ul>
             <div className="user_option-box">
-              {!AuthService.getCurrentUser() ? (
+              {!currentUser ? (
                 <>
                   <a href="/login">
                     <i className="fa fa-user" aria-hidden="true"></i>
@@ -77,10 +68,8 @@ export const Header = ({ username }) => {
                 </>
               ) : (
                 <>
-                  <div>Hello, {AuthService.getCurrentUser().username} </div>
-                  {AuthService.getCurrentUser().roles.includes(
-                    "ROLE_ADMIN"
-                  ) && (
+                  <div>Hello, {currentUser.username} </div>
+                  {currentUser.roles.includes("ROLE_ADMIN") && (
                     <a href="/admin">
                       <i className="fa fa-users" aria-hidden="true"></i>
                     </a>

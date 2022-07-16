@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +27,6 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  //   const { signup } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -37,24 +38,28 @@ export default function Register() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    AuthService.register(firstName, lastName, username, email, password);
-
-    // TODO: change formData with useRef
-
     // if (password !== rePass) {
     //   return setError("Passwords don`t match!");
     // }
 
     if (password.length < 6) {
-      return setError("Password must contain at least 6 characters!");
+      return setError(
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">Password musst containt 6 charachters</Alert>
+        </Stack>
+      );
     }
 
     try {
       setError("");
       setLoading(true);
-      //   await signup(email, password);
+      AuthService.register(firstName, lastName, username, email, password);
     } catch {
-      setError("Failed to create an account");
+      setError(
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">Failed to Sign in</Alert>
+        </Stack>
+      );
     }
 
     setLoading(false);
@@ -73,7 +78,7 @@ export default function Register() {
           md={7}
           sx={{
             backgroundImage: `url(${
-              process.env.PUBLIC_URL + "/assets/register-image.jpg"
+              process.env.PUBLIC_URL + "/images/register-photo.jpg"
             })`,
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
@@ -97,9 +102,11 @@ export default function Register() {
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
+
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
+            {error ? error : null}
             <Box
               component="form"
               noValidate
