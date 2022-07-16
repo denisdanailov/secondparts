@@ -37,6 +37,9 @@ jwt:
   bezkoder.app.jwtExpirationMs= 86400000
 
 
+
+
+
 management:
   endpoints:
     web:

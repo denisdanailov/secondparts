@@ -65,6 +65,9 @@ export const Header = () => {
                   <a href="/login">
                     <i className="fa fa-user" aria-hidden="true"></i>
                   </a>
+                  <a href="/">
+                    <i className="fa fa-search" aria-hidden="true"></i>
+                  </a>
                 </>
               ) : (
                 <>

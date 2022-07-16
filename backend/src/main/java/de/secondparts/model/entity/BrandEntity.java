@@ -3,6 +3,7 @@ package de.secondparts.model.entity;
 import de.secondparts.model.enums.BrandEnum;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class BrandEntity extends BaseEntity {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    private List<ModelEntity> models;
+    private List<ModelEntity> models = new ArrayList<>();
 
     public BrandEntity() {
     }
@@ -38,5 +39,13 @@ public class BrandEntity extends BaseEntity {
     public BrandEntity setModels(List<ModelEntity> models) {
         this.models = models;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "BrandEntity{" +
+                "name=" + name +
+                ", models=" + models +
+                '}';
     }
 }

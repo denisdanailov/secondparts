@@ -33,6 +33,8 @@ public class UserEntity extends BaseEntity {
 
     private String lastName;
 
+    private String imageUrl;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(  name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -93,6 +95,15 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public UserEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
     public Set<UserRoleEntity> getRoles() {
         return roles;
     }
@@ -110,11 +121,13 @@ public class UserEntity extends BaseEntity {
     @Override
     public String toString() {
         return "UserEntity{" +
-                "Email='" + email + '\'' +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", userRoles=" + roles +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }

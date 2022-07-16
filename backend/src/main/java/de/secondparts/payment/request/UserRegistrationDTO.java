@@ -19,6 +19,8 @@ public class UserRegistrationDTO {
 
     private String lastName;
 
+    private String imageUrl;
+
     private Set<String> role;
 
     @NotBlank
@@ -64,6 +66,15 @@ public class UserRegistrationDTO {
 
     public UserRegistrationDTO setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public UserRegistrationDTO setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 
