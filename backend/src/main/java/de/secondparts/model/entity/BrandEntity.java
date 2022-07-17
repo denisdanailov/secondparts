@@ -41,11 +41,4 @@ public class BrandEntity extends BaseEntity {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "BrandEntity{" +
-                "name=" + name +
-                ", models=" + models +
-                '}';
-    }
 }
