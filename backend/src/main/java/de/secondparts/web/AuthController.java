@@ -8,7 +8,7 @@ import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.security.jwt.JwtUtils;
-import de.secondparts.service.UserDetailsImpl;
+import de.secondparts.service.impl.UserDetailsImpl;
 import de.secondparts.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

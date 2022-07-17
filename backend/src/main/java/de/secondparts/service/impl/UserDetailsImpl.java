@@ -1,4 +1,4 @@
-package de.secondparts.service;
+package de.secondparts.service.impl;
 
 
 import java.util.Collection;

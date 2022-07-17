@@ -1,4 +1,4 @@
-package de.secondparts.service;
+package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.repository.UserRepository;

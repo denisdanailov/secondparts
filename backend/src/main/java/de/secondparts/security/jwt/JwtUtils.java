@@ -3,7 +3,7 @@ package de.secondparts.security.jwt;
 
 import java.util.Date;
 
-import de.secondparts.service.UserDetailsImpl;
+import de.secondparts.service.impl.UserDetailsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

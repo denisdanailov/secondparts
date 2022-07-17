@@ -3,7 +3,7 @@ package de.secondparts.security;
 
 import de.secondparts.security.jwt.AuthEntryPointJwt;
 import de.secondparts.security.jwt.AuthTokenFilter;
-import de.secondparts.service.UserDetailsServiceImpl;
+import de.secondparts.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
