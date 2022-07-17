@@ -1,6 +1,5 @@
 package de.secondparts.payment.response;
 
-
 import java.util.List;
 
 public class JwtResponse {

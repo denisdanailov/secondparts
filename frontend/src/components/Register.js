@@ -53,7 +53,11 @@ export default function Register() {
     try {
       setError("");
       setLoading(true);
-      AuthService.register(firstName, lastName, username, email, password);
+      AuthService.register(firstName, lastName, username, email, password).then(
+        () => {
+          navigate("/login");
+        }
+      );
     } catch {
       setError(
         <Stack sx={{ width: "100%" }} spacing={2}>

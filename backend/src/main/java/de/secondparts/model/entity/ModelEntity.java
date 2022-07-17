@@ -16,8 +16,10 @@ public class ModelEntity extends BaseEntity {
     private BrandEntity brand;
 
     @Column(nullable = false)
-    private Long year;
+    private Long startYear;
 
+    @Column(nullable = false)
+    private Long endYear;
 
     public String getName() {
         return name;
@@ -37,21 +39,23 @@ public class ModelEntity extends BaseEntity {
         return this;
     }
 
-    public Long getYear() {
-        return year;
+    public Long getStartYear() {
+        return startYear;
     }
 
-    public ModelEntity setYear(Long year) {
-        this.year = year;
+    public ModelEntity setStartYear(Long startYear) {
+        this.startYear = startYear;
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "ModelEntity{" +
-                "name='" + name + '\'' +
-                ", brand=" + brand +
-                ", year=" + year +
-                '}';
+    public Long getEndYear() {
+        return endYear;
     }
+
+    public ModelEntity setEndYear(Long endYear) {
+        this.endYear = endYear;
+        return this;
+    }
+
+
 }

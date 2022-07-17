@@ -3,6 +3,7 @@ package de.secondparts.model.entity;
 import de.secondparts.model.enums.CategoryEnum;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class CategoryEntity extends BaseEntity {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    private List<OrderEntity> orders;
+    private List<OrderEntity> orders = new ArrayList<>();
 
     public CategoryEnum getName() {
         return name;

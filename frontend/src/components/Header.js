@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import AuthService from "../services/auth.service";
 
@@ -11,7 +11,8 @@ export const Header = () => {
     try {
       AuthService.logout();
       navigate("/");
-    } catch {
+    } catch (error) {
+      console.log(error);
       alert("Failed to log out, Please try again");
     }
   }
@@ -20,9 +21,9 @@ export const Header = () => {
     <header className="header_section">
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg custom_nav-container">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <span> SecondParts </span>
-          </a>
+          </Link>
 
           <button
             className="navbar-toggler"
@@ -39,53 +40,64 @@ export const Header = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/catalog">
-                  Catalog
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about">
+                <Link className="nav-link" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">
+                <Link className="nav-link" to="/contact">
                   Contact
-                </a>
+                </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/catalog">
+                  Catalog
+                </Link>
+              </li>
+              {currentUser && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/create">
+                    Create- Offer
+                  </Link>
+                </li>
+              )}
             </ul>
             <div className="user_option-box">
               {!currentUser ? (
                 <>
-                  <a href="/login">
+                  <Link to="/login">
                     <i className="fa fa-user" aria-hidden="true"></i>
-                  </a>
-                  <a href="/">
+                  </Link>
+                  <Link to="/search">
                     <i className="fa fa-search" aria-hidden="true"></i>
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
                   <div>Hello, {currentUser.username} </div>
                   {currentUser.roles.includes("ROLE_ADMIN") && (
-                    <a href="/admin">
+                    <Link to="/admin">
                       <i className="fa fa-users" aria-hidden="true"></i>
-                    </a>
+                    </Link>
                   )}
-                  <a href="/">
+                  <Link to="/checkout">
                     <i className="fa fa-cart-plus" aria-hidden="true"></i>
-                  </a>
-                  <a href="/">
+                  </Link>
+                  <Link to="/search">
                     <i className="fa fa-search" aria-hidden="true"></i>
-                  </a>
-                  <a href="/logout" onClick={handleLogout}>
-                    <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  </a>
+                  </Link>
+                  <Link to="/logout">
+                    <i
+                      className="fa fa-sign-out"
+                      aria-hidden="true"
+                      onClick={handleLogout}
+                    ></i>
+                  </Link>
                 </>
               )}
             </div>

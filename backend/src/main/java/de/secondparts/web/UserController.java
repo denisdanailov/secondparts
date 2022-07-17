@@ -1,6 +1,5 @@
 package de.secondparts.web;
 
-
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
