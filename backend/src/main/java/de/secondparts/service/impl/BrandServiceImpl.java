@@ -7,6 +7,8 @@ import de.secondparts.service.BrandService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -28,6 +30,16 @@ public class BrandServiceImpl implements BrandService {
                 brandRepository.save(brand);
             });
         }
+    }
+
+    @Override
+    public List<BrandEntity> getAllBrands() {
+        return brandRepository.findAll();
+    }
+
+    @Override
+    public BrandEntity findById(Long id) {
+        return brandRepository.findById(id).orElse(null);
     }
 }
 

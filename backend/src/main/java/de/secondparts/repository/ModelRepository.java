@@ -12,7 +12,7 @@ import java.util.List;
 public interface ModelRepository extends JpaRepository<ModelEntity, Long> {
 
     @Query("select m from ModelEntity m where m.brand.Id = :brand")
-    List<ModelEntity> findAllByBrandId(@Param("brand")Long brandId);
+    List<ModelEntity> findAllModelsByBrandId(@Param("brand")Long brandId);
 
 
 }

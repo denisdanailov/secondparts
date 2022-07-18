@@ -5,5 +5,7 @@ import de.secondparts.model.entity.ModelEntity;
 import java.util.List;
 
 public interface ModelService {
-   List<ModelEntity> getAllModels(Long id);
+   List<ModelEntity> getAllModelsByBrandId(Long id);
+
+    void initializeModels();
 }

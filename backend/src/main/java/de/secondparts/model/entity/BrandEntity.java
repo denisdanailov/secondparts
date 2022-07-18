@@ -1,5 +1,6 @@
 package de.secondparts.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.enums.BrandEnum;
 
 import javax.persistence.*;
@@ -13,15 +14,13 @@ public class BrandEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BrandEnum name;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "brand",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
     private List<ModelEntity> models = new ArrayList<>();
-
-    public BrandEntity() {
-    }
 
     public BrandEnum getName() {
         return name;

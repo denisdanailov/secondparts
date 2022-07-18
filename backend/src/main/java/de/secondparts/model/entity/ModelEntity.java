@@ -57,5 +57,4 @@ public class ModelEntity extends BaseEntity {
         return this;
     }
 
-
 }
