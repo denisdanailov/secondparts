@@ -10,6 +10,7 @@ export const AdminPanel = () => {
   useEffect(() => {
     UserService.getAdminBoard().then((users) => setUsers(users.data));
   }, []);
+  console.log(users);
 
   return (
     <>
@@ -113,7 +114,7 @@ export const AdminPanel = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id}>
+              <tr key={user.username}>
                 <UserItem
                   user={user}
                   // onActionClick={userActionClickHandler}
