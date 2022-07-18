@@ -1,4 +1,4 @@
-package de.secondparts.payment.request;
+package de.secondparts.model.entity.dtos;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

@@ -3,12 +3,10 @@ package de.secondparts.service.impl;
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.UserRoleEntity;
 import de.secondparts.model.enums.UserRoleEnum;
-import de.secondparts.payment.request.UserRegistrationDTO;
-import de.secondparts.payment.response.MessageResponse;
+import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

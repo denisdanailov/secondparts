@@ -1,7 +1,7 @@
 package de.secondparts.service;
 
 import de.secondparts.model.entity.UserEntity;
-import de.secondparts.payment.request.UserRegistrationDTO;
+import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 
 import java.util.List;
 
