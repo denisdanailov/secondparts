@@ -14,6 +14,7 @@ import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 import { AdminPanel } from "./components/AdminPanel/AdminPanel";
 import { CreateOffer } from "./components/CreateOffer";
+import { ModelView } from "./components/ModelView";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/model" element={<ModelView />} />
           <Route
             path="/create"
             element={

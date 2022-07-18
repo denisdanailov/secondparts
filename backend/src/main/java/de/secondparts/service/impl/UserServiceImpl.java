@@ -2,17 +2,20 @@ package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.UserRoleEntity;
+import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.model.enums.UserRoleEnum;
 import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,16 +23,18 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserRoleRepository roleRepository;
     private final PasswordEncoder encoder;
+    private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository roleRepository, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleRepository roleRepository, PasswordEncoder encoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public List<UserEntity> getAll() {
-        return userRepository.findAll();
+    public List<UserViewDTO> getAll() {
+        return userRepository.findAll().stream().map(this::mapUser).collect(Collectors.toList());
     }
 
     @Override
@@ -74,5 +79,11 @@ public class UserServiceImpl implements UserService {
 
             roleRepository.saveAll(List.of(adminRole, userRole));
         }
+    }
+
+    private UserViewDTO mapUser(UserEntity userEntity) {
+        UserViewDTO userViewDTO = this.modelMapper.map(userEntity, UserViewDTO.class);
+
+        return userViewDTO;
     }
 }

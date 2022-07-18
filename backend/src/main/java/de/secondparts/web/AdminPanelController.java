@@ -1,6 +1,7 @@
 package de.secondparts.web;
 
 import de.secondparts.model.entity.UserEntity;
+import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,17 +14,17 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
+public class AdminPanelController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public AdminPanelController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public List<UserEntity> getAll() {
+    public List<UserViewDTO> getAll() {
         return userService.getAll();
     }
 }
