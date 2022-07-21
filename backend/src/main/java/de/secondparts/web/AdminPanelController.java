@@ -1,13 +1,11 @@
 package de.secondparts.web;
 
-import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,27 @@ public class AdminPanelController {
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserViewDTO> getAll() {
         return userService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public UserViewDTO getUserDetails(@PathVariable("id") Long id ) {
+        return userService.findById(id).orElse(null);
+    }
+
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserViewDTO> deleteUser(@PathVariable("id") Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UserViewDTO> editUser(@PathVariable("id") Long id ) {
+
+        userService.editUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

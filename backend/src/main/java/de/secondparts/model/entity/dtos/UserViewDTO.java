@@ -2,6 +2,8 @@ package de.secondparts.model.entity.dtos;
 
 public class UserViewDTO {
 
+    private Long id;
+
     private String username;
 
     private String password;
@@ -15,6 +17,15 @@ public class UserViewDTO {
     private String imageUrl;
 
     public UserViewDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserViewDTO setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getUsername() {

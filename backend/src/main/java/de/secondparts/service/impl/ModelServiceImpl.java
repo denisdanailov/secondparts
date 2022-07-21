@@ -1,8 +1,7 @@
 package de.secondparts.service.impl;
 
-import de.secondparts.model.entity.BrandEntity;
+
 import de.secondparts.model.entity.ModelEntity;
-import de.secondparts.model.enums.ModelsAudiEnum;
 import de.secondparts.repository.ModelRepository;
 import de.secondparts.service.BrandService;
 import de.secondparts.service.ModelService;

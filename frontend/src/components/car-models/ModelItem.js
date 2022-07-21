@@ -1,5 +1,4 @@
 export const ModelItem = ({ models }) => {
-  //   console.log(models);
   return (
     <>
       <li className="list-group-item">

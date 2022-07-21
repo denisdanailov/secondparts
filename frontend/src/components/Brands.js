@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Brands = () => {
   return (
     <section className="shop_section layout_padding">
@@ -27,56 +29,56 @@ export const Brands = () => {
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/mercedes-benz">
                 <div className="img-box">
                   <img src="images/mercedes-benz-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/audi">
                 <div className="img-box">
                   <img src="images/audi-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/bmw">
                 <div className="img-box">
                   <img src="images/bmw-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/vw">
                 <div className="img-box">
                   <img src="images/vw-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/porsche">
                 <div className="img-box">
                   <img src="images/porshe-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-sm-6 col-xl-3">
             <div className="box">
-              <a href="/">
+              <Link to="/models/opel">
                 <div className="img-box">
                   <img src="images/opel-logo.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -2,19 +2,55 @@ import { useState, useEffect } from "react";
 import UserService from "../../services/user.service";
 import "./AdminPanel.css";
 
-import { UserItem } from "../UserItem";
+import { UserItem } from "../../components/admin-panel/user-list/UserItem";
+import { UserActions } from "./user-list/UserListConstants";
+import { UserDetails } from "./user-list/UserDetails";
+import { UserDelete } from "./user-list/UserDelte";
+import { UserEdit } from "./user-list/UserEdit";
 
 export const AdminPanel = () => {
   const [users, setUsers] = useState([]);
+  const [userAction, setUserAction] = useState({ user: null, action: null });
 
   useEffect(() => {
-    UserService.getAdminBoard().then((users) => setUsers(users.data));
+    UserService.getAllUsers().then((users) => setUsers(users.data));
   }, []);
-  console.log(users);
+
+  const userActionClickHandler = (userId, actionType) => {
+    UserService.getUserById(userId).then((user) => {
+      setUserAction({
+        user,
+        action: actionType,
+      });
+    });
+  };
+
+  const deleteHandler = (userId) => {
+    setUsers((state) => state.filter((user) => user.id !== userId));
+  };
+
+  const closeHandler = () => {
+    setUserAction({ user: null, action: null });
+  };
 
   return (
     <>
       <div className="table-wrapper">
+        {userAction.action === UserActions.Details && (
+          <UserDetails user={userAction.user} onClose={closeHandler} />
+        )}
+
+        {userAction.action === UserActions.Delete && (
+          <UserDelete
+            user={userAction.user}
+            onClose={closeHandler}
+            deleteHandler={deleteHandler}
+          />
+        )}
+
+        {userAction.action === UserActions.Edit && (
+          <UserEdit user={userAction.user} onClose={closeHandler} />
+        )}
         <table className="table">
           <thead>
             <tr>
@@ -114,11 +150,8 @@ export const AdminPanel = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.username}>
-                <UserItem
-                  user={user}
-                  // onActionClick={userActionClickHandler}
-                />
+              <tr key={user.id}>
+                <UserItem user={user} onActionClick={userActionClickHandler} />
               </tr>
             ))}
           </tbody>

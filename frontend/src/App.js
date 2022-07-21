@@ -12,9 +12,14 @@ import { Home } from "./components/Home";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
-import { AdminPanel } from "./components/AdminPanel/AdminPanel";
+import { AdminPanel } from "./components/admin-panel/AdminPanel";
 import { CreateOffer } from "./components/CreateOffer";
-import { ModelView } from "./components/ModelView";
+import { ModelViewAudi } from "./components/car-models/ModelViewAudi";
+import { ModelViewVw } from "./components/car-models/ModelViewVw";
+import { ModelViewMercedesBenz } from "./components/car-models/ModelViewMercedesBenz";
+import { ModelViewPorsche } from "./components/car-models/ModelViewPorsche";
+import { ModelViewBmw } from "./components/car-models/ModelViewBmw";
+import { ModelViewOpel } from "./components/car-models/ModelViewOpel";
 
 export default function App() {
   return (
@@ -27,7 +32,16 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/model" element={<ModelView />} />
+          <Route path="/models/vw" element={<ModelViewVw />} />
+          <Route
+            path="/models/mercedes-benz"
+            element={<ModelViewMercedesBenz />}
+          />
+          <Route path="/models/bmw" element={<ModelViewBmw />} />
+          <Route path="/models/audi" element={<ModelViewAudi />} />
+          <Route path="/models/opel" element={<ModelViewOpel />} />
+          <Route path="/models/porsche" element={<ModelViewPorsche />} />
+
           <Route
             path="/create"
             element={

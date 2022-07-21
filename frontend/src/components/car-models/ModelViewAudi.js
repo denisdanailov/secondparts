@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import ModelService from "../services/models.service";
+import ModelService from "../../services/models.service";
 import { ModelItem } from "./ModelItem";
 
-export const ModelView = () => {
+export const ModelViewAudi = () => {
   const [models, setModels] = useState([]);
 
   useEffect(() => {
@@ -11,8 +11,6 @@ export const ModelView = () => {
       setModels(models.data)
     );
   }, []);
-
-  //   console.log(models);
 
   return (
     <div className="container py-5">

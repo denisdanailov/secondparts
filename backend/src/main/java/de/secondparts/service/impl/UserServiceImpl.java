@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -79,6 +80,26 @@ public class UserServiceImpl implements UserService {
 
             roleRepository.saveAll(List.of(adminRole, userRole));
         }
+    }
+
+    @Override
+    public Optional<UserViewDTO> findById(Long id) {
+        return userRepository.findById(id).map(userEntity -> {
+            UserViewDTO user = modelMapper.map(userEntity, UserViewDTO.class);
+
+            return user;
+        });
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.findById(id).ifPresent(userRepository::delete);
+
+    }
+
+    @Override
+    public void editUser(Long id) {
+//        TODO: implements edit logic..
     }
 
     private UserViewDTO mapUser(UserEntity userEntity) {

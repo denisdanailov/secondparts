@@ -1,3 +1,5 @@
+import { UserActions } from "./UserListConstants";
+
 export const UserItem = ({ user, onActionClick }) => {
   const BLANK_PROFIL_URL =
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
@@ -21,7 +23,7 @@ export const UserItem = ({ user, onActionClick }) => {
         <button
           className="btn edit-btn"
           title="Edit"
-          //   onClick={() => onActionClick(user._id, UserActions.Edit)}
+          onClick={() => onActionClick(user.id, UserActions.Edit)}
         >
           <svg
             aria-hidden="true"
@@ -42,7 +44,7 @@ export const UserItem = ({ user, onActionClick }) => {
         <button
           className="btn delete-btn"
           title="Delete"
-          //   onClick={() => onActionClick(user._id, UserActions.Delete)}
+          onClick={() => onActionClick(user.id, UserActions.Delete)}
         >
           <svg
             aria-hidden="true"
@@ -63,7 +65,7 @@ export const UserItem = ({ user, onActionClick }) => {
         <button
           className="btn info-btn"
           title="Info"
-          //   onClick={() => onActionClick(user._id, UserActions.Details)}
+          onClick={() => onActionClick(user.id, UserActions.Details)}
         >
           <svg
             aria-hidden="true"
