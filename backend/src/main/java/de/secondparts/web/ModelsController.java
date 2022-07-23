@@ -1,6 +1,7 @@
 package de.secondparts.web;
 
 import de.secondparts.model.entity.ModelEntity;
+import de.secondparts.model.entity.dtos.ModelViewDTO;
 import de.secondparts.service.BrandService;
 import de.secondparts.service.CategoryService;
 import de.secondparts.service.ModelService;
@@ -34,45 +35,45 @@ public class ModelsController {
     }
 
     @GetMapping("/vw")
-    public List<ModelEntity> getAllModelsFromBrandVw() {
+    public List<ModelViewDTO> getAllModelsFromBrandVw() {
 
         return modelService.getAllModelsByBrandId(VW_BRAND_ID);
     }
 
     @GetMapping("/mercedes-benz")
-    public List<ModelEntity> getAllModelsFromBrandMercedesBenz() {
+    public List<ModelViewDTO> getAllModelsFromBrandMercedesBenz() {
 
         return modelService.getAllModelsByBrandId(MERCEDES_BRAND_ID);
     }
 
     @GetMapping("/bmw")
-    public List<ModelEntity> getAllModelsFromBrandBmw() {
+    public List<ModelViewDTO> getAllModelsFromBrandBmw() {
 
         return modelService.getAllModelsByBrandId(BMW_BRAND_ID);
     }
 
     @GetMapping("/audi")
-    public List<ModelEntity> getAllModelsFromBrandAudi() {
+    public List<ModelViewDTO> getAllModelsFromBrandAudi() {
 
         return modelService.getAllModelsByBrandId(AUDI_BRAND_ID);
     }
 
     @GetMapping("/opel")
-    public List<ModelEntity> getAllModelsFromBrandOpel() {
+    public List<ModelViewDTO> getAllModelsFromBrandOpel() {
 
         return modelService.getAllModelsByBrandId(OPEL_BRAND_ID);
     }
 
     @GetMapping("/porsche")
-    public List<ModelEntity> getAllModelsFromBrandPorsche() {
+    public List<ModelViewDTO> getAllModelsFromBrandPorsche() {
 
         return modelService.getAllModelsByBrandId(PORSCHE_BRAND_ID);
     }
 
-    @GetMapping("/all")
-    public List<ModelEntity> getAllBrandsVw() {
-        return brandService.findById(2L).getModels();
-    }
+//    @GetMapping("/all")
+//    public List<ModelViewDTO> getAllBrandsVw() {
+//        return brandService.findById(2L).getModels();
+//    }
 
 
 }

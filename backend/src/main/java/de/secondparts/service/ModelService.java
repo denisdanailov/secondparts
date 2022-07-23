@@ -1,11 +1,12 @@
 package de.secondparts.service;
 
 import de.secondparts.model.entity.ModelEntity;
+import de.secondparts.model.entity.dtos.ModelViewDTO;
 
 import java.util.List;
 
 public interface ModelService {
-   List<ModelEntity> getAllModelsByBrandId(Long id);
+   List<ModelViewDTO> getAllModelsByBrandId(Long id);
 
     void initializeModels();
 }

@@ -1,6 +1,7 @@
 package de.secondparts.repository;
 
 import de.secondparts.model.entity.ModelEntity;
+import de.secondparts.model.entity.dtos.ModelViewDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

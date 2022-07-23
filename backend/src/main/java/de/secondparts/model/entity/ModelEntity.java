@@ -20,7 +20,9 @@ public class ModelEntity extends BaseEntity {
 
     @Column(nullable = false)
     private Long endYear;
-    
+
+    private String imageUrl;
+
     public String getName() {
         return name;
     }
@@ -57,4 +59,12 @@ public class ModelEntity extends BaseEntity {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public ModelEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
 }
