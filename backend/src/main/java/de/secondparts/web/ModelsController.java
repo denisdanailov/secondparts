@@ -70,10 +70,11 @@ public class ModelsController {
         return modelService.getAllModelsByBrandId(PORSCHE_BRAND_ID);
     }
 
-//    @GetMapping("/all")
-//    public List<ModelViewDTO> getAllBrandsVw() {
-//        return brandService.findById(2L).getModels();
-//    }
+//    Test get all models from brand Mercedes by ID
+    @GetMapping("/all")
+    public List<ModelViewDTO> getAllBrandsVw() {
+        return brandService.findById(2L).get().getModels();
+    }
 
 
 }

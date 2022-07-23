@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,15 +44,15 @@ public class BrandServiceImpl implements BrandService {
         return brandRepository.findAll().stream().map(this::mapBrand).collect(Collectors.toList());
     }
 
-    private BrandViewDTO  mapBrand(BrandEntity brandEntity) {
-       BrandViewDTO brandViewDto = this.modelMapper.map(brandEntity, BrandViewDTO.class);
-
-        return brandViewDto;
+    @Override
+    public Optional<BrandViewDTO> findById(Long id) {
+        return brandRepository.findById(id).map(this::mapBrand);
     }
 
-    @Override
-    public BrandEntity findById(Long id) {
-        return brandRepository.findById(id).orElse(null);
+    private BrandViewDTO  mapBrand(BrandEntity brandEntity) {
+        BrandViewDTO brandViewDto = this.modelMapper.map(brandEntity, BrandViewDTO.class);
+
+        return brandViewDto;
     }
 }
 
