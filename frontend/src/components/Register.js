@@ -158,6 +158,16 @@ export default function Register() {
                   />
                 </Grid>
                 <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="imageUrl"
+                    label="Profil Picture"
+                    name="imageUrl"
+                    autoComplete="imageUrl"
+                  />
+                </Grid>
+                <Grid item xs={12}>
                   {!error ? (
                     <TextField
                       required

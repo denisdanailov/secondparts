@@ -20,7 +20,7 @@ public class ModelEntity extends BaseEntity {
 
     @Column(nullable = false)
     private Long endYear;
-
+    
     public String getName() {
         return name;
     }

@@ -7,6 +7,9 @@ import { UserActions } from "./user-list/UserListConstants";
 import { UserDetails } from "./user-list/UserDetails";
 import { UserDelete } from "./user-list/UserDelte";
 import { UserEdit } from "./user-list/UserEdit";
+import { UserCreate } from "./user-list/UserCreate";
+
+import Button from "@mui/material/Button";
 
 export const AdminPanel = () => {
   const [users, setUsers] = useState([]);
@@ -23,6 +26,16 @@ export const AdminPanel = () => {
         action: actionType,
       });
     });
+  };
+
+  const userCreateHandler = (actionType) => {
+    setUserAction({
+      action: actionType,
+    });
+  };
+
+  const onChangeHandler = () => {
+    UserService.getAllUsers().then((users) => setUsers(users.data));
   };
 
   const deleteHandler = (userId) => {
@@ -49,7 +62,15 @@ export const AdminPanel = () => {
         )}
 
         {userAction.action === UserActions.Edit && (
-          <UserEdit user={userAction.user} onClose={closeHandler} />
+          <UserEdit
+            user={userAction.user}
+            onClose={closeHandler}
+            onChange={onChangeHandler}
+          />
+        )}
+
+        {userAction.action === UserActions.Add && (
+          <UserCreate onClose={closeHandler} onChange={onChangeHandler} />
         )}
         <table className="table">
           <thead>
@@ -158,7 +179,9 @@ export const AdminPanel = () => {
         </table>
       </div>
 
-      {/* <button className="btn-add btn" onClick={() => userActionClickHandler(null, UserActions.Add)}>Add new user</button> */}
+      <Button onClick={() => userCreateHandler(UserActions.Add)}>
+        Add new user
+      </Button>
     </>
   );
 };

@@ -20,8 +20,14 @@ class UserService {
     });
   }
 
-  editUser(userId) {
-    return axios.put(`${API_URL}${userId}`, {
+  editUser(userId, data) {
+    return axios.put(`${API_URL}${userId}`, data, {
+      headers: authHeader(),
+    });
+  }
+
+  createUser(data) {
+    return axios.post(API_URL + "create", data, {
       headers: authHeader(),
     });
   }

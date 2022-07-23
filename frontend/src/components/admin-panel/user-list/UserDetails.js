@@ -25,7 +25,7 @@ export const UserDetails = ({ onClose, user }) => {
           <List>
             <div className="image-container">
               <img
-                src="/images/audi-car.png"
+                src={user.data.imageUrl}
                 alt="user-profil-img"
                 className="image"
               />

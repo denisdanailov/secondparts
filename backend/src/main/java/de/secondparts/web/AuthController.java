@@ -5,7 +5,6 @@ import de.secondparts.model.entity.dtos.UserLoginDTO;
 import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 import de.secondparts.payment.response.JwtResponse;
 import de.secondparts.payment.response.MessageResponse;
-import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.security.jwt.JwtUtils;
 import de.secondparts.service.impl.UserDetailsImpl;
@@ -29,15 +28,13 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
-    private final UserRepository userRepository;
     private final UserRoleRepository roleRepository;
     private final PasswordEncoder encoder;
     private final JwtUtils jwtUtils;
 
-    public AuthController(AuthenticationManager authenticationManager, UserService userService, UserRepository userRepository, UserRoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
+    public AuthController(AuthenticationManager authenticationManager, UserService userService, UserRoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
-        this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
@@ -67,13 +64,13 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
 
-        if (userRepository.existsByUsername(userRegistrationDTO.getUsername())) {
+        if (userService.existsByUsername(userRegistrationDTO.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(userRegistrationDTO.getEmail())) {
+        if (userService.existsByEmail(userRegistrationDTO.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));

@@ -5,26 +5,25 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import userService from "../../../services/user.service";
+import DialogActions from "@mui/material/DialogActions";
+import UserService from "../../../services/user.service";
 
-export const UserEdit = ({ onClose, user, onChange }) => {
-  const onEdit = (e) => {
+export const UserCreate = ({ onClose, onChange }) => {
+  const onCreate = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const { firstName, lastName, email, username, imageUrl } =
+    const { firstName, lastName, email, username, password, imageUrl } =
       Object.fromEntries(formData);
-
     const userData = {
       firstName,
       lastName,
       email,
       username,
+      password,
       imageUrl,
     };
-
     console.log(userData);
-    userService
-      .editUser(user.data.id, userData)
+    UserService.createUser(userData)
       .then(() => onChange())
       .then(() => onClose());
   };
@@ -49,20 +48,12 @@ export const UserEdit = ({ onClose, user, onChange }) => {
             noValidate
             autoComplete="off"
           >
-            <div className="image-container">
-              <img
-                src={user.data.imageUrl}
-                alt="user-profil-img"
-                className="image"
-              />
-            </div>
-            <form onSubmit={onEdit} method="post">
+            <form onSubmit={onCreate} method="post">
               <TextField
                 id="outlined-required"
                 label="Username"
                 type="text"
                 name="username"
-                defaultValue={user.data.username}
               />
 
               <TextField
@@ -70,32 +61,43 @@ export const UserEdit = ({ onClose, user, onChange }) => {
                 label="First Name"
                 type="text"
                 name="firstName"
-                defaultValue={user.data.firstName}
               />
               <TextField
                 id="outlined-required"
                 label="Last Name"
                 type="text"
                 name="lastName"
-                defaultValue={user.data.lastName}
               />
               <TextField
                 id="outlined-required"
                 label="Email"
                 type="text"
                 name="email"
-                defaultValue={user.data.email}
               />
               <TextField
                 id="outlined-required"
                 label="Profile Picture"
                 type="text"
                 name="imageUrl"
-                defaultValue={user.data.imageUrl}
               />
-              <Button type="submit" autoFocus>
-                Save
-              </Button>
+              <TextField
+                id="outlined-required"
+                label="Password"
+                type="password"
+                name="password"
+              />
+              <TextField
+                id="outlined-required"
+                label="Confirm Password"
+                type="password"
+                name="confirm-password"
+              />
+              <DialogActions>
+                <Button onClick={onClose}>Disagree</Button>
+                <Button type="submit" autoFocus>
+                  Agree
+                </Button>
+              </DialogActions>
             </form>
           </Box>
         </DialogContent>
