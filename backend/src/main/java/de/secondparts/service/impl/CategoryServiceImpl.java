@@ -57,7 +57,6 @@ public class CategoryServiceImpl implements CategoryService {
         CategoryViewDTO category = new CategoryViewDTO();
 
         category.setName(categoryEntity.getName().name());
-        category.setOrders(categoryEntity.getOrders());
 
         return category;
     }

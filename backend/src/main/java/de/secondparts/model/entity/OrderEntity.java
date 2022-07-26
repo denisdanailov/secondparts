@@ -1,5 +1,6 @@
 package de.secondparts.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
@@ -37,6 +38,7 @@ public class OrderEntity extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @JsonIgnore
     @ManyToOne
     private CategoryEntity category;
 

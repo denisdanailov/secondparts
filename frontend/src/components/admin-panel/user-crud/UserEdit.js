@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import userService from "../../../services/user.service";
+import userService from "../../../services/admin.service";
 
 export const UserEdit = ({ onClose, user, onChange }) => {
   const onEdit = (e) => {

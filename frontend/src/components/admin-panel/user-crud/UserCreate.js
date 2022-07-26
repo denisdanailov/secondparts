@@ -6,7 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import DialogActions from "@mui/material/DialogActions";
-import UserService from "../../../services/user.service";
+import UserService from "../../../services/admin.service";
 
 export const UserCreate = ({ onClose, onChange }) => {
   const onCreate = (e) => {

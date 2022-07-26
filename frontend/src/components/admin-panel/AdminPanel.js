@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import UserService from "../../services/user.service";
+import UserService from "../../services/admin.service";
 import "./AdminPanel.css";
 
 import { UserItem } from "../../components/admin-panel/user-crud/UserItem";
