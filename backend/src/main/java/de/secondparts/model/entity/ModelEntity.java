@@ -67,4 +67,15 @@ public class ModelEntity extends BaseEntity {
         this.imageUrl = imageUrl;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "ModelEntity{" +
+                "name='" + name + '\'' +
+                ", brand=" + brand +
+                ", startYear=" + startYear +
+                ", endYear=" + endYear +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }

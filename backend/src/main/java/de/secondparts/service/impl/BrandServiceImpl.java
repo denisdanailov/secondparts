@@ -1,8 +1,10 @@
 package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.BrandEntity;
+import de.secondparts.model.entity.ModelEntity;
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.BrandViewDTO;
+import de.secondparts.model.entity.dtos.ModelViewDTO;
 import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.model.enums.BrandEnum;
 import de.secondparts.repository.BrandRepository;
@@ -41,18 +43,37 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public List<BrandViewDTO> getAllBrands() {
-        return brandRepository.findAll().stream().map(this::mapBrand).collect(Collectors.toList());
+        return brandRepository.
+                findAll()
+                .stream()
+                .map(this::mapBrand)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<BrandViewDTO> findById(Long id) {
-        return brandRepository.findById(id).map(this::mapBrand);
+        return brandRepository
+                .findById(id)
+                .map(this::mapBrand);
     }
 
     private BrandViewDTO  mapBrand(BrandEntity brandEntity) {
-        BrandViewDTO brandViewDto = this.modelMapper.map(brandEntity, BrandViewDTO.class);
+        List<ModelViewDTO> models = brandEntity
+                .getModels()
+                .stream()
+                .map(this::mapModel)
+                .collect(Collectors.toList());
 
-        return brandViewDto;
+        return new BrandViewDTO()
+                .setModels(models)
+                .setName(brandEntity.getName());
+    }
+
+    private ModelViewDTO mapModel(ModelEntity modelEntity) {
+        return  new ModelViewDTO()
+                .setName(modelEntity.getName())
+                .setId(modelEntity.getId())
+                .setBrand(modelEntity.getBrand());
     }
 }
 

@@ -6,6 +6,7 @@ import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -21,9 +23,11 @@ import java.util.Optional;
 public class AdminPanelController {
 
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
-    public AdminPanelController(UserService userService) {
+    public AdminPanelController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
@@ -31,7 +35,11 @@ public class AdminPanelController {
     public ResponseEntity<List<UserViewDTO>> getAll() {
 
         try {
-            List<UserViewDTO> users = userService.getAll();
+            List<UserViewDTO> users = userService.getAll().stream().map(userEntity -> {
+                UserViewDTO userDTO = modelMapper.map(userEntity, UserViewDTO.class);
+                return userDTO;
+            }).collect(Collectors.toList());
+
             if (users.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -44,7 +52,12 @@ public class AdminPanelController {
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserViewDTO> getUserDetails(@PathVariable("id") Long id ) {
-        Optional<UserViewDTO> user = userService.findById(id);
+
+        Optional<UserViewDTO> user = userService.findById(id).map(userEntity -> {
+
+            UserViewDTO userDTO = modelMapper.map(userEntity, UserViewDTO.class);
+            return userDTO;
+        });
 
         return user.map(userViewDTO
                 -> new ResponseEntity<>(userViewDTO, HttpStatus.OK)).orElseGet(()
@@ -87,7 +100,7 @@ public class AdminPanelController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserViewDTO> editUser(@Valid @PathVariable("id") Long id, @RequestBody UserViewDTO userViewDTO ) {
 
-        UserEntity userToEdit = userService.findUserToEdit(id);
+        UserEntity userToEdit = userService.findById(id).orElse(null);
         UserEditDTO editedUser = new UserEditDTO();
 
         if (userToEdit != null) {
@@ -96,7 +109,9 @@ public class AdminPanelController {
 
 //          Check if Username is not exists in DataBase, because usernames is unique.
             if (!userToEdit.getUsername().equals(userViewDTO.getUsername())) {
-                Optional<UserViewDTO> byUsername = userService.findByUsername(userViewDTO.getUsername());
+                Optional<UserViewDTO> byUsername = userService.findByUsername(userViewDTO.getUsername()).map(userEntity -> {
+                    return this.modelMapper.map(userEntity, UserViewDTO.class);
+                });
 
                 if (byUsername.isPresent()) {
                     return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -106,7 +121,9 @@ public class AdminPanelController {
 
 //          Check if Email is not exists in DataBase, because Email is unique.
             if (!userToEdit.getEmail().equals(userViewDTO.getEmail())) {
-                Optional<UserViewDTO> byEmail = userService.findByEmail(userViewDTO.getEmail());
+                Optional<UserViewDTO> byEmail = userService.findByEmail(userViewDTO.getEmail()).map(userEntity -> {
+                    return this.modelMapper.map(userEntity, UserViewDTO.class);
+                });
 
                 if (byEmail.isPresent()) {
                     return new ResponseEntity<>(HttpStatus.CONFLICT);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -28,6 +29,20 @@ public class CategoryServiceImpl implements CategoryService {
                 categoryRepository.save(category);
             });
         }
+    }
+
+    @Override
+    public Optional<CategoryEntity> findById(Long id) {
+        return categoryRepository.findById(id);
+    }
+
+    @Override
+    public Optional<CategoryEntity> findByName(String name) {
+        CategoryEnum categoryEnum = CategoryEnum.valueOf(name);
+
+      return categoryRepository.findCategoryEntityByName(categoryEnum);
+
+
     }
 
 

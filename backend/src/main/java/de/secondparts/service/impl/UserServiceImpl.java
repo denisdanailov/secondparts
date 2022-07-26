@@ -17,7 +17,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserViewDTO> getAll() {
-        return userRepository.findAll().stream().map(this::mapUser).collect(Collectors.toList());
+    public List<UserEntity> getAll() {
+        return userRepository.findAll();
     }
 
     @Override
@@ -85,26 +84,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserViewDTO> findById(Long id) {
-        return userRepository.findById(id).map(userEntity -> {
-            UserViewDTO user = modelMapper.map(userEntity, UserViewDTO.class);
-
-            return user;
-        });
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
-    public Optional<UserViewDTO> findByUsername(String username) {
-        Optional<UserViewDTO> userByUsername = userRepository.findByUsername(username).map(this::mapUser);
-
-        return userByUsername;
+    public Optional<UserEntity> findByUsername(String username) {
+       return userRepository.findByUsername(username);
     }
 
     @Override
-    public Optional<UserViewDTO> findByEmail(String email) {
-        Optional<UserViewDTO> userByEmail = userRepository.findByEmail(email).map(this::mapUser);
-
-        return userByEmail;
+    public Optional<UserEntity> findByEmail(String email) {
+      return userRepository.findByEmail(email);
     }
 
     @Override
@@ -128,11 +119,6 @@ public class UserServiceImpl implements UserService {
 
         }
         userRepository.save(user);
-    }
-
-    @Override
-    public UserEntity findUserToEdit(Long id) {
-        return userRepository.findById(id).orElse(null);
     }
 
     @Override

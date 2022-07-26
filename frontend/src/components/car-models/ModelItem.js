@@ -35,7 +35,7 @@ export const ModelItem = ({ models }) => {
             </div>
           </div>
           <img
-            src="images/porsche-13.png"
+            src="../images/audi-car.png"
             alt="Generic placeholder image"
             width="200"
             className="ml-lg-5 order-1 order-lg-2"

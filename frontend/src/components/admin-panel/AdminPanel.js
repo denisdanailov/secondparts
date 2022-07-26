@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import UserService from "../../services/user.service";
 import "./AdminPanel.css";
 
-import { UserItem } from "../../components/admin-panel/user-list/UserItem";
-import { UserActions } from "./user-list/UserListConstants";
-import { UserDetails } from "./user-list/UserDetails";
-import { UserDelete } from "./user-list/UserDelte";
-import { UserEdit } from "./user-list/UserEdit";
-import { UserCreate } from "./user-list/UserCreate";
+import { UserItem } from "../../components/admin-panel/user-crud/UserItem";
+import { UserActions } from "./user-crud/UserListConstants";
+import { UserDetails } from "./user-crud/UserDetails";
+import { UserDelete } from "./user-crud/UserDelte";
+import { UserEdit } from "./user-crud/UserEdit";
+import { UserCreate } from "./user-crud/UserCreate";
 
 import Button from "@mui/material/Button";
 
