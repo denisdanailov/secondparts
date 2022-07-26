@@ -1,6 +1,7 @@
 package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.CategoryEntity;
+import de.secondparts.model.entity.dtos.CategoryViewDTO;
 import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.repository.CategoryRepository;
 import de.secondparts.service.CategoryService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -40,9 +42,24 @@ public class CategoryServiceImpl implements CategoryService {
     public Optional<CategoryEntity> findByName(String name) {
         CategoryEnum categoryEnum = CategoryEnum.valueOf(name);
 
-      return categoryRepository.findCategoryEntityByName(categoryEnum);
+        return categoryRepository.findCategoryEntityByName(categoryEnum);
 
+    }
 
+    @Override
+    public List<CategoryViewDTO> getAllCategories() {
+        return categoryRepository.findAll()
+                .stream().map(this::mapCategory)
+                .collect(Collectors.toList());
+    }
+
+    private CategoryViewDTO mapCategory(CategoryEntity categoryEntity) {
+        CategoryViewDTO category = new CategoryViewDTO();
+
+        category.setName(categoryEntity.getName().name());
+        category.setOrders(categoryEntity.getOrders());
+
+        return category;
     }
 
 

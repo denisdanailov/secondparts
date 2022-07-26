@@ -124,9 +124,9 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
-                        placeholder="Price *"
+                        placeholder="Suggested price *"
                         name="price"
                       />
                     </div>
