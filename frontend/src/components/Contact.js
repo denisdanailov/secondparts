@@ -4,31 +4,29 @@ export const Contact = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <div className="form_container">
+            <div className="detail-box">
               <div className="heading_container">
                 <h2>Contact Us</h2>
               </div>
-              <form action="">
-                <div>
-                  <input type="text" placeholder="Full Name " />
-                </div>
-                <div>
-                  <input type="email" placeholder="Email" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Phone number" />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    className="message-box"
-                    placeholder="Message"
-                  />
-                </div>
-                <div className="d-flex">
-                  <button>SEND</button>
-                </div>
-              </form>
+              <a href="/">
+                <i className="fa fa-map-marker" aria-hidden="true"></i>
+                <span> Frankfurt am Main </span>
+              </a>
+              <br />
+              <a href="/">
+                <i className="fa fa-phone" aria-hidden="true"></i>
+                <span> Call +01 1234567890 </span>
+              </a>
+              <br />
+              <a href="/">
+                <i className="fa fa-phone" aria-hidden="true"></i>
+                <span> Call +01 1234567890 </span>
+              </a>
+              <br />
+              <a href="/">
+                <i className="fa fa-envelope" aria-hidden="true"></i>
+                <span> demo@gmail.com </span>
+              </a>
             </div>
           </div>
           <div className="col-md-6">

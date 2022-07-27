@@ -6,7 +6,7 @@ import { ProtectedRoute } from "./routing/ProtectedRoute";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { Catalog } from "./components/Catalog/Catalog";
+import { Catalog } from "./components/catalog/Catalog";
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
 import { Contact } from "./components/Contact";
