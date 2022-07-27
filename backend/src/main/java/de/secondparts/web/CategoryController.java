@@ -3,6 +3,7 @@ package de.secondparts.web;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.entity.dtos.CategoryViewDTO;
 import de.secondparts.service.CategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +23,9 @@ public class CategoryController {
     }
 
     @GetMapping("/all")
-    public List<CategoryViewDTO> getAllCategories() {
+    public ResponseEntity<List<CategoryViewDTO>> getAllCategories() {
 
-        return categoryService.getAllCategories();
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
 }

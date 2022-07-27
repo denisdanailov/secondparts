@@ -5,6 +5,7 @@ import de.secondparts.model.entity.ModelEntity;
 import de.secondparts.model.entity.OrderEntity;
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.OrderCreateDTO;
+import de.secondparts.model.entity.dtos.OrderViewDTO;
 import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
@@ -18,7 +19,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -85,6 +88,17 @@ public class OrderServiceImpl implements OrderService {
 
         orderRepository.save(newOrder);
 
+    }
+
+    @Override
+    public List<OrderViewDTO> getAllOrders() {
+        return orderRepository.findAll().stream().map(this::mapOrder).collect(Collectors.toList());
+    }
+
+    private OrderViewDTO mapOrder(OrderEntity orderEntity) {
+        OrderViewDTO orderViewDTO = this.modelMapper.map(orderEntity, OrderViewDTO.class);
+
+        return orderViewDTO;
     }
 
     private UserEntity mapUser(UserViewDTO userViewDTO) {

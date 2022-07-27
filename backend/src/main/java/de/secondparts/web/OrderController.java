@@ -3,6 +3,7 @@ package de.secondparts.web;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import de.secondparts.model.entity.dtos.BrandViewDTO;
 import de.secondparts.model.entity.dtos.OrderCreateDTO;
+import de.secondparts.model.entity.dtos.OrderViewDTO;
 import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
@@ -30,6 +31,13 @@ public class OrderController {
         this.brandService = brandService;
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<OrderViewDTO>> getAllOrders() {
+
+       return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
+
     @PostMapping("/create")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> createUser(@Valid @RequestBody OrderCreateDTO orderCreateDTO) throws Exception {
@@ -44,6 +52,8 @@ public class OrderController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+//   TODO:  types for Create Form. Create a Types Controller for them->
 
     @GetMapping("/transmissions")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")

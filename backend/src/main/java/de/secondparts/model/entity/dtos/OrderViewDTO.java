@@ -1,59 +1,47 @@
-package de.secondparts.model.entity;
+package de.secondparts.model.entity.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.secondparts.model.entity.CategoryEntity;
+import de.secondparts.model.entity.ModelEntity;
+import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
-import org.hibernate.annotations.Cascade;
 
-import javax.persistence.*;
+
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "orders")
-public class OrderEntity extends BaseEntity {
+public class OrderViewDTO {
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
     private BigDecimal price;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private EngineEnum engine;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
 
-    @Column(nullable = false)
     private String vehicleIdentificationNumber;
 
-    @Column(nullable = false)
     private Integer year;
 
     private Integer kilometers;
 
     private String imageUrl;
 
-    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @JsonIgnore
-    @ManyToOne
     private CategoryEntity category;
 
-    @ManyToOne
+
     private ModelEntity model;
 
-    @ManyToOne
+
     private UserEntity seller;
 
     public String getTitle() {
         return title;
     }
 
-    public OrderEntity setTitle(String title) {
+    public OrderViewDTO setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -62,7 +50,7 @@ public class OrderEntity extends BaseEntity {
         return price;
     }
 
-    public OrderEntity setPrice(BigDecimal price) {
+    public OrderViewDTO setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -71,7 +59,7 @@ public class OrderEntity extends BaseEntity {
         return engine;
     }
 
-    public OrderEntity setEngine(EngineEnum engine) {
+    public OrderViewDTO setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -80,7 +68,7 @@ public class OrderEntity extends BaseEntity {
         return transmission;
     }
 
-    public OrderEntity setTransmission(TransmissionEnum transmission) {
+    public OrderViewDTO setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -89,7 +77,7 @@ public class OrderEntity extends BaseEntity {
         return vehicleIdentificationNumber;
     }
 
-    public OrderEntity setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
+    public OrderViewDTO setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
         this.vehicleIdentificationNumber = vehicleIdentificationNumber;
         return this;
     }
@@ -98,7 +86,7 @@ public class OrderEntity extends BaseEntity {
         return year;
     }
 
-    public OrderEntity setYear(Integer year) {
+    public OrderViewDTO setYear(Integer year) {
         this.year = year;
         return this;
     }
@@ -107,7 +95,7 @@ public class OrderEntity extends BaseEntity {
         return kilometers;
     }
 
-    public OrderEntity setKilometers(Integer kilometers) {
+    public OrderViewDTO setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
         return this;
     }
@@ -116,7 +104,7 @@ public class OrderEntity extends BaseEntity {
         return imageUrl;
     }
 
-    public OrderEntity setImageUrl(String imageUrl) {
+    public OrderViewDTO setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -125,7 +113,7 @@ public class OrderEntity extends BaseEntity {
         return description;
     }
 
-    public OrderEntity setDescription(String description) {
+    public OrderViewDTO setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -134,7 +122,7 @@ public class OrderEntity extends BaseEntity {
         return category;
     }
 
-    public OrderEntity setCategory(CategoryEntity category) {
+    public OrderViewDTO setCategory(CategoryEntity category) {
         this.category = category;
         return this;
     }
@@ -143,7 +131,7 @@ public class OrderEntity extends BaseEntity {
         return model;
     }
 
-    public OrderEntity setModel(ModelEntity model) {
+    public OrderViewDTO setModel(ModelEntity model) {
         this.model = model;
         return this;
     }
@@ -152,9 +140,8 @@ public class OrderEntity extends BaseEntity {
         return seller;
     }
 
-    public OrderEntity setSeller(UserEntity seller) {
+    public OrderViewDTO setSeller(UserEntity seller) {
         this.seller = seller;
         return this;
     }
-
 }
