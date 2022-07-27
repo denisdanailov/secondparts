@@ -32,6 +32,26 @@ class AuthService {
   getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"));
   }
+
+  getUserId() {
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      return currentUser.id;
+    } else {
+      return null;
+    }
+  }
+
+  getAdmin() {
+    const user = this.getCurrentUser();
+    if (user) {
+      if (user.roles.includes("ROLE_ADMIN")) {
+        return user;
+      }
+    } else {
+      return null;
+    }
+  }
 }
 
 export default new AuthService();
