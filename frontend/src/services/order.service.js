@@ -4,6 +4,12 @@ import authHeader from "./auth-header";
 const API_URL = "http://localhost:8080/api/orders/";
 
 class OrderService {
+  getAllOrders() {
+    return axios.get(API_URL + "all", {
+      headers: authHeader(),
+    });
+  }
+
   createOrder(data) {
     return axios.post(API_URL + "create", data, {
       headers: authHeader(),

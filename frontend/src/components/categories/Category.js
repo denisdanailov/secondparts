@@ -13,8 +13,6 @@ export const Category = () => {
     );
   }, []);
 
-  console.log(categories);
-
   return (
     <section className="feature_section layout_padding">
       <div className="container">

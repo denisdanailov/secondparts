@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import OrderService from "../../services/order.service";
 import ModelService from "../../services/models.service";
 import "./CreateOffer.css";
+
 import AuthService from "../../services/auth.service";
 
 export const CreateOffer = () => {
@@ -51,6 +54,8 @@ export const CreateOffer = () => {
     );
   }, []);
 
+  const navigate = useNavigate();
+
   const onCreate = (e) => {
     e.preventDefault();
 
@@ -86,9 +91,9 @@ export const CreateOffer = () => {
       sellerId,
     };
 
-    console.log(orderData);
-
-    OrderService.createOrder(orderData);
+    OrderService.createOrder(orderData).then(() => {
+      navigate("/catalog");
+    });
   };
 
   return (
