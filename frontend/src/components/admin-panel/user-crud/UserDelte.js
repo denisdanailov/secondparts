@@ -9,8 +9,7 @@ import userService from "../../../services/admin.service";
 
 export const UserDelete = ({ user, onClose, deleteHandler }) => {
   const onDelete = () => {
-    userService.deleteUser(user.data.id);
-    onClose = { onClose };
+    userService.deleteUser(user.data.id).then(() => onClose());
   };
 
   return (
@@ -31,16 +30,15 @@ export const UserDelete = ({ user, onClose, deleteHandler }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Disagree</Button>
+          <Button onClick={onClose}>Close</Button>
           <Button
             onClick={() => {
               onDelete();
               deleteHandler(user.data.id);
-              onClose();
             }}
             autoFocus
           >
-            Agree
+            Delete
           </Button>
         </DialogActions>
       </Dialog>

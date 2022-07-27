@@ -38,7 +38,7 @@ export const UserCreate = ({ onClose, onChange }) => {
         fullWidth
       >
         <DialogTitle textAlign="center" id="alert-dialog-title">
-          {"Edit User Information"}
+          {"Create User"}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -93,9 +93,9 @@ export const UserCreate = ({ onClose, onChange }) => {
                 name="confirm-password"
               />
               <DialogActions>
-                <Button onClick={onClose}>Disagree</Button>
+                <Button onClick={onClose}>Close</Button>
                 <Button type="submit" autoFocus>
-                  Agree
+                  Create
                 </Button>
               </DialogActions>
             </form>

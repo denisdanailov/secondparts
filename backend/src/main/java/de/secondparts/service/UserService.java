@@ -21,10 +21,6 @@ public interface UserService {
 
     Optional<UserEntity> findByEmail(String email);
 
-    void deleteUser(Long id);
-
-    void editUser(Long id, UserEditDTO userEditDTO);
-
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);

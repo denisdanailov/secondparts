@@ -5,6 +5,7 @@ import de.secondparts.model.entity.dtos.UserEditDTO;
 import de.secondparts.model.entity.dtos.UserRegistrationDTO;
 import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.payment.response.MessageResponse;
+import de.secondparts.service.AdminService;
 import de.secondparts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -24,10 +25,12 @@ public class AdminPanelController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final AdminService adminService;
 
-    public AdminPanelController(UserService userService, ModelMapper modelMapper) {
+    public AdminPanelController(UserService userService, ModelMapper modelMapper, AdminService adminService) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.adminService = adminService;
     }
 
     @GetMapping("/all")
@@ -89,7 +92,7 @@ public class AdminPanelController {
     public ResponseEntity<UserViewDTO> deleteUser(@PathVariable("id") Long id) {
 
         try {
-            userService.deleteUser(id);
+            adminService.deleteUser(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -136,7 +139,7 @@ public class AdminPanelController {
 
             editedUser.setImageUrl(userViewDTO.getImageUrl());
         }
-        userService.editUser(id, editedUser);
+        adminService.editUser(id, editedUser);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

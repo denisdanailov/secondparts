@@ -3,6 +3,7 @@ package de.secondparts.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -45,7 +46,6 @@ public class OrderEntity extends BaseEntity {
     @ManyToOne
     private ModelEntity model;
 
-    @ManyToOne
     private UserEntity seller;
 
     public String getTitle() {
