@@ -5,11 +5,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import userService from "../../../services/admin.service";
+import OrderService from "../../services/order.service";
 
-export const UserDelete = ({ user, onClose, deleteHandler }) => {
+export const OrderDelete = ({ order, onClose, deleteHandler }) => {
   const onDelete = () => {
-    userService.deleteUser(user.data.id);
+    console.log(order.data.id);
+    OrderService.deleteOrder(order.data.id).then(() => onClose());
   };
 
   return (
@@ -26,7 +27,7 @@ export const UserDelete = ({ user, onClose, deleteHandler }) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Username: {user.data.username}
+            Order: {order.data.title}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -34,8 +35,7 @@ export const UserDelete = ({ user, onClose, deleteHandler }) => {
           <Button
             onClick={() => {
               onDelete();
-              deleteHandler(user.data.id);
-              onClose();
+              deleteHandler(order.data.id);
             }}
             autoFocus
           >

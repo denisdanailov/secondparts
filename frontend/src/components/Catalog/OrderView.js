@@ -1,8 +1,7 @@
 import AuthService from "../../services/auth.service";
+import { OrderActions } from "./OrderListConstants";
 
-export const OrderdView = ({ order }) => {
-  //   console.log(order);
-
+export const OrderdView = ({ order, onActionClick }) => {
   const currentUserId = AuthService.getUserId();
   const admin = AuthService.getAdmin();
 
@@ -38,10 +37,12 @@ export const OrderdView = ({ order }) => {
             if (currentUserId === order.seller.id) {
               return (
                 <div className="product-links">
-                  <a href="/">
+                  <a
+                    onClick={() => onActionClick(order.id, OrderActions.Delete)}
+                  >
                     <i class="fa fa-trash"></i>
                   </a>
-                  <a href="/">
+                  <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
                     <i class="fa fa-edit"></i>
                   </a>
                 </div>
@@ -57,10 +58,12 @@ export const OrderdView = ({ order }) => {
                   ) : (
                     ""
                   )}
-                  <a href="/">
+                  <a
+                    onClick={() => onActionClick(order.id, OrderActions.Delete)}
+                  >
                     <i class="fa fa-trash"></i>
                   </a>
-                  <a href="/">
+                  <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
                     <i class="fa fa-edit"></i>
                   </a>
                 </div>

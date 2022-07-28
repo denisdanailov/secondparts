@@ -10,8 +10,20 @@ class OrderService {
     });
   }
 
+  getOrderById(orderId) {
+    return axios.get(`${API_URL}${orderId}`, {
+      headers: authHeader(),
+    });
+  }
+
   createOrder(data) {
     return axios.post(API_URL + "create", data, {
+      headers: authHeader(),
+    });
+  }
+
+  deleteOrder(orderId) {
+    return axios.delete(`${API_URL}${orderId}`, {
       headers: authHeader(),
     });
   }

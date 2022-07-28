@@ -1,6 +1,6 @@
 package de.secondparts.web;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import de.secondparts.model.entity.OrderEntity;
 import de.secondparts.model.entity.dtos.BrandViewDTO;
 import de.secondparts.model.entity.dtos.OrderCreateDTO;
 import de.secondparts.model.entity.dtos.OrderViewDTO;
@@ -10,6 +10,7 @@ import de.secondparts.model.enums.TransmissionEnum;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.BrandService;
 import de.secondparts.service.OrderService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -25,16 +27,41 @@ public class OrderController {
 
     private final OrderService orderService;
     private final BrandService brandService;
+    private final ModelMapper modelMapper;
 
-    public OrderController(OrderService orderService, BrandService brandService) {
+    public OrderController(OrderService orderService, BrandService brandService, ModelMapper modelMapper) {
         this.orderService = orderService;
         this.brandService = brandService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<OrderViewDTO>> getAllOrders() {
 
        return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderViewDTO> getOrderById(@PathVariable("id") Long id) {
+        Optional<OrderViewDTO> order = orderService.findById(id).map(orderEntity -> {
+            OrderViewDTO orderViewDTO = modelMapper.map(orderEntity, OrderViewDTO.class);
+
+            return orderViewDTO;
+        });
+
+        return order.map(orderViewDTO
+                -> new ResponseEntity<>(orderViewDTO, HttpStatus.OK)).orElseGet(()
+                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<OrderViewDTO> deleteOrder(@PathVariable("id") Long id) {
+        try {
+            orderService.deleteOrder(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

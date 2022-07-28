@@ -95,6 +95,16 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findAll().stream().map(this::mapOrder).collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteOrder(Long id) {
+        orderRepository.findById(id).ifPresent(orderRepository::delete);
+    }
+
+    @Override
+    public Optional<OrderEntity> findById(Long id) {
+        return orderRepository.findById(id);
+    }
+
     private OrderViewDTO mapOrder(OrderEntity orderEntity) {
         OrderViewDTO orderViewDTO = this.modelMapper.map(orderEntity, OrderViewDTO.class);
 

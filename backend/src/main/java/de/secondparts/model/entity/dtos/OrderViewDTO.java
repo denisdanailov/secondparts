@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 
 public class OrderViewDTO {
 
+    private Long id;
+
     private String title;
 
     private BigDecimal price;
@@ -36,6 +38,15 @@ public class OrderViewDTO {
 
 
     private UserEntity seller;
+
+    public Long getId() {
+        return id;
+    }
+
+    public OrderViewDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getTitle() {
         return title;
