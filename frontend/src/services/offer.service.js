@@ -1,35 +1,35 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8080/api/orders/";
+const API_URL = "http://localhost:8080/api/offers/";
 
-class OrderService {
-  getAllOrders() {
+class OfferService {
+  getAllOffers() {
     return axios.get(API_URL + "all", {
       headers: authHeader(),
     });
   }
 
-  getOrderById(orderId) {
-    return axios.get(`${API_URL}${orderId}`, {
+  getOfferById(offerId) {
+    return axios.get(`${API_URL}${offerId}`, {
       headers: authHeader(),
     });
   }
 
-  createOrder(data) {
+  createOffer(data) {
     return axios.post(API_URL + "create", data, {
       headers: authHeader(),
     });
   }
 
-  editOrder(orderId, data) {
-    return axios.put(`${API_URL}${orderId}`, data, {
+  editOffer(offerId, data) {
+    return axios.put(`${API_URL}${offerId}`, data, {
       headers: authHeader(),
     });
   }
 
-  deleteOrder(orderId) {
-    return axios.delete(`${API_URL}${orderId}`, {
+  deleteOffer(offerId) {
+    return axios.delete(`${API_URL}${offerId}`, {
       headers: authHeader(),
     });
   }
@@ -59,4 +59,4 @@ class OrderService {
   }
 }
 
-export default new OrderService();
+export default new OfferService();

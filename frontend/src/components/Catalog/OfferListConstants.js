@@ -1,4 +1,4 @@
-export const OrderActions = {
+export const OfferActions = {
   Edit: "edit",
   Delete: "delete",
 };

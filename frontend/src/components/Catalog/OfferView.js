@@ -1,49 +1,49 @@
 import AuthService from "../../services/auth.service";
-import { OrderActions } from "./OrderListConstants";
+import { OfferActions } from "./OfferListConstants";
 
-export const OrderdView = ({ order, onActionClick }) => {
+export const OfferView = ({ offer, onActionClick }) => {
   const currentUserId = AuthService.getUserId();
   const admin = AuthService.getAdmin();
 
   return (
     <div className="product-card">
-      {currentUserId === order.seller.id ? (
+      {currentUserId === offer.seller.id ? (
         <div className="badge">Your Offer</div>
       ) : (
         ""
       )}
       <div className="product-tumb">
-        <img src={order.imageUrl} alt="" />
+        <img src={offer.imageUrl} alt="" />
       </div>
       <div className="product-details">
         <span className="product-catagory">
-          {order.model.brand.name} ,{order.model.name}
+          {offer.model.brand.name} ,{offer.model.name}
         </span>
-        <h4>{order.title}</h4>
+        <h4>{offer.title}</h4>
 
-        <p>{order.description}</p>
+        <p>{offer.description}</p>
         <details>
           <summary>Details</summary>
-          <p>Category: {order.category.name}</p>
-          <p>Year: {order.year}</p>
-          <p>Engine: {order.engine}</p>
-          <p>Transmission: {order.transmission}</p>
-          <p>Kilometers: {order.kilometers}</p>
-          <p>ID Nummber: {order.vehicleIdentificationNumber}</p>
-          <p>Seller: {order.seller.firstName}</p>
+          <p>Category: {offer.category.name}</p>
+          <p>Year: {offer.year}</p>
+          <p>Engine: {offer.engine}</p>
+          <p>Transmission: {offer.transmission}</p>
+          <p>Kilometers: {offer.kilometers}</p>
+          <p>ID Nummber: {offer.vehicleIdentificationNumber}</p>
+          <p>Seller: {offer.seller.firstName}</p>
         </details>
         <div className="product-bottom-details">
-          <div className="product-price">$ {order.price}</div>
+          <div className="product-price">$ {offer.price}</div>
           {(() => {
-            if (currentUserId === order.seller.id) {
+            if (currentUserId === offer.seller.id) {
               return (
                 <div className="product-links">
                   <a
-                    onClick={() => onActionClick(order.id, OrderActions.Delete)}
+                    onClick={() => onActionClick(offer.id, OfferActions.Delete)}
                   >
                     <i className="fa fa-trash"></i>
                   </a>
-                  <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
+                  <a onClick={() => onActionClick(offer.id, OfferActions.Edit)}>
                     <i className="fa fa-edit"></i>
                   </a>
                 </div>
@@ -52,7 +52,7 @@ export const OrderdView = ({ order, onActionClick }) => {
             if (admin) {
               return (
                 <div className="product-links">
-                  {currentUserId !== order.seller.id ? (
+                  {currentUserId !== offer.seller.id ? (
                     <a href="/">
                       <i className="fa fa-shopping-cart"></i>
                     </a>
@@ -60,11 +60,11 @@ export const OrderdView = ({ order, onActionClick }) => {
                     ""
                   )}
                   <a
-                    onClick={() => onActionClick(order.id, OrderActions.Delete)}
+                    onClick={() => onActionClick(offer.id, OfferActions.Delete)}
                   >
                     <i className="fa fa-trash"></i>
                   </a>
-                  <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
+                  <a onClick={() => onActionClick(offer.id, OfferActions.Edit)}>
                     <i className="fa fa-edit"></i>
                   </a>
                 </div>

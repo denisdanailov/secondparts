@@ -3,10 +3,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
-import OrderService from "../../services/order.service";
+import OfferService from "../../services/offer.service";
 import ModelService from "../../services/models.service";
 
-export const OrderEdit = ({ onClose, order, onChange }) => {
+export const OfferEdit = ({ onClose, offer, onChange }) => {
   const [transmissions, setTransmissions] = useState([]);
   const [categories, setCategories] = useState([]);
   const [engines, setEngines] = useState([]);
@@ -18,15 +18,15 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
   const [porscheModels, setPorscheModels] = useState([]);
 
   useEffect(() => {
-    OrderService.getTransmissions().then((transmissions) =>
+    OfferService.getTransmissions().then((transmissions) =>
       setTransmissions(transmissions.data)
     );
 
-    OrderService.getCategories().then((category) =>
+    OfferService.getCategories().then((category) =>
       setCategories(category.data)
     );
 
-    OrderService.getEngines().then((engine) => setEngines(engine.data));
+    OfferService.getEngines().then((engine) => setEngines(engine.data));
 
     ModelService.getModelsFromBrandVw().then((model) =>
       setVwModels(model.data)
@@ -71,7 +71,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
     const engine = e.target[4].value;
     const transmission = e.target[5].value;
 
-    const orderData = {
+    const offerData = {
       title,
       price,
       imageUrl,
@@ -85,8 +85,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
       category,
     };
 
-    console.log(orderData);
-    OrderService.editOrder(order.data.id, orderData)
+    OfferService.editOffer(offer.data.id, offerData)
       .then(() => onChange())
       .then(() => onClose());
   };
@@ -101,7 +100,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
         fullWidth
       >
         <DialogTitle textAlign="center" id="alert-dialog-title">
-          {"Edit your Order"}
+          {"Edit your Offer"}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -113,7 +112,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
           >
             <div className="image-container">
               <img
-                src={order.data.imageUrl}
+                src={offer.data.imageUrl}
                 alt="user-profil-img"
                 className="image"
               />
@@ -128,7 +127,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       className="form-control"
                       placeholder="Product Title *"
                       name="title"
-                      defaultValue={order.data.title}
+                      defaultValue={offer.data.title}
                     />
                   </div>
                   <div className="form-group-1">
@@ -137,12 +136,12 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       className="form-control"
                       placeholder="Suggested price *"
                       name="price"
-                      defaultValue={order.data.price}
+                      defaultValue={offer.data.price}
                     />
                   </div>
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option defaultValue>{order.data.category.name}</option>
+                      <option defaultValue>{offer.data.category.name}</option>
                       {categories.map((category) => (
                         <option
                           key={category}
@@ -157,7 +156,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                   </div>
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option defaultValue>{order.data.model.name}</option>
+                      <option defaultValue>{offer.data.model.name}</option>
                       <optgroup label="Audi">
                         {audiModels.map((model) => (
                           <option
@@ -234,7 +233,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                   </div>
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option defaultValue>{order.data.engine}</option>
+                      <option defaultValue>{offer.data.engine}</option>
                       {engines.map((engine) => (
                         <option key={engine} value={engine}>
                           {engine}
@@ -246,7 +245,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                 <div className="col-md-6">
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option defaultValue>{order.data.transmission}</option>
+                      <option defaultValue>{offer.data.transmission}</option>
                       {transmissions.map((transmissions) => (
                         <option key={transmissions} value={transmissions}>
                           {transmissions}
@@ -260,7 +259,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="vehicleIdentificationNumber"
                       className="form-control"
                       placeholder="Vehicle Identification Number *"
-                      defaultValue={order.data.vehicleIdentificationNumber}
+                      defaultValue={offer.data.vehicleIdentificationNumber}
                     />
                   </div>
                   <div className="form-group-1">
@@ -269,7 +268,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="year"
                       className="form-control"
                       placeholder="Year *"
-                      defaultValue={order.data.year}
+                      defaultValue={offer.data.year}
                     />
                   </div>
                   <div className="form-group-1">
@@ -278,7 +277,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="imageUrl"
                       className="form-control"
                       placeholder="Image Url"
-                      defaultValue={order.data.imageUrl}
+                      defaultValue={offer.data.imageUrl}
                     />
                   </div>
                   <div className="form-group-1">
@@ -287,7 +286,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="kilometers"
                       className="form-control"
                       placeholder="Kilometers"
-                      defaultValue={order.data.kilometers}
+                      defaultValue={offer.data.kilometers}
                     />
                   </div>
                   <div className="form-group-1">
@@ -296,7 +295,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       className="form-control"
                       placeholder="Description"
                       name="description"
-                      defaultValue={order.data.description}
+                      defaultValue={offer.data.description}
                     />
                   </div>
                   <input type="submit" className="btnRegister" />

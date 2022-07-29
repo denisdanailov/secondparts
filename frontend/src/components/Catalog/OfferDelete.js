@@ -5,12 +5,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import OrderService from "../../services/order.service";
+import OfferService from "../../services/offer.service";
 
-export const OrderDelete = ({ order, onClose, deleteHandler }) => {
+export const OfferDelete = ({ offer, onClose, deleteHandler }) => {
   const onDelete = () => {
-    console.log(order.data.id);
-    OrderService.deleteOrder(order.data.id).then(() => onClose());
+    OfferService.deleteOffer(offer.data.id).then(() => onClose());
   };
 
   return (
@@ -23,11 +22,11 @@ export const OrderDelete = ({ order, onClose, deleteHandler }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete  Order?"}
+          {"Are you sure you want to delete Offer?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Order: {order.data.title}
+            Offer: {offer.data.title}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -35,7 +34,7 @@ export const OrderDelete = ({ order, onClose, deleteHandler }) => {
           <Button
             onClick={() => {
               onDelete();
-              deleteHandler(order.data.id);
+              deleteHandler(offer.data.id);
             }}
             autoFocus
           >

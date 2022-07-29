@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/offers")
 public class OfferController {
 
     private final OfferService offerService;

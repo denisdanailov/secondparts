@@ -1,35 +1,35 @@
 import { useState, useEffect } from "react";
-import OrderService from "../../services/order.service";
-import { OrderActions } from "./OrderListConstants";
-import { OrderDelete } from "./OrderDelete";
-import { OrderEdit } from "./OrderEdit";
+import OfferService from "../../services/offer.service";
+import { OfferActions } from "./OfferListConstants";
+import { OfferDelete } from "./OfferDelete";
+import { OfferEdit } from "./OfferEdit";
 import "./Catalog.css";
 
-import { OrderdView } from "./OrderView";
+import { OfferView } from "./OfferView";
 
 export function Catalog() {
-  const [orders, setOrders] = useState([]);
-  const [userAction, setUserAction] = useState({ order: null, action: null });
+  const [offers, setOffers] = useState([]);
+  const [userAction, setUserAction] = useState({ offer: null, action: null });
 
   useEffect(() => {
-    OrderService.getAllOrders().then((orders) => setOrders(orders.data));
+    OfferService.getAllOffers().then((offer) => setOffers(offer.data));
   }, []);
 
-  const userActionClickHandler = (orderId, actionType) => {
-    OrderService.getOrderById(orderId).then((order) => {
+  const userActionClickHandler = (offerId, actionType) => {
+    OfferService.getOfferById(offerId).then((offer) => {
       setUserAction({
-        order,
+        offer,
         action: actionType,
       });
     });
   };
 
   const onChangeHandler = () => {
-    OrderService.getAllOrders().then((orders) => setOrders(orders.data));
+    OfferService.getAllOffers().then((offers) => setOffers(offers.data));
   };
 
-  const deleteHandler = (orderId) => {
-    setOrders((state) => state.filter((order) => order.id !== orderId));
+  const deleteHandler = (offerId) => {
+    setOffers((state) => state.filter((offer) => offer.id !== offerId));
   };
 
   const closeHandler = () => {
@@ -38,17 +38,17 @@ export function Catalog() {
 
   return (
     <>
-      {userAction.action === OrderActions.Delete && (
-        <OrderDelete
-          order={userAction.order}
+      {userAction.action === OfferActions.Delete && (
+        <OfferDelete
+          offer={userAction.offer}
           onClose={closeHandler}
           deleteHandler={deleteHandler}
         />
       )}
 
-      {userAction.action === OrderActions.Edit && (
-        <OrderEdit
-          order={userAction.order}
+      {userAction.action === OfferActions.Edit && (
+        <OfferEdit
+          offer={userAction.offer}
           onClose={closeHandler}
           onChange={onChangeHandler}
         />
@@ -56,10 +56,10 @@ export function Catalog() {
 
       <div className="container mt-100">
         <div className="row">
-          {orders.map((order) => (
-            <OrderdView
-              order={order}
-              key={order.id}
+          {offers.map((offer) => (
+            <OfferView
+              offer={offer}
+              key={offer.id}
               onActionClick={userActionClickHandler}
             />
           ))}
