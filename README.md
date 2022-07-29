@@ -13,3 +13,6 @@ Client Build      | npm, webpack
 Server Build      | gradle
 
 
+### Admin Account
+- admin username : admin
+- admin password : topsecreet
