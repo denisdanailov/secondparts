@@ -35,6 +35,8 @@ public class UserEntity extends BaseEntity {
 
     private String imageUrl;
 
+    private boolean isActive;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(  name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -110,6 +112,15 @@ public class UserEntity extends BaseEntity {
 
     public UserEntity setRoles(Set<UserRoleEntity> userRoles) {
         this.roles = userRoles;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public UserEntity setActive(boolean active) {
+        isActive = active;
         return this;
     }
 

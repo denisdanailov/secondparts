@@ -1,14 +1,21 @@
 package de.secondparts.service.impl;
 
 
+import de.secondparts.model.entity.BrandEntity;
 import de.secondparts.model.entity.ModelEntity;
+import de.secondparts.model.entity.UserEntity;
+import de.secondparts.model.entity.dtos.BrandViewDTO;
 import de.secondparts.model.entity.dtos.ModelViewDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserViewDTO;
+import de.secondparts.model.enums.BrandEnum;
+import de.secondparts.model.enums.modelsEnums.PorscheEnum;
 import de.secondparts.repository.ModelRepository;
 import de.secondparts.service.BrandService;
 import de.secondparts.service.ModelService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +38,7 @@ public class ModelServiceImpl implements ModelService {
         return modelRepository.findAllModelsByBrandId(id).stream().map(this::mapModel).collect(Collectors.toList());
     }
 
-    private ModelViewDTO mapModel (ModelEntity modelEntity) {
+    private ModelViewDTO mapModel(ModelEntity modelEntity) {
         ModelViewDTO modelViewDTO = this.modelMapper.map(modelEntity, ModelViewDTO.class);
 
         return modelViewDTO;
@@ -39,24 +46,16 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public void initializeModels() {
-//        if (modelRepository.count() == 0) {
-//
-//            Arrays.stream(ModelsAudiEnum.values()).forEach(modelsAudiEnum -> {
-//                ModelEntity model = new ModelEntity();
-////                TODO: only for example
-////                Brand id 4 is Brand "Audi"
-//                BrandEntity brand = brandService.findById(4L);
-//
-//                model.setName(modelsAudiEnum.name());
-//                model.setStartYear(2000L);
-//                model.setEndYear(2022L);
-//                model.setBrand(brand);
-//                brand.getModels().add(model);
-//
-//                modelRepository.save(model);
-//            });
-//
-//        }
+        if (modelRepository.count() == 0) {
+// TODO: impl logic..to init models
+
+        }
+    }
+
+    private BrandEntity mapBrand(BrandViewDTO brandViewDTO) {
+        BrandEntity brandEntity = this.modelMapper.map(brandViewDTO, BrandEntity.class);
+
+        return brandEntity;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package de.secondparts.model.entity.dtos;
+package de.secondparts.model.entity.dtos.offerDTOs;
 
 import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.ModelEntity;
@@ -33,9 +33,9 @@ public class OfferViewDTO {
 
     private CategoryEntity category;
 
+    private boolean isActive;
 
     private ModelEntity model;
-
 
     private UserEntity seller;
 
@@ -126,6 +126,15 @@ public class OfferViewDTO {
 
     public OfferViewDTO setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public OfferViewDTO setActive(boolean active) {
+        isActive = active;
         return this;
     }
 

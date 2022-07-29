@@ -1,25 +1,24 @@
 package de.secondparts.service;
 
-import de.secondparts.model.entity.OrderEntity;
-import de.secondparts.model.entity.dtos.OrderCreateDTO;
-import de.secondparts.model.entity.dtos.OrderEditDTO;
-import de.secondparts.model.entity.dtos.OrderViewDTO;
-import de.secondparts.model.entity.dtos.UserEditDTO;
+import de.secondparts.model.entity.OfferEntity;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferCreateDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferEditDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface OrderService {
+public interface OfferService {
 
-    List<OrderViewDTO> getAllOrders();
+    List<OfferViewDTO> getAllActiveOffers();
 
-    Optional<OrderEntity> findById(Long id);
+    Optional<OfferEntity> findById(Long id);
 
-    void orderCreate(OrderCreateDTO orderCreateDTO);
+    void createOffer(OfferCreateDTO offerCreateDTO);
 
-    void editOrder(Long id, OrderEditDTO orderEditDTO);
+    void editOffer(Long id, OfferEditDTO offerEditDTO);
 
-    void deleteOrder(Long id);
+    void deactivateOffer(Long id);
 
 
 

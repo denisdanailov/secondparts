@@ -2,10 +2,9 @@ package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.UserRoleEntity;
-import de.secondparts.model.entity.dtos.UserEditDTO;
-import de.secondparts.model.entity.dtos.UserViewDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserViewDTO;
 import de.secondparts.model.enums.UserRoleEnum;
-import de.secondparts.model.entity.dtos.UserRegistrationDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserRegistrationDTO;
 import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.service.UserService;
@@ -17,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,8 +34,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getAll() {
-        return userRepository.findAll();
+    public List<UserEntity> getAllActiveUsers() {
+        return userRepository.findAll().stream()
+                .filter(UserEntity::isActive)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -45,28 +47,16 @@ public class UserServiceImpl implements UserService {
         UserEntity user = new UserEntity(userRegistrationDTO.getUsername(),
                 userRegistrationDTO.getEmail(),
                 encoder.encode(userRegistrationDTO.getPassword()));
+        UserRoleEntity userRole = roleRepository.findByName(UserRoleEnum.ROLE_USER);
 
         user
                 .setFirstName(userRegistrationDTO.getFirstName())
                 .setLastName(userRegistrationDTO.getLastName())
-                .setImageUrl(userRegistrationDTO.getImageUrl());
+                .setImageUrl(userRegistrationDTO.getImageUrl())
+                .setActive(true);
 
-        Set<UserRoleEntity> roles = new HashSet<>();
-        UserRoleEntity userRole = roleRepository.findByName(UserRoleEnum.ROLE_USER);
-        UserRoleEntity adminRole = roleRepository.findByName(UserRoleEnum.ROLE_ADMIN);
-
-//      First registered user is admin
-        if (userRepository.count() == 0) {
-            roles.add(userRole);
-            roles.add(adminRole);
-            user.setRoles(roles);
-            userRepository.save(user);
-        }
-
-        roles.add(userRole);
-        user.setRoles(roles);
+        user.setRoles(Set.of(userRole));
         userRepository.save(user);
-
 
     }
 
@@ -97,8 +87,6 @@ public class UserServiceImpl implements UserService {
     public Optional<UserEntity> findByEmail(String email) {
       return userRepository.findByEmail(email);
     }
-
-
 
     @Override
     public Boolean existsByUsername(String username) {

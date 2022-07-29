@@ -24,26 +24,26 @@ import java.util.Optional;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/orders")
-public class OrderController {
+public class OfferController {
 
     private final OfferService offerService;
     private final BrandService brandService;
     private final ModelMapper modelMapper;
 
-    public OrderController(OfferService offerService, BrandService brandService, ModelMapper modelMapper) {
+    public OfferController(OfferService offerService, BrandService brandService, ModelMapper modelMapper) {
         this.offerService = offerService;
         this.brandService = brandService;
         this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<OfferViewDTO>> getAllOrders() {
+    public ResponseEntity<List<OfferViewDTO>> getAllActiveOffers() {
 
-        return ResponseEntity.ok(offerService.getAllOrders());
+        return ResponseEntity.ok(offerService.getAllActiveOffers());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OfferViewDTO> getOrderById(@PathVariable("id") Long id) {
+    public ResponseEntity<OfferViewDTO> getOfferById(@PathVariable("id") Long id) {
         Optional<OfferViewDTO> order = offerService.findById(id).map(orderEntity -> {
             OfferViewDTO offerViewDTO = modelMapper.map(orderEntity, OfferViewDTO.class);
 
@@ -56,9 +56,9 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<OfferViewDTO> deleteOrder(@PathVariable("id") Long id) {
+    public ResponseEntity<OfferViewDTO> deactivateOrder(@PathVariable("id") Long id) {
         try {
-            offerService.deleteOrder(id);
+            offerService.deactivateOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,13 +67,13 @@ public class OrderController {
 
     @PutMapping("{id}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<OfferEditDTO> editOrder(@Valid @PathVariable("id") Long id, @RequestBody OfferEditDTO offerEditDTO) {
+    public ResponseEntity<OfferEditDTO> editOffer(@Valid @PathVariable("id") Long id, @RequestBody OfferEditDTO offerEditDTO) {
 
         OfferEntity orderToEdit = offerService.findById(id).orElse(null);
 
         if (orderToEdit != null) {
 
-            offerService.editOrder(id, offerEditDTO);
+            offerService.editOffer(id, offerEditDTO);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -82,10 +82,10 @@ public class OrderController {
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<MessageResponse> createUser(@Valid @RequestBody OfferCreateDTO offerCreateDTO) {
+    public ResponseEntity<MessageResponse> createOffer(@Valid @RequestBody OfferCreateDTO offerCreateDTO) {
 
         try {
-            offerService.orderCreate(offerCreateDTO);
+            offerService.createOffer(offerCreateDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             e.printStackTrace();

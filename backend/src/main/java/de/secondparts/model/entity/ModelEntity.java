@@ -1,9 +1,6 @@
 package de.secondparts.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "models")
@@ -12,7 +9,7 @@ public class ModelEntity extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private BrandEntity brand;
 
     @Column(nullable = false)
@@ -22,6 +19,17 @@ public class ModelEntity extends BaseEntity {
     private Long endYear;
 
     private String imageUrl;
+
+    public ModelEntity() {
+    }
+
+    public ModelEntity(String name, BrandEntity brand, Long startYear, Long endYear, String imageUrl) {
+        this.name = name;
+        this.brand = brand;
+        this.startYear = startYear;
+        this.endYear = endYear;
+        this.imageUrl = imageUrl;
+    }
 
     public String getName() {
         return name;

@@ -7,7 +7,6 @@ import OrderService from "../../services/order.service";
 import ModelService from "../../services/models.service";
 
 export const OrderEdit = ({ onClose, order, onChange }) => {
-  console.log(order);
   const [transmissions, setTransmissions] = useState([]);
   const [categories, setCategories] = useState([]);
   const [engines, setEngines] = useState([]);
@@ -102,7 +101,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
         fullWidth
       >
         <DialogTitle textAlign="center" id="alert-dialog-title">
-          {"Edit User Information"}
+          {"Edit your Order"}
         </DialogTitle>
         <DialogContent>
           <Box
@@ -119,7 +118,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                 className="image"
               />
             </div>
-            <h3 className="register-heading">Create your Offer</h3>
+
             <form onSubmit={onEdit} method="post">
               <div className="row register-form">
                 <div className="col-md-6">
@@ -142,12 +141,15 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                     />
                   </div>
                   <div className="form-group-1">
-                    <select
-                      className="form-control"
-                      defaultValue={order.data.category}
-                    >
+                    <select className="form-control">
+                      <option defaultValue>{order.data.category.name}</option>
                       {categories.map((category) => (
-                        <option key={category} name={category} id={category}>
+                        <option
+                          key={category}
+                          value={category}
+                          name={category}
+                          id={category}
+                        >
                           {category}
                         </option>
                       ))}
@@ -155,7 +157,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                   </div>
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option className="hidden">Please select Model *</option>
+                      <option defaultValue>{order.data.model.name}</option>
                       <optgroup label="Audi">
                         {audiModels.map((model) => (
                           <option
@@ -232,9 +234,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                   </div>
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option className="hidden" defaultValue>
-                        Please select Engine type
-                      </option>
+                      <option defaultValue>{order.data.engine}</option>
                       {engines.map((engine) => (
                         <option key={engine} value={engine}>
                           {engine}
@@ -246,9 +246,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                 <div className="col-md-6">
                   <div className="form-group-1">
                     <select className="form-control">
-                      <option className="hidden" defaultValue>
-                        Please select Transmission
-                      </option>
+                      <option defaultValue>{order.data.transmission}</option>
                       {transmissions.map((transmissions) => (
                         <option key={transmissions} value={transmissions}>
                           {transmissions}
@@ -262,6 +260,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="vehicleIdentificationNumber"
                       className="form-control"
                       placeholder="Vehicle Identification Number *"
+                      defaultValue={order.data.vehicleIdentificationNumber}
                     />
                   </div>
                   <div className="form-group-1">
@@ -270,6 +269,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="year"
                       className="form-control"
                       placeholder="Year *"
+                      defaultValue={order.data.year}
                     />
                   </div>
                   <div className="form-group-1">
@@ -278,6 +278,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="imageUrl"
                       className="form-control"
                       placeholder="Image Url"
+                      defaultValue={order.data.imageUrl}
                     />
                   </div>
                   <div className="form-group-1">
@@ -286,6 +287,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       name="kilometers"
                       className="form-control"
                       placeholder="Kilometers"
+                      defaultValue={order.data.kilometers}
                     />
                   </div>
                   <div className="form-group-1">
@@ -294,6 +296,7 @@ export const OrderEdit = ({ onClose, order, onChange }) => {
                       className="form-control"
                       placeholder="Description"
                       name="description"
+                      defaultValue={order.data.description}
                     />
                   </div>
                   <input type="submit" className="btnRegister" />

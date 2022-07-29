@@ -1,4 +1,4 @@
-package de.secondparts.model.entity.dtos;
+package de.secondparts.model.entity.dtos.userDTOs;
 
 
 import javax.validation.constraints.NotBlank;

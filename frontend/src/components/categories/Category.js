@@ -25,7 +25,7 @@ export const Category = () => {
         </div>
         <div className="row">
           {categories.map((category) => (
-            <CategoryView category={category} />
+            <CategoryView key={category.name} category={category} />
           ))}
         </div>
       </div>

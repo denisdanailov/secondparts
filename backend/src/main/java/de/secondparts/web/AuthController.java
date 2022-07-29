@@ -1,8 +1,8 @@
 package de.secondparts.web;
 
 
-import de.secondparts.model.entity.dtos.UserLoginDTO;
-import de.secondparts.model.entity.dtos.UserRegistrationDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserLoginDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserRegistrationDTO;
 import de.secondparts.payment.response.JwtResponse;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.repository.UserRoleRepository;

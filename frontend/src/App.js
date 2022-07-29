@@ -13,7 +13,7 @@ import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 import { AdminPanel } from "./components/admin-panel/AdminPanel";
-import { CreateOffer } from "./components/create-offer/CreateOffer";
+import { CreateOrder } from "./components/create-order/CreateOrder";
 import { ModelViewAudi } from "./components/car-models/ModelViewAudi";
 import { ModelViewVw } from "./components/car-models/ModelViewVw";
 import { ModelViewMercedesBenz } from "./components/car-models/ModelViewMercedesBenz";
@@ -46,7 +46,7 @@ export default function App() {
             path="/create"
             element={
               <LoggedUserRoute>
-                <CreateOffer />
+                <CreateOrder />
               </LoggedUserRoute>
             }
           />

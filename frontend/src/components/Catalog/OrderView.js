@@ -8,7 +8,7 @@ export const OrderdView = ({ order, onActionClick }) => {
   return (
     <div className="product-card">
       {currentUserId === order.seller.id ? (
-        <div className="badge">Your Order</div>
+        <div className="badge">Your Offer</div>
       ) : (
         ""
       )}
@@ -24,6 +24,7 @@ export const OrderdView = ({ order, onActionClick }) => {
         <p>{order.description}</p>
         <details>
           <summary>Details</summary>
+          <p>Category: {order.category.name}</p>
           <p>Year: {order.year}</p>
           <p>Engine: {order.engine}</p>
           <p>Transmission: {order.transmission}</p>
@@ -40,10 +41,10 @@ export const OrderdView = ({ order, onActionClick }) => {
                   <a
                     onClick={() => onActionClick(order.id, OrderActions.Delete)}
                   >
-                    <i class="fa fa-trash"></i>
+                    <i className="fa fa-trash"></i>
                   </a>
                   <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
-                    <i class="fa fa-edit"></i>
+                    <i className="fa fa-edit"></i>
                   </a>
                 </div>
               );
@@ -61,10 +62,10 @@ export const OrderdView = ({ order, onActionClick }) => {
                   <a
                     onClick={() => onActionClick(order.id, OrderActions.Delete)}
                   >
-                    <i class="fa fa-trash"></i>
+                    <i className="fa fa-trash"></i>
                   </a>
                   <a onClick={() => onActionClick(order.id, OrderActions.Edit)}>
-                    <i class="fa fa-edit"></i>
+                    <i className="fa fa-edit"></i>
                   </a>
                 </div>
               );

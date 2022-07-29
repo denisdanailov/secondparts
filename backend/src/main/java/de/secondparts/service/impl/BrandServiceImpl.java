@@ -2,11 +2,10 @@ package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.BrandEntity;
 import de.secondparts.model.entity.ModelEntity;
-import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.BrandViewDTO;
 import de.secondparts.model.entity.dtos.ModelViewDTO;
-import de.secondparts.model.entity.dtos.UserViewDTO;
 import de.secondparts.model.enums.BrandEnum;
+import de.secondparts.model.enums.modelsEnums.PorscheEnum;
 import de.secondparts.repository.BrandRepository;
 import de.secondparts.service.BrandService;
 import org.modelmapper.ModelMapper;

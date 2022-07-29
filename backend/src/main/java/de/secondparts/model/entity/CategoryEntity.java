@@ -17,7 +17,7 @@ public class CategoryEntity extends BaseEntity {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    private List<OrderEntity> orders = new ArrayList<>();
+    private List<OfferEntity> orders = new ArrayList<>();
 
     public CategoryEnum getName() {
         return name;
@@ -28,11 +28,11 @@ public class CategoryEntity extends BaseEntity {
         return this;
     }
 
-    public List<OrderEntity> getOrders() {
+    public List<OfferEntity> getOrders() {
         return orders;
     }
 
-    public CategoryEntity setOrders(List<OrderEntity> orders) {
+    public CategoryEntity setOrders(List<OfferEntity> orders) {
         this.orders = orders;
         return this;
     }

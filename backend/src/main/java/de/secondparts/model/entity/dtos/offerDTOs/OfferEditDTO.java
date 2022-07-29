@@ -1,4 +1,4 @@
-package de.secondparts.model.entity.dtos;
+package de.secondparts.model.entity.dtos.offerDTOs;
 
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;

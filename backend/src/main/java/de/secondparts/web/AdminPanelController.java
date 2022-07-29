@@ -1,9 +1,9 @@
 package de.secondparts.web;
 
 import de.secondparts.model.entity.UserEntity;
-import de.secondparts.model.entity.dtos.UserEditDTO;
-import de.secondparts.model.entity.dtos.UserRegistrationDTO;
-import de.secondparts.model.entity.dtos.UserViewDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserEditDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserRegistrationDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserViewDTO;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.AdminService;
 import de.secondparts.service.UserService;
@@ -35,10 +35,10 @@ public class AdminPanelController {
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<UserViewDTO>> getAll() {
+    public ResponseEntity<List<UserViewDTO>> getAllActiveUsers() {
 
         try {
-            List<UserViewDTO> users = userService.getAll().stream().map(userEntity -> {
+            List<UserViewDTO> users = userService.getAllActiveUsers().stream().map(userEntity -> {
                 UserViewDTO userDTO = modelMapper.map(userEntity, UserViewDTO.class);
                 return userDTO;
             }).collect(Collectors.toList());
@@ -89,10 +89,10 @@ public class AdminPanelController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<UserViewDTO> deleteUser(@PathVariable("id") Long id) {
+    public ResponseEntity<UserViewDTO> deactivateUser(@PathVariable("id") Long id) {
 
         try {
-            adminService.deleteUser(id);
+            adminService.deactivateUser(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -2,138 +2,142 @@ package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.ModelEntity;
-import de.secondparts.model.entity.OrderEntity;
+import de.secondparts.model.entity.OfferEntity;
 import de.secondparts.model.entity.UserEntity;
-import de.secondparts.model.entity.dtos.OrderCreateDTO;
-import de.secondparts.model.entity.dtos.OrderEditDTO;
-import de.secondparts.model.entity.dtos.OrderViewDTO;
-import de.secondparts.model.entity.dtos.UserViewDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferCreateDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferEditDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserViewDTO;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
-import de.secondparts.repository.OrderRepository;
+import de.secondparts.repository.OfferRepository;
 import de.secondparts.service.CategoryService;
 import de.secondparts.service.ModelService;
-import de.secondparts.service.OrderService;
+import de.secondparts.service.OfferService;
 import de.secondparts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.PreRemove;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OfferServiceImpl implements OfferService {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
     private final ModelService modelService;
     private final CategoryService categoryService;
-    private final OrderRepository orderRepository;
+    private final OfferRepository offerRepository;
 
 
-    public OrderServiceImpl(UserService userService, ModelMapper modelMapper, ModelService modelService, CategoryService categoryService, OrderRepository orderRepository) {
+    public OfferServiceImpl(UserService userService, ModelMapper modelMapper, ModelService modelService, CategoryService categoryService, OfferRepository offerRepository) {
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.modelService = modelService;
         this.categoryService = categoryService;
-        this.orderRepository = orderRepository;
+        this.offerRepository = offerRepository;
     }
 
     @Override
-    public void orderCreate(OrderCreateDTO orderCreateDTO) {
-        OrderEntity newOrder = new OrderEntity();
-        Optional<ModelEntity> model = modelService.findByName(orderCreateDTO.getModel());
-        Optional<UserEntity> seller = userService.findById(orderCreateDTO.getSellerId());
+    public void createOffer(OfferCreateDTO offerCreateDTO) {
+        OfferEntity newOffer = new OfferEntity();
+        Optional<ModelEntity> model = modelService.findByName(offerCreateDTO.getModel());
+        Optional<UserEntity> seller = userService.findById(offerCreateDTO.getSellerId());
         Optional<EngineEnum> engine = Arrays.stream(EngineEnum.values())
-                .filter(engineEnum -> engineEnum.equals(orderCreateDTO.getEngine())).findFirst();
+                .filter(engineEnum -> engineEnum.equals(offerCreateDTO.getEngine())).findFirst();
 
         Optional<TransmissionEnum> transmission = Arrays.stream(TransmissionEnum.values())
-                .filter(transmissionEnum -> transmissionEnum.equals(orderCreateDTO.getTransmission())).findFirst();
+                .filter(transmissionEnum -> transmissionEnum.equals(offerCreateDTO.getTransmission())).findFirst();
 
-        Optional<CategoryEntity> category = categoryService.findByName(orderCreateDTO.getCategory());
+        Optional<CategoryEntity> category = categoryService.findByName(offerCreateDTO.getCategory());
 
-        newOrder.setTitle(orderCreateDTO.getTitle())
-                .setPrice(orderCreateDTO.getPrice())
-                .setYear(orderCreateDTO.getYear())
-                .setImageUrl(orderCreateDTO.getImageUrl())
-                .setKilometers(orderCreateDTO.getKilometers())
-                .setVehicleIdentificationNumber(orderCreateDTO.getVehicleIdentificationNumber())
-                .setDescription(orderCreateDTO.getDescription())
+        newOffer.setTitle(offerCreateDTO.getTitle())
+                .setPrice(offerCreateDTO.getPrice())
+                .setYear(offerCreateDTO.getYear())
+                .setImageUrl(offerCreateDTO.getImageUrl())
+                .setKilometers(offerCreateDTO.getKilometers())
+                .setVehicleIdentificationNumber(offerCreateDTO.getVehicleIdentificationNumber())
+                .setDescription(offerCreateDTO.getDescription())
                 .setModel(model.get())
                 .setCategory(category.get())
                 .setEngine(engine.get())
                 .setTransmission(transmission.get())
-                .setSeller(seller.get());
+                .setSeller(seller.get())
+                .setActive(true);
 
 // TODO: Check Optional isPresent->
 
 
-        orderRepository.save(newOrder);
+        offerRepository.save(newOffer);
 
     }
 
     @Override
-    public void editOrder(Long id, OrderEditDTO orderEditDTO) {
+    public void editOffer(Long id, OfferEditDTO offerEditDTO) {
 
-        OrderEntity order = orderRepository.findById(id).orElse(null);
+        OfferEntity offer = offerRepository.findById(id).orElse(null);
 
-        Optional<ModelEntity> model = modelService.findByName(orderEditDTO.getModel());
+        Optional<ModelEntity> model = modelService.findByName(offerEditDTO.getModel());
         Optional<EngineEnum> engine = Arrays.stream(EngineEnum.values())
-                .filter(engineEnum -> engineEnum.equals(orderEditDTO.getEngine())).findFirst();
+                .filter(engineEnum -> engineEnum.equals(offerEditDTO.getEngine())).findFirst();
 
         Optional<TransmissionEnum> transmission = Arrays.stream(TransmissionEnum.values())
-                .filter(transmissionEnum -> transmissionEnum.equals(orderEditDTO.getTransmission())).findFirst();
+                .filter(transmissionEnum -> transmissionEnum.equals(offerEditDTO.getTransmission())).findFirst();
 
-        Optional<CategoryEntity> category = categoryService.findByName(orderEditDTO.getCategory());
+        Optional<CategoryEntity> category = categoryService.findByName(offerEditDTO.getCategory());
 
-
-        if (order != null
+        if (offer != null
                 && model.isPresent()
                 && engine.isPresent()
                 && transmission.isPresent()
                 && category.isPresent()) {
 
-
-            order.setTitle(orderEditDTO.getTitle())
-                    .setPrice(orderEditDTO.getPrice())
-                    .setYear(orderEditDTO.getYear())
-                    .setImageUrl(orderEditDTO.getImageUrl())
-                    .setKilometers(orderEditDTO.getKilometers())
-                    .setVehicleIdentificationNumber(orderEditDTO.getVehicleIdentificationNumber())
-                    .setDescription(orderEditDTO.getDescription())
+            offer.setTitle(offerEditDTO.getTitle())
+                    .setPrice(offerEditDTO.getPrice())
+                    .setYear(offerEditDTO.getYear())
+                    .setImageUrl(offerEditDTO.getImageUrl())
+                    .setKilometers(offerEditDTO.getKilometers())
+                    .setVehicleIdentificationNumber(offerEditDTO.getVehicleIdentificationNumber())
+                    .setDescription(offerEditDTO.getDescription())
                     .setModel(model.get())
                     .setCategory(category.get())
                     .setEngine(engine.get())
                     .setTransmission(transmission.get());
 
-            orderRepository.save(order);
+            offerRepository.save(offer);
             }
-
-
     }
 
     @Override
-    public List<OrderViewDTO> getAllOrders() {
-        return orderRepository.findAll().stream().map(this::mapOrder).collect(Collectors.toList());
+    public List<OfferViewDTO> getAllActiveOffers() {
+        return offerRepository.findAll().stream().map(this::mapOffer)
+                .filter(OfferViewDTO::isActive).collect(Collectors.toList());
     }
 
     @Override
-    public void deleteOrder(Long id) {
-        orderRepository.findById(id).ifPresent(orderRepository::delete);
+    public void deactivateOffer(Long id) {
+        //   We deactivate the offer, then a Scheduling functionality delete a deactivated offers.
+        Optional<OfferEntity> offerToDeactive = offerRepository.findById(id);
+
+        if (offerToDeactive.isPresent()) {
+            offerToDeactive.get().setActive(false);
+
+            offerRepository.save(offerToDeactive.get());
+        }
     }
 
     @Override
-    public Optional<OrderEntity> findById(Long id) {
-        return orderRepository.findById(id);
+    public Optional<OfferEntity> findById(Long id) {
+        return offerRepository.findById(id);
     }
 
-    private OrderViewDTO mapOrder(OrderEntity orderEntity) {
-        OrderViewDTO orderViewDTO = this.modelMapper.map(orderEntity, OrderViewDTO.class);
+    private OfferViewDTO mapOffer(OfferEntity offerEntity) {
+        OfferViewDTO offerViewDTO = this.modelMapper.map(offerEntity, OfferViewDTO.class);
 
-        return orderViewDTO;
+        return offerViewDTO;
     }
 
     private UserEntity mapUser(UserViewDTO userViewDTO) {

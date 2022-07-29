@@ -15,10 +15,7 @@ export function Catalog() {
     OrderService.getAllOrders().then((orders) => setOrders(orders.data));
   }, []);
 
-  console.log(orders);
-
   const userActionClickHandler = (orderId, actionType) => {
-    console.log(orderId);
     OrderService.getOrderById(orderId).then((order) => {
       setUserAction({
         order,
@@ -60,7 +57,11 @@ export function Catalog() {
       <div className="container mt-100">
         <div className="row">
           {orders.map((order) => (
-            <OrderdView order={order} onActionClick={userActionClickHandler} />
+            <OrderdView
+              order={order}
+              key={order.id}
+              onActionClick={userActionClickHandler}
+            />
           ))}
         </div>
       </div>

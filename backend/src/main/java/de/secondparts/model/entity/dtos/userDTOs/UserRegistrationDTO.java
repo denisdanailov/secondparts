@@ -1,4 +1,4 @@
-package de.secondparts.model.entity.dtos;
+package de.secondparts.model.entity.dtos.userDTOs;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -20,6 +20,8 @@ public class UserRegistrationDTO {
     private String lastName;
 
     private String imageUrl;
+
+    private boolean isActive;
 
     private Set<String> role;
 
@@ -75,6 +77,15 @@ public class UserRegistrationDTO {
 
     public UserRegistrationDTO setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public UserRegistrationDTO setActive(boolean active) {
+        isActive = active;
         return this;
     }
 

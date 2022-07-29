@@ -22,6 +22,12 @@ class OrderService {
     });
   }
 
+  editOrder(orderId, data) {
+    return axios.put(`${API_URL}${orderId}`, data, {
+      headers: authHeader(),
+    });
+  }
+
   deleteOrder(orderId) {
     return axios.delete(`${API_URL}${orderId}`, {
       headers: authHeader(),

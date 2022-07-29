@@ -1,12 +1,14 @@
 package de.secondparts.service;
 
-import de.secondparts.model.entity.dtos.UserEditDTO;
+import de.secondparts.model.entity.dtos.userDTOs.UserEditDTO;
 
 
 
 public interface AdminService {
 
-    void deleteUser(Long id);
+    void initializeAdmin();
+
+    void deactivateUser(Long id);
 
     void editUser(Long id, UserEditDTO userEditDTO);
 }

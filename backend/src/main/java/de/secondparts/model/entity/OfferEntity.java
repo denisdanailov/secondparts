@@ -3,14 +3,13 @@ package de.secondparts.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "orders")
-public class OrderEntity extends BaseEntity {
+@Table(name = "offers")
+public class OfferEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String title;
@@ -36,6 +35,8 @@ public class OrderEntity extends BaseEntity {
 
     private String imageUrl;
 
+    private boolean isActive;
+
     @Column(columnDefinition = "TEXT")
     private String description;
 
@@ -53,7 +54,7 @@ public class OrderEntity extends BaseEntity {
         return title;
     }
 
-    public OrderEntity setTitle(String title) {
+    public OfferEntity setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -62,7 +63,7 @@ public class OrderEntity extends BaseEntity {
         return price;
     }
 
-    public OrderEntity setPrice(BigDecimal price) {
+    public OfferEntity setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -71,7 +72,7 @@ public class OrderEntity extends BaseEntity {
         return engine;
     }
 
-    public OrderEntity setEngine(EngineEnum engine) {
+    public OfferEntity setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -80,7 +81,7 @@ public class OrderEntity extends BaseEntity {
         return transmission;
     }
 
-    public OrderEntity setTransmission(TransmissionEnum transmission) {
+    public OfferEntity setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -89,7 +90,7 @@ public class OrderEntity extends BaseEntity {
         return vehicleIdentificationNumber;
     }
 
-    public OrderEntity setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
+    public OfferEntity setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
         this.vehicleIdentificationNumber = vehicleIdentificationNumber;
         return this;
     }
@@ -98,7 +99,7 @@ public class OrderEntity extends BaseEntity {
         return year;
     }
 
-    public OrderEntity setYear(Integer year) {
+    public OfferEntity setYear(Integer year) {
         this.year = year;
         return this;
     }
@@ -107,7 +108,7 @@ public class OrderEntity extends BaseEntity {
         return kilometers;
     }
 
-    public OrderEntity setKilometers(Integer kilometers) {
+    public OfferEntity setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
         return this;
     }
@@ -116,8 +117,17 @@ public class OrderEntity extends BaseEntity {
         return imageUrl;
     }
 
-    public OrderEntity setImageUrl(String imageUrl) {
+    public OfferEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public OfferEntity setActive(boolean active) {
+        isActive = active;
         return this;
     }
 
@@ -125,7 +135,7 @@ public class OrderEntity extends BaseEntity {
         return description;
     }
 
-    public OrderEntity setDescription(String description) {
+    public OfferEntity setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -134,7 +144,7 @@ public class OrderEntity extends BaseEntity {
         return category;
     }
 
-    public OrderEntity setCategory(CategoryEntity category) {
+    public OfferEntity setCategory(CategoryEntity category) {
         this.category = category;
         return this;
     }
@@ -143,7 +153,7 @@ public class OrderEntity extends BaseEntity {
         return model;
     }
 
-    public OrderEntity setModel(ModelEntity model) {
+    public OfferEntity setModel(ModelEntity model) {
         this.model = model;
         return this;
     }
@@ -152,7 +162,7 @@ public class OrderEntity extends BaseEntity {
         return seller;
     }
 
-    public OrderEntity setSeller(UserEntity seller) {
+    public OfferEntity setSeller(UserEntity seller) {
         this.seller = seller;
         return this;
     }

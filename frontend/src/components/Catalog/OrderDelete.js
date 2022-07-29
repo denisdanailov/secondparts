@@ -23,7 +23,7 @@ export const OrderDelete = ({ order, onClose, deleteHandler }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete  account?"}
+          {"Are you sure you want to delete  Order?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
