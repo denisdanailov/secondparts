@@ -1,15 +1,16 @@
 package de.secondparts.web;
 
-import de.secondparts.model.entity.OrderEntity;
-import de.secondparts.model.entity.dtos.BrandViewDTO;
-import de.secondparts.model.entity.dtos.OrderCreateDTO;
-import de.secondparts.model.entity.dtos.OrderViewDTO;
+import de.secondparts.model.entity.OfferEntity;
+import de.secondparts.model.entity.dtos.*;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferCreateDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferEditDTO;
+import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
 import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.BrandService;
-import de.secondparts.service.OrderService;
+import de.secondparts.service.OfferService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,54 +26,66 @@ import java.util.Optional;
 @RequestMapping("/api/orders")
 public class OrderController {
 
-    private final OrderService orderService;
+    private final OfferService offerService;
     private final BrandService brandService;
     private final ModelMapper modelMapper;
 
-    public OrderController(OrderService orderService, BrandService brandService, ModelMapper modelMapper) {
-        this.orderService = orderService;
+    public OrderController(OfferService offerService, BrandService brandService, ModelMapper modelMapper) {
+        this.offerService = offerService;
         this.brandService = brandService;
         this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<OrderViewDTO>> getAllOrders() {
+    public ResponseEntity<List<OfferViewDTO>> getAllOrders() {
 
-       return ResponseEntity.ok(orderService.getAllOrders());
+        return ResponseEntity.ok(offerService.getAllOrders());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderViewDTO> getOrderById(@PathVariable("id") Long id) {
-        Optional<OrderViewDTO> order = orderService.findById(id).map(orderEntity -> {
-            OrderViewDTO orderViewDTO = modelMapper.map(orderEntity, OrderViewDTO.class);
+    public ResponseEntity<OfferViewDTO> getOrderById(@PathVariable("id") Long id) {
+        Optional<OfferViewDTO> order = offerService.findById(id).map(orderEntity -> {
+            OfferViewDTO offerViewDTO = modelMapper.map(orderEntity, OfferViewDTO.class);
 
-            return orderViewDTO;
+            return offerViewDTO;
         });
 
-        return order.map(orderViewDTO
-                -> new ResponseEntity<>(orderViewDTO, HttpStatus.OK)).orElseGet(()
+        return order.map(offerViewDTO
+                -> new ResponseEntity<>(offerViewDTO, HttpStatus.OK)).orElseGet(()
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<OrderViewDTO> deleteOrder(@PathVariable("id") Long id) {
+    public ResponseEntity<OfferViewDTO> deleteOrder(@PathVariable("id") Long id) {
         try {
-            orderService.deleteOrder(id);
+            offerService.deleteOrder(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
+    @PutMapping("{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<OfferEditDTO> editOrder(@Valid @PathVariable("id") Long id, @RequestBody OfferEditDTO offerEditDTO) {
+
+        OfferEntity orderToEdit = offerService.findById(id).orElse(null);
+
+        if (orderToEdit != null) {
+
+            offerService.editOrder(id, offerEditDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<MessageResponse> createUser(@Valid @RequestBody OrderCreateDTO orderCreateDTO) throws Exception {
-
+    public ResponseEntity<MessageResponse> createUser(@Valid @RequestBody OfferCreateDTO offerCreateDTO) {
 
         try {
-            System.out.println(orderCreateDTO);
-            orderService.orderCreate(orderCreateDTO);
+            offerService.orderCreate(offerCreateDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             e.printStackTrace();

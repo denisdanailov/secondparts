@@ -1,15 +1,11 @@
 package de.secondparts.model.entity.dtos;
 
-import de.secondparts.model.entity.CategoryEntity;
-import de.secondparts.model.entity.ModelEntity;
-import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
-
 import java.math.BigDecimal;
 
-public class OrderViewDTO {
+public class OfferEditDTO {
 
     private Long id;
 
@@ -31,19 +27,17 @@ public class OrderViewDTO {
 
     private String description;
 
-    private CategoryEntity category;
+    private String category;
 
+    private String model;
 
-    private ModelEntity model;
-
-
-    private UserEntity seller;
+    private Long sellerId;
 
     public Long getId() {
         return id;
     }
 
-    public OrderViewDTO setId(Long id) {
+    public OfferEditDTO setId(Long id) {
         this.id = id;
         return this;
     }
@@ -52,7 +46,7 @@ public class OrderViewDTO {
         return title;
     }
 
-    public OrderViewDTO setTitle(String title) {
+    public OfferEditDTO setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -61,7 +55,7 @@ public class OrderViewDTO {
         return price;
     }
 
-    public OrderViewDTO setPrice(BigDecimal price) {
+    public OfferEditDTO setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -70,7 +64,7 @@ public class OrderViewDTO {
         return engine;
     }
 
-    public OrderViewDTO setEngine(EngineEnum engine) {
+    public OfferEditDTO setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -79,7 +73,7 @@ public class OrderViewDTO {
         return transmission;
     }
 
-    public OrderViewDTO setTransmission(TransmissionEnum transmission) {
+    public OfferEditDTO setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -88,7 +82,7 @@ public class OrderViewDTO {
         return vehicleIdentificationNumber;
     }
 
-    public OrderViewDTO setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
+    public OfferEditDTO setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
         this.vehicleIdentificationNumber = vehicleIdentificationNumber;
         return this;
     }
@@ -97,7 +91,7 @@ public class OrderViewDTO {
         return year;
     }
 
-    public OrderViewDTO setYear(Integer year) {
+    public OfferEditDTO setYear(Integer year) {
         this.year = year;
         return this;
     }
@@ -106,7 +100,7 @@ public class OrderViewDTO {
         return kilometers;
     }
 
-    public OrderViewDTO setKilometers(Integer kilometers) {
+    public OfferEditDTO setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
         return this;
     }
@@ -115,7 +109,7 @@ public class OrderViewDTO {
         return imageUrl;
     }
 
-    public OrderViewDTO setImageUrl(String imageUrl) {
+    public OfferEditDTO setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -124,35 +118,35 @@ public class OrderViewDTO {
         return description;
     }
 
-    public OrderViewDTO setDescription(String description) {
+    public OfferEditDTO setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public CategoryEntity getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public OrderViewDTO setCategory(CategoryEntity category) {
+    public OfferEditDTO setCategory(String category) {
         this.category = category;
         return this;
     }
 
-    public ModelEntity getModel() {
+    public String getModel() {
         return model;
     }
 
-    public OrderViewDTO setModel(ModelEntity model) {
+    public OfferEditDTO setModel(String model) {
         this.model = model;
         return this;
     }
 
-    public UserEntity getSeller() {
-        return seller;
+    public Long getSellerId() {
+        return sellerId;
     }
 
-    public OrderViewDTO setSeller(UserEntity seller) {
-        this.seller = seller;
+    public OfferEditDTO setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
         return this;
     }
 }

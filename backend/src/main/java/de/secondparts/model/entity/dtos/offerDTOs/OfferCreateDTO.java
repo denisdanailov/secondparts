@@ -1,28 +1,22 @@
 package de.secondparts.model.entity.dtos;
 
 
-import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
 import java.math.BigDecimal;
 
-public class OrderCreateDTO {
+public class OfferCreateDTO {
 
     private String title;
 
-
     private BigDecimal price;
-
 
     private EngineEnum engine;
 
-
     private TransmissionEnum transmission;
 
-
     private String vehicleIdentificationNumber;
-
 
     private Integer year;
 
@@ -30,15 +24,11 @@ public class OrderCreateDTO {
 
     private String imageUrl;
 
-
     private String description;
-
 
     private String category;
 
-
     private String model;
-
 
     private Long sellerId;
 
@@ -46,7 +36,7 @@ public class OrderCreateDTO {
         return title;
     }
 
-    public OrderCreateDTO setTitle(String title) {
+    public OfferCreateDTO setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -55,7 +45,7 @@ public class OrderCreateDTO {
         return price;
     }
 
-    public OrderCreateDTO setPrice(BigDecimal price) {
+    public OfferCreateDTO setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -64,7 +54,7 @@ public class OrderCreateDTO {
         return engine;
     }
 
-    public OrderCreateDTO setEngine(EngineEnum engine) {
+    public OfferCreateDTO setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -73,7 +63,7 @@ public class OrderCreateDTO {
         return transmission;
     }
 
-    public OrderCreateDTO setTransmission(TransmissionEnum transmission) {
+    public OfferCreateDTO setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -82,7 +72,7 @@ public class OrderCreateDTO {
         return vehicleIdentificationNumber;
     }
 
-    public OrderCreateDTO setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
+    public OfferCreateDTO setVehicleIdentificationNumber(String vehicleIdentificationNumber) {
         this.vehicleIdentificationNumber = vehicleIdentificationNumber;
         return this;
     }
@@ -91,7 +81,7 @@ public class OrderCreateDTO {
         return year;
     }
 
-    public OrderCreateDTO setYear(Integer year) {
+    public OfferCreateDTO setYear(Integer year) {
         this.year = year;
         return this;
     }
@@ -100,7 +90,7 @@ public class OrderCreateDTO {
         return kilometers;
     }
 
-    public OrderCreateDTO setKilometers(Integer kilometers) {
+    public OfferCreateDTO setKilometers(Integer kilometers) {
         this.kilometers = kilometers;
         return this;
     }
@@ -109,7 +99,7 @@ public class OrderCreateDTO {
         return imageUrl;
     }
 
-    public OrderCreateDTO setImageUrl(String imageUrl) {
+    public OfferCreateDTO setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -118,7 +108,7 @@ public class OrderCreateDTO {
         return description;
     }
 
-    public OrderCreateDTO setDescription(String description) {
+    public OfferCreateDTO setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -127,7 +117,7 @@ public class OrderCreateDTO {
         return category;
     }
 
-    public OrderCreateDTO setCategory(String category) {
+    public OfferCreateDTO setCategory(String category) {
         this.category = category;
         return this;
     }
@@ -136,7 +126,7 @@ public class OrderCreateDTO {
         return model;
     }
 
-    public OrderCreateDTO setModel(String model) {
+    public OfferCreateDTO setModel(String model) {
         this.model = model;
         return this;
     }
@@ -145,7 +135,7 @@ public class OrderCreateDTO {
         return sellerId;
     }
 
-    public OrderCreateDTO setSellerId(Long sellerId) {
+    public OfferCreateDTO setSellerId(Long sellerId) {
         this.sellerId = sellerId;
         return this;
     }

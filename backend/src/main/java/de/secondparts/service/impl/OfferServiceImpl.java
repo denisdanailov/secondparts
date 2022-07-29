@@ -5,9 +5,9 @@ import de.secondparts.model.entity.ModelEntity;
 import de.secondparts.model.entity.OrderEntity;
 import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.OrderCreateDTO;
+import de.secondparts.model.entity.dtos.OrderEditDTO;
 import de.secondparts.model.entity.dtos.OrderViewDTO;
 import de.secondparts.model.entity.dtos.UserViewDTO;
-import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 import de.secondparts.repository.OrderRepository;
@@ -18,6 +18,7 @@ import de.secondparts.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PreRemove;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -41,9 +42,8 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository = orderRepository;
     }
 
-
     @Override
-    public void orderCreate(OrderCreateDTO orderCreateDTO) throws Exception {
+    public void orderCreate(OrderCreateDTO orderCreateDTO) {
         OrderEntity newOrder = new OrderEntity();
         Optional<ModelEntity> model = modelService.findByName(orderCreateDTO.getModel());
         Optional<UserEntity> seller = userService.findById(orderCreateDTO.getSellerId());
@@ -68,25 +68,50 @@ public class OrderServiceImpl implements OrderService {
                 .setTransmission(transmission.get())
                 .setSeller(seller.get());
 
-
-
-//        if (model.isPresent()) {
-//            newOrder.setModel(model.get());
-//        } else if (seller.isPresent()) {
-//           newOrder.setSeller(seller.get());
-//        } else if (transmission.isPresent()) {
-//            newOrder.setTransmission(transmission.get());
-//        } else if (engine.isPresent()) {
-//            newOrder.setEngine(engine.get());
-////        } else if (category.isPresent()) {
-////            newOrder.setCategory(category);
-//        }
-//        else {
-//            throw new Exception("not found");
-//        }
+// TODO: Check Optional isPresent->
 
 
         orderRepository.save(newOrder);
+
+    }
+
+    @Override
+    public void editOrder(Long id, OrderEditDTO orderEditDTO) {
+
+        OrderEntity order = orderRepository.findById(id).orElse(null);
+
+        Optional<ModelEntity> model = modelService.findByName(orderEditDTO.getModel());
+        Optional<EngineEnum> engine = Arrays.stream(EngineEnum.values())
+                .filter(engineEnum -> engineEnum.equals(orderEditDTO.getEngine())).findFirst();
+
+        Optional<TransmissionEnum> transmission = Arrays.stream(TransmissionEnum.values())
+                .filter(transmissionEnum -> transmissionEnum.equals(orderEditDTO.getTransmission())).findFirst();
+
+        Optional<CategoryEntity> category = categoryService.findByName(orderEditDTO.getCategory());
+
+
+        if (order != null
+                && model.isPresent()
+                && engine.isPresent()
+                && transmission.isPresent()
+                && category.isPresent()) {
+
+
+            order.setTitle(orderEditDTO.getTitle())
+                    .setPrice(orderEditDTO.getPrice())
+                    .setYear(orderEditDTO.getYear())
+                    .setImageUrl(orderEditDTO.getImageUrl())
+                    .setKilometers(orderEditDTO.getKilometers())
+                    .setVehicleIdentificationNumber(orderEditDTO.getVehicleIdentificationNumber())
+                    .setDescription(orderEditDTO.getDescription())
+                    .setModel(model.get())
+                    .setCategory(category.get())
+                    .setEngine(engine.get())
+                    .setTransmission(transmission.get());
+
+            orderRepository.save(order);
+            }
+
 
     }
 
