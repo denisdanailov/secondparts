@@ -14,5 +14,5 @@ Server Build      | gradle
 
 
 ### Admin Account
-- admin username : admin
-- admin password : topsecreet
+- username : admin
+- password : topsecreet
