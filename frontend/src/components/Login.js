@@ -21,26 +21,26 @@ import AuthService from "../services/auth.service";
 
 const theme = createTheme();
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     const username = formData.get("username");
     const password = formData.get("password");
 
     try {
       setError("");
-      AuthService.login(username, password).then(() => {
-        navigate("/");
-      });
+      await AuthService.login(username, password);
+      navigate("/");
     } catch {
       setError(
         <Stack sx={{ width: "100%" }} spacing={2}>
-          <Alert severity="error">Failed to Sign in</Alert>
+          <Alert severity="error">
+            Failed to Sign in. Username or password is incorrect
+          </Alert>
         </Stack>
       );
     }
