@@ -7,16 +7,6 @@ export const Header = () => {
 
   const currentUser = AuthService.getCurrentUser();
 
-  async function handleLogout() {
-    try {
-      AuthService.logout();
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      alert("Failed to log out, Please try again");
-    }
-  }
-
   return (
     <header className="header_section">
       <div className="container-fluid">
@@ -92,11 +82,7 @@ export const Header = () => {
                     <i className="fa fa-search" aria-hidden="true"></i>
                   </Link>
                   <Link to="/logout">
-                    <i
-                      className="fa fa-sign-out"
-                      aria-hidden="true"
-                      onClick={handleLogout}
-                    ></i>
+                    <i className="fa fa-sign-out" aria-hidden="true"></i>
                   </Link>
                 </>
               )}

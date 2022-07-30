@@ -20,6 +20,7 @@ import { ModelViewMercedesBenz } from "./components/car-models/ModelViewMercedes
 import { ModelViewPorsche } from "./components/car-models/ModelViewPorsche";
 import { ModelViewBmw } from "./components/car-models/ModelViewBmw";
 import { ModelViewOpel } from "./components/car-models/ModelViewOpel";
+import { Logout } from "./components/Logout";
 
 export default function App() {
   return (
@@ -41,6 +42,15 @@ export default function App() {
           <Route path="/models/audi" element={<ModelViewAudi />} />
           <Route path="/models/opel" element={<ModelViewOpel />} />
           <Route path="/models/porsche" element={<ModelViewPorsche />} />
+
+          <Route
+            path="/logout"
+            element={
+              <LoggedUserRoute>
+                <Logout />
+              </LoggedUserRoute>
+            }
+          />
 
           <Route
             path="/create"
