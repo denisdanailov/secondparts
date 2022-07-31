@@ -4,6 +4,14 @@ VALUES ('ivan@email.de', 'Ivan', 'img',1,'Ivanov','$2a$10$uuZr1X5A/xwnDqGfVn0wS.
  ('georg@email.de', 'Georgi', 'img',1,'Georgiev','$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS','goshko');
 
 
+INSERT INTO categories (id, image_url, name)
+VALUES (1, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259638/body_il31zd.png', 'Body parts'),
+ (2, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259621/fuelsystem_c8dekc.png', 'Fuelsystem'),
+ (3, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259622/brake_dzk0ep.png', 'Brake'),
+ (4, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259625/gearbox_cnix4w.png', 'Gearbox'),
+ (5, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259621/chassis_c9l1yk.png', 'Chassis');
+
+
 INSERT INTO brands (id, name)
 VALUES (1, 'VW'),
        (2, 'MERCEDES_BENZ'),

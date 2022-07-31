@@ -1,7 +1,6 @@
 package de.secondparts.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.secondparts.model.enums.BrandEnum;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,8 +10,7 @@ import java.util.List;
 @Table(name = "brands")
 public class BrandEntity extends BaseEntity {
 
-    @Enumerated(EnumType.STRING)
-    private BrandEnum name;
+    private String name;
 
     @JsonIgnore
     @OneToMany(
@@ -22,11 +20,11 @@ public class BrandEntity extends BaseEntity {
     )
     private List<ModelEntity> models = new ArrayList<>();
 
-    public BrandEnum getName() {
+    public String getName() {
         return name;
     }
 
-    public BrandEntity setName(BrandEnum name) {
+    public BrandEntity setName(String name) {
         this.name = name;
         return this;
     }

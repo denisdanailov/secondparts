@@ -118,6 +118,17 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public List<OfferViewDTO> getAllByCategory(CategoryEntity category) {
+        return offerRepository.findAllByCategory(category)
+                .stream().map(this::mapOffer).collect(Collectors.toList());
+    }
+
+    @Override
+    public Integer getOffersCount() {
+        return getAllActiveOffers().size();
+    }
+
+    @Override
     public void deactivateOffer(Long id) {
         //   We deactivate the offer, then a Scheduling functionality delete a deactivated offers.
         Optional<OfferEntity> offerToDeactive = offerRepository.findById(id);

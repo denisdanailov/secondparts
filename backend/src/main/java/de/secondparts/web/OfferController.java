@@ -1,15 +1,16 @@
 package de.secondparts.web;
 
+import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.OfferEntity;
 import de.secondparts.model.entity.dtos.*;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferCreateDTO;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferEditDTO;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
-import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.BrandService;
+import de.secondparts.service.CategoryService;
 import de.secondparts.service.OfferService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -28,11 +29,13 @@ public class OfferController {
 
     private final OfferService offerService;
     private final BrandService brandService;
+    private final CategoryService categoryService;
     private final ModelMapper modelMapper;
 
-    public OfferController(OfferService offerService, BrandService brandService, ModelMapper modelMapper) {
+    public OfferController(OfferService offerService, BrandService brandService, CategoryService categoryService, ModelMapper modelMapper) {
         this.offerService = offerService;
         this.brandService = brandService;
+        this.categoryService = categoryService;
         this.modelMapper = modelMapper;
     }
 
@@ -40,6 +43,12 @@ public class OfferController {
     public ResponseEntity<List<OfferViewDTO>> getAllActiveOffers() {
 
         return ResponseEntity.ok(offerService.getAllActiveOffers());
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Integer> getOffersCount() {
+
+        return ResponseEntity.ok(offerService.getOffersCount());
     }
 
     @GetMapping("/{id}")
@@ -93,6 +102,17 @@ public class OfferController {
         }
     }
 
+    @GetMapping("/category/{name}")
+    public ResponseEntity<List<OfferViewDTO>> getAllOffersByCategory(@PathVariable("name") String name) {
+        Optional<CategoryEntity> category = categoryService.findByName(name);
+
+        List<OfferViewDTO> allByCategory = offerService.getAllByCategory(category.get());
+
+        return new ResponseEntity<>(allByCategory, HttpStatus.OK);
+
+    }
+
+
 //   TODO:  types for Create Form. Create a Types Controller for them->
 
     @GetMapping("/transmissions")
@@ -109,8 +129,8 @@ public class OfferController {
 
     @GetMapping("/categories")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public CategoryEnum[] getCategories() {
-        return CategoryEnum.values();
+    public List<CategoryViewDTO> getCategories() {
+        return categoryService.getAllCategories();
     }
 
     @GetMapping("/brands")

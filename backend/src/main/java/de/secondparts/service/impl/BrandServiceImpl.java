@@ -4,14 +4,11 @@ import de.secondparts.model.entity.BrandEntity;
 import de.secondparts.model.entity.ModelEntity;
 import de.secondparts.model.entity.dtos.BrandViewDTO;
 import de.secondparts.model.entity.dtos.ModelViewDTO;
-import de.secondparts.model.enums.BrandEnum;
-import de.secondparts.model.enums.modelsEnums.PorscheEnum;
 import de.secondparts.repository.BrandRepository;
 import de.secondparts.service.BrandService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,19 +22,6 @@ public class BrandServiceImpl implements BrandService {
     public BrandServiceImpl(BrandRepository brandRepository, ModelMapper modelMapper) {
         this.brandRepository = brandRepository;
         this.modelMapper = modelMapper;
-    }
-
-    @Override
-    public void initializeBrands() {
-        if (brandRepository.count() == 0) {
-
-            Arrays.stream(BrandEnum.values()).forEach(brandEnum -> {
-                BrandEntity brand = new BrandEntity();
-
-                brand.setName(brandEnum);
-                brandRepository.save(brand);
-            });
-        }
     }
 
     @Override

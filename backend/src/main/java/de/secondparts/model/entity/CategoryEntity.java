@@ -1,7 +1,5 @@
 package de.secondparts.model.entity;
 
-import de.secondparts.model.enums.CategoryEnum;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,32 +8,40 @@ import java.util.List;
 @Table(name = "categories")
 public class CategoryEntity extends BaseEntity {
 
-    @Enumerated(EnumType.STRING)
-    private CategoryEnum name;
+    private String name;
+
+    private String imageUrl;
 
     @OneToMany( mappedBy = "category",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    private List<OfferEntity> orders = new ArrayList<>();
+    private List<OfferEntity> offers = new ArrayList<>();
 
-    public CategoryEnum getName() {
+    public String getName() {
         return name;
     }
 
-    public CategoryEntity setName(CategoryEnum name) {
+    public CategoryEntity setName(String name) {
         this.name = name;
         return this;
     }
 
-    public List<OfferEntity> getOrders() {
-        return orders;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public CategoryEntity setOrders(List<OfferEntity> orders) {
-        this.orders = orders;
+    public CategoryEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 
+    public List<OfferEntity> getOffers() {
+        return offers;
+    }
 
+    public CategoryEntity setOffers(List<OfferEntity> offers) {
+        this.offers = offers;
+        return this;
+    }
 }

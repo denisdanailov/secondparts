@@ -4,6 +4,8 @@ public class CategoryViewDTO {
 
     private String name;
 
+    private String imageUrl;
+
     public String getName() {
         return name;
     }
@@ -13,4 +15,12 @@ public class CategoryViewDTO {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public CategoryViewDTO setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
 }

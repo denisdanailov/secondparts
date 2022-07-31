@@ -9,7 +9,5 @@ import java.util.Optional;
 public interface ModelService {
    List<ModelViewDTO> getAllModelsByBrandId(Long id);
 
-    void initializeModels();
-
     Optional<ModelEntity> findByName(String name);
 }

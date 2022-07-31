@@ -2,12 +2,12 @@ package de.secondparts.service.impl;
 
 import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.dtos.CategoryViewDTO;
-import de.secondparts.model.enums.CategoryEnum;
 import de.secondparts.repository.CategoryRepository;
 import de.secondparts.service.CategoryService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,21 +16,11 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final ModelMapper modelMapper;
 
-    public CategoryServiceImpl(CategoryRepository categoryRepository) {
+    public CategoryServiceImpl(CategoryRepository categoryRepository, ModelMapper modelMapper) {
         this.categoryRepository = categoryRepository;
-    }
-
-    @Override
-    public void initializeCategories() {
-        if (categoryRepository.count() == 0) {
-            Arrays.stream(CategoryEnum.values()).forEach(categoryEnum -> {
-                CategoryEntity category = new CategoryEntity();
-
-                category.setName(categoryEnum);
-                categoryRepository.save(category);
-            });
-        }
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -40,9 +30,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Optional<CategoryEntity> findByName(String name) {
-        CategoryEnum categoryEnum = CategoryEnum.valueOf(name);
 
-        return categoryRepository.findCategoryEntityByName(categoryEnum);
+        return categoryRepository.findCategoryEntityByName(name);
 
     }
 
@@ -54,9 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private CategoryViewDTO mapCategory(CategoryEntity categoryEntity) {
-        CategoryViewDTO category = new CategoryViewDTO();
-
-        category.setName(categoryEntity.getName().name());
+        CategoryViewDTO category = modelMapper.map(categoryEntity, CategoryViewDTO.class);
 
         return category;
     }

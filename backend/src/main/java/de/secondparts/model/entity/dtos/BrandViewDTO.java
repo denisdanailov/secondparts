@@ -1,23 +1,20 @@
 package de.secondparts.model.entity.dtos;
 
-import de.secondparts.model.enums.BrandEnum;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class BrandViewDTO {
 
-    private BrandEnum name;
+    private String name;
 
     private List<ModelViewDTO> models = new ArrayList<>();
 
-
-    public BrandEnum getName() {
+    public String getName() {
         return name;
     }
 
-    public BrandViewDTO setName(BrandEnum name) {
+    public BrandViewDTO setName(String name) {
         this.name = name;
         return this;
     }

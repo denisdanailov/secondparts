@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface BrandService {
 
-    void initializeBrands();
-
     List<BrandViewDTO> getAllBrands();
 
     Optional<BrandViewDTO> findById(Long id);
