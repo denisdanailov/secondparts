@@ -21,7 +21,7 @@ import { ModelViewPorsche } from "./components/car-models/ModelViewPorsche";
 import { ModelViewBmw } from "./components/car-models/ModelViewBmw";
 import { ModelViewOpel } from "./components/car-models/ModelViewOpel";
 import { Logout } from "./components/Logout";
-
+import { Checkout } from "./components/checkout/Checkout";
 export default function App() {
   return (
     <>
@@ -42,6 +42,7 @@ export default function App() {
           <Route path="/models/audi" element={<ModelViewAudi />} />
           <Route path="/models/opel" element={<ModelViewOpel />} />
           <Route path="/models/porsche" element={<ModelViewPorsche />} />
+          <Route path="/checkout" element={<Checkout />} />
 
           <Route
             path="/logout"

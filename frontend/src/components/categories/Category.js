@@ -17,7 +17,7 @@ export const Category = () => {
     <section className="feature_section layout_padding">
       <div className="container">
         <div className="heading_container">
-          <h2>Kategorien</h2>
+          <h2>Categories</h2>
           <p>
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua.

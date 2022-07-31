@@ -10,6 +10,12 @@ class OfferService {
     });
   }
 
+  getAllOfferByCategory(offerName) {
+    return axios.get(`${API_URL}${offerName}`, {
+      headers: authHeader(),
+    });
+  }
+
   getOfferById(offerId) {
     return axios.get(`${API_URL}${offerId}`, {
       headers: authHeader(),
@@ -54,6 +60,12 @@ class OfferService {
 
   getBrands() {
     return axios.get(API_URL + "brands", {
+      headers: authHeader(),
+    });
+  }
+
+  getOffersCount() {
+    return axios.get(API_URL + "count", {
       headers: authHeader(),
     });
   }

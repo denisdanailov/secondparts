@@ -136,26 +136,22 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue disabled>
-                          Please select Category *
-                        </option>
+                        <option defaultValue>Please select Category *</option>
                         {categories.map((category) => (
                           <option
-                            key={category}
-                            value={category}
-                            name={category}
-                            id={category}
+                            key={category.name}
+                            value={category.name}
+                            name={category.name}
+                            id={category.name}
                           >
-                            {category}
+                            {category.name}
                           </option>
                         ))}
                       </select>
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue disabled>
-                          Please select Model *
-                        </option>
+                        <option defaultValue>Please select Model *</option>
                         <optgroup label="Audi">
                           {audiModels.map((model) => (
                             <option
@@ -232,9 +228,7 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue disabled>
-                          Please select Engine type
-                        </option>
+                        <option defaultValue>Please select Engine type</option>
                         {engines.map((engine) => (
                           <option key={engine} value={engine}>
                             {engine}
@@ -246,12 +240,7 @@ export const CreateOffer = () => {
                   <div className="col-md-6">
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option
-                          className="hidden"
-                          selected
-                          disabled
-                          defaultValue
-                        >
+                        <option className="hidden" defaultValue>
                           Please select Transmission
                         </option>
                         {transmissions.map((transmissions) => (
@@ -287,7 +276,7 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <input
-                        type="text"
+                        type="number"
                         name="kilometers"
                         className="form-control"
                         placeholder="Kilometers"
