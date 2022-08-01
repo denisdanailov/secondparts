@@ -37,10 +37,23 @@ export default function Register() {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
+    const rePass = formData.get("rePass");
 
-    // if (password !== rePass) {
-    //   return setError("Passwords don`t match!");
-    // }
+    if (username.length < 6) {
+      return setError(
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">Username musst containt 6 charachters</Alert>
+        </Stack>
+      );
+    }
+
+    if (password !== rePass) {
+      return setError(
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">Passwords don`t match!</Alert>
+        </Stack>
+      );
+    }
 
     if (password.length < 6) {
       return setError(
@@ -184,7 +197,6 @@ export default function Register() {
                       fullWidth
                       id="filled-error-helper-text"
                       type="password"
-                      helperText={error}
                       variant="filled"
                     />
                   )}
@@ -206,7 +218,6 @@ export default function Register() {
                       fullWidth
                       id="filled-error-helper-text"
                       type="password"
-                      helperText={error}
                       variant="filled"
                     />
                   )}

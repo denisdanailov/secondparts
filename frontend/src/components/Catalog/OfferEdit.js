@@ -144,12 +144,12 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                       <option defaultValue>{offer.data.category.name}</option>
                       {categories.map((category) => (
                         <option
-                          key={category}
-                          value={category}
-                          name={category}
-                          id={category}
+                          key={category.name}
+                          value={category.name}
+                          name={category.name}
+                          id={category.name}
                         >
-                          {category}
+                          {category.name}
                         </option>
                       ))}
                     </select>
