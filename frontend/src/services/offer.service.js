@@ -10,6 +10,12 @@ class OfferService {
     });
   }
 
+  searchOffer(data) {
+    return axios.post(API_URL + "search", data, {
+      headers: authHeader(),
+    });
+  }
+
   getAllOfferByCategory(offerName) {
     return axios.get(`${API_URL}${offerName}`, {
       headers: authHeader(),
