@@ -17,8 +17,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +47,16 @@ public class OfferController {
         return ResponseEntity.ok(offerService.getAllActiveOffers());
     }
 
+
+    @PostMapping("/search")
+    public ResponseEntity<List<OfferViewDTO>> searchOffer(@Valid @RequestBody SearchOfferDTO searchOfferDTO) {
+
+        System.out.println(searchOfferDTO);
+
+        return ResponseEntity.ok(offerService.searchOffer(searchOfferDTO));
+    }
+
+
     @GetMapping("/count")
     public ResponseEntity<Integer> getOffersCount() {
 
@@ -65,7 +77,8 @@ public class OfferController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<OfferViewDTO> deactivateOrder(@PathVariable("id") Long id) {
+    @PreAuthorize("@offerServiceImpl.isOwnerOrAdmin(#principal.name, #id)")
+    public ResponseEntity<OfferViewDTO> deactivateOffer(Principal principal, @PathVariable("id") Long id) {
         try {
             offerService.deactivateOffer(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -75,8 +88,10 @@ public class OfferController {
     }
 
     @PutMapping("{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<OfferEditDTO> editOffer(@Valid @PathVariable("id") Long id, @RequestBody OfferEditDTO offerEditDTO) {
+    @PreAuthorize("@offerServiceImpl.isOwnerOrAdmin(#principal.name, #id)")
+    public ResponseEntity<OfferEditDTO> editOffer(@Valid Principal principal,
+                                                  @PathVariable("id") Long id,
+                                                  @RequestBody OfferEditDTO offerEditDTO) {
 
         OfferEntity orderToEdit = offerService.findById(id).orElse(null);
 

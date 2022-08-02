@@ -91,6 +91,8 @@ export const CreateOffer = () => {
       sellerId,
     };
 
+    console.log(offerData);
+
     OfferService.createOffer(offerData).then(() => {
       navigate("/catalog");
     });
@@ -260,7 +262,7 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <input
-                        type="text"
+                        type="number"
                         name="year"
                         className="form-control"
                         placeholder="Year *"

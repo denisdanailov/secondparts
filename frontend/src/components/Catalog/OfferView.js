@@ -13,7 +13,7 @@ export const OfferView = ({ offer, onActionClick }) => {
         ""
       )}
       <div className="product-tumb">
-        <img src={offer.imageUrl} alt="" />
+        <img src={offer.imageUrl} alt="offer-img" />
       </div>
       <div className="product-details">
         <span className="product-catagory">

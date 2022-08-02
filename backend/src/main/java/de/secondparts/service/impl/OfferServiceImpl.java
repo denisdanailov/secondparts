@@ -4,13 +4,16 @@ import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.ModelEntity;
 import de.secondparts.model.entity.OfferEntity;
 import de.secondparts.model.entity.UserEntity;
+import de.secondparts.model.entity.dtos.SearchOfferDTO;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferCreateDTO;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferEditDTO;
 import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
 import de.secondparts.model.entity.dtos.userDTOs.UserViewDTO;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
+import de.secondparts.model.enums.UserRoleEnum;
 import de.secondparts.repository.OfferRepository;
+import de.secondparts.repository.OfferSpecification;
 import de.secondparts.service.CategoryService;
 import de.secondparts.service.ModelService;
 import de.secondparts.service.OfferService;
@@ -124,6 +127,16 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public List<OfferViewDTO> searchOffer(SearchOfferDTO searchOfferDTO) {
+        return offerRepository.findAll(new OfferSpecification(searchOfferDTO))
+                .stream().map(offerEntity -> {
+                    OfferViewDTO offerViewDTO = modelMapper.map(offerEntity, OfferViewDTO.class);
+
+                    return offerViewDTO;
+                }).collect(Collectors.toList());
+    }
+
+    @Override
     public Integer getOffersCount() {
         return getAllActiveOffers().size();
     }
@@ -138,6 +151,28 @@ public class OfferServiceImpl implements OfferService {
 
             offerRepository.save(offerToDeactive.get());
         }
+    }
+
+    @Override
+    public boolean isOwnerOrAdmin(String username, Long offerId) {
+
+
+        boolean isOwner = offerRepository
+                .findById(offerId)
+                .filter(offerEntity -> offerEntity.getSeller().getUsername().equals(username))
+                .isPresent();
+
+        if (isOwner) {
+            return true;
+        }
+
+        return userService.findByUsername(username).filter(this::isAdmin).isPresent();
+    }
+
+    private boolean isAdmin(UserEntity user) {
+        return user.getRoles()
+                .stream()
+                .anyMatch(userRole -> userRole.getName() == UserRoleEnum.ROLE_ADMIN);
     }
 
     @Override
