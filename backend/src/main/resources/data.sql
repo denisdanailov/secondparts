@@ -1,7 +1,10 @@
-INSERT INTO users (email, first_name, image_url, is_active, last_name, password, username)
-VALUES ('ivan@email.de', 'Ivan', 'img',1,'Ivanov','$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS','vankata'),
- ('petar@email.de', 'Petar', 'img',1,'Petrov','$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS','peshaka'),
- ('georg@email.de', 'Georgi', 'img',1,'Georgiev','$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS','goshko');
+INSERT INTO users ( email, first_name, image_url, is_active, last_name, password, username)
+VALUES ('ivan@email.de', 'Ivan', 'img', 1, 'Ivanov', '$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS',
+        'vankata'),
+       ( 'petar@email.de', 'Petar', 'img', 1, 'Petrov',
+        '$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS', 'peshaka'),
+       ( 'georg@email.de', 'Georgi', 'img', 1, 'Georgiev',
+        '$2a$10$uuZr1X5A/xwnDqGfVn0wS.TYek3EIGnLQnHoWGTvsJp8AEe/YSoQS', 'goshko');
 
 
 INSERT INTO categories (id, image_url, name)
