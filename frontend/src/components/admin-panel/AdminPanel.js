@@ -177,11 +177,15 @@ export const AdminPanel = () => {
             ))}
           </tbody>
         </table>
+        <div className="btn-wrapper">
+          <div
+            className="btn-add"
+            onClick={() => userCreateHandler(UserActions.Add)}
+          >
+            +
+          </div>
+        </div>
       </div>
-
-      <Button onClick={() => userCreateHandler(UserActions.Add)}>
-        Add new user
-      </Button>
     </>
   );
 };

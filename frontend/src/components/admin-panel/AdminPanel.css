@@ -50,6 +50,32 @@ ul {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(77, 75, 75, 0.76);
 }
+.btn-wrapper {
+  width: 60px;
+  margin-left: 10px;
+  position: fixed;
+}
+
+.btn-add {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 2em;
+  border-radius: 50%;
+  background-color: rgba(77, 75, 75, 0.76);
+  color: white;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-add:hover {
+  background: rgb(42, 41, 41);
+  color: rgb(238, 135, 135);
+}
 
 .btn {
   background: #2a87a5;
@@ -547,7 +573,7 @@ ul {
 }
 
 .edit-btn {
-  background-color: #5cb85c;
+  background-color: #328e32;
 }
 
 /* Add user button  */

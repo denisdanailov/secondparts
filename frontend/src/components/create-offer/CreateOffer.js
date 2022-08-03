@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Stack from "@mui/material/Stack";
+import Alert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
+
 import OfferService from "../../services/offer.service";
 import ModelService from "../../services/models.service";
 import "./CreateOffer.css";
@@ -17,6 +21,8 @@ export const CreateOffer = () => {
   const [bmwModels, setBmwModels] = useState([]);
   const [opelModels, setOpelModels] = useState([]);
   const [porscheModels, setPorscheModels] = useState([]);
+
+  const [error, setError] = useState("");
 
   useEffect(() => {
     OfferService.getTransmissions().then((transmissions) =>
@@ -91,23 +97,65 @@ export const CreateOffer = () => {
       sellerId,
     };
 
-    console.log(offerData);
-
-    OfferService.createOffer(offerData).then(() => {
-      navigate("/catalog");
-    });
+    try {
+      if (
+        Object.values(offerData)[10].charAt(0) === "*" ||
+        Object.values(offerData)[9].charAt(0) === "*" ||
+        Object.values(offerData)[8].charAt(0) === "*" ||
+        Object.values(offerData)[7].charAt(0) === "*"
+      ) {
+        setError(
+          <Stack
+            sx={{
+              width: "80%",
+              paddingTop: "10px",
+              m: "0 auto",
+            }}
+            spacing={2}
+          >
+            <Alert severity="error">
+              All fields marked with an * are required!
+            </Alert>
+          </Stack>
+        );
+      } else {
+        OfferService.createOffer(offerData).then(() => {
+          navigate("/catalog");
+        });
+      }
+    } catch {
+      setError(
+        <Stack
+          sx={{
+            width: "80%",
+            paddingTop: "10px",
+            m: "0 auto",
+          }}
+          spacing={2}
+        >
+          <Alert severity="error">Field to Create Offer!</Alert>
+        </Stack>
+      );
+    }
   };
 
   return (
     <div className="register">
       <div className="row">
         <div className="col-md-3 register-left">
-          <h3>Welcome</h3>
-          <p>You are 30 seconds away from earning your own money!</p>
-          <input type="submit" name="" value="Catalog" />
+          <h3>How to sell?</h3>
+          <p>
+            1.Create your Offer
+            <br />
+            2.Contact with Buyer <br />
+            3.Payment <br />
+            4.Shipping and delivery
+          </p>
+          <Link to="/catalog">
+            <input type="submit" name="" value="Catalog" />
+          </Link>
           <br />
         </div>
-
         <div className="col-md-9 register-right">
           <div className="tab-content" id="myTabContent">
             <div
@@ -116,7 +164,11 @@ export const CreateOffer = () => {
               role="tabpanel"
               aria-labelledby="home-tab"
             >
-              <h3 className="register-heading">Create your Offer</h3>
+              <h3 className="register-heading">
+                Create your Offer
+                {error ? error : ""}
+              </h3>
+
               <form onSubmit={onCreate} method="post">
                 <div className="row register-form">
                   <div className="col-md-6">
@@ -124,27 +176,30 @@ export const CreateOffer = () => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Product Title *"
+                        placeholder="* Product Title"
                         name="title"
+                        required
                       />
                     </div>
                     <div className="form-group-1">
                       <input
                         type="number"
                         className="form-control"
-                        placeholder="Suggested price *"
+                        placeholder="* Suggested price"
                         name="price"
+                        required
                       />
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue>Please select Category *</option>
+                        <option defaultValue>* Please select Category</option>
                         {categories.map((category) => (
                           <option
                             key={category.name}
                             value={category.name}
                             name={category.name}
                             id={category.name}
+                            required
                           >
                             {category.name}
                           </option>
@@ -153,7 +208,7 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue>Please select Model *</option>
+                        <option defaultValue>* Please select Model</option>
                         <optgroup label="Audi">
                           {audiModels.map((model) => (
                             <option
@@ -161,6 +216,7 @@ export const CreateOffer = () => {
                               value={model.name}
                               name={model.name}
                               id={model.id}
+                              required
                             >
                               {model.name}
                             </option>
@@ -230,7 +286,9 @@ export const CreateOffer = () => {
                     </div>
                     <div className="form-group-1">
                       <select className="form-control">
-                        <option defaultValue>Please select Engine type</option>
+                        <option defaultValue>
+                          * Please select Engine type
+                        </option>
                         {engines.map((engine) => (
                           <option key={engine} value={engine}>
                             {engine}
@@ -243,7 +301,7 @@ export const CreateOffer = () => {
                     <div className="form-group-1">
                       <select className="form-control">
                         <option className="hidden" defaultValue>
-                          Please select Transmission
+                          * Please select Transmission
                         </option>
                         {transmissions.map((transmissions) => (
                           <option key={transmissions} value={transmissions}>
@@ -257,7 +315,8 @@ export const CreateOffer = () => {
                         type="text"
                         name="vehicleIdentificationNumber"
                         className="form-control"
-                        placeholder="Vehicle Identification Number *"
+                        placeholder="* Vehicle Identification Number"
+                        required
                       />
                     </div>
                     <div className="form-group-1">
@@ -265,7 +324,8 @@ export const CreateOffer = () => {
                         type="number"
                         name="year"
                         className="form-control"
-                        placeholder="Year *"
+                        placeholder="* Year"
+                        required
                       />
                     </div>
                     <div className="form-group-1">

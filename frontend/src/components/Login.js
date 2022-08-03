@@ -1,19 +1,19 @@
-import * as React from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { useState, useCallback } from "react";
+
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
@@ -32,9 +32,19 @@ export default function Login() {
     const password = formData.get("password");
 
     try {
-      setError("");
-      await AuthService.login(username, password);
-      navigate("/");
+      if (username.length === 0 || password.length === 0) {
+        setError(
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert severity="error">
+              Failed to Sign in. Username or password is incorrect
+            </Alert>
+          </Stack>
+        );
+      } else {
+        setError("");
+        await AuthService.login(username, password);
+        navigate("/");
+      }
     } catch {
       setError(
         <Stack sx={{ width: "100%" }} spacing={2}>
