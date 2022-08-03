@@ -156,7 +156,6 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public boolean isOwnerOrAdmin(String username, Long offerId) {
 
-
         boolean isOwner = offerRepository
                 .findById(offerId)
                 .filter(offerEntity -> offerEntity.getSeller().getUsername().equals(username))

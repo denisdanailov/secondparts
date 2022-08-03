@@ -6,7 +6,7 @@ import de.secondparts.model.entity.dtos.userDTOs.UserRegistrationDTO;
 import de.secondparts.payment.response.JwtResponse;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.repository.UserRoleRepository;
-import de.secondparts.security.jwt.JwtUtils;
+import de.secondparts.jwt.JwtUtils;
 import de.secondparts.service.impl.UserDetailsImpl;
 import de.secondparts.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +42,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody UserLoginDTO userLoginDTO) {
+
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(userLoginDTO.getUsername(), userLoginDTO.getPassword()));
