@@ -77,6 +77,27 @@ a:focus {
   color: initial;
 }
 
+.searchBtn {
+  padding: 7px;
+  text-decoration: none;
+  border: 1px solid #8f959b;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+}
+
+.searchBtn {
+  transition-duration: 0.4s;
+}
+
+.searchBtn:hover {
+  background-color: rgb(142, 139, 139);
+  color: white;
+}
+
+.search-col {
+}
+
 .btn,
 .btn:focus {
   outline: none !important;
@@ -692,6 +713,40 @@ a:focus {
   width: 100%;
 }
 
+/* Search */
+
+.card-search {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.searchResult {
+  margin: 0 auto;
+  margin-bottom: 0;
+
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-top: 20px;
+}
+
+.searchResult p {
+  width: 100%;
+  padding: 20px 100px 20px;
+  margin-bottom: 0;
+}
+/* End Search */
+
 .client_section .box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -774,6 +829,7 @@ a:focus {
 .footer_section {
   background-color: #0d0d0d;
   color: #ffffff;
+  margin-top: 350px;
   padding-top: 60px;
 }
 

@@ -12,7 +12,7 @@ export const Search = () => {
 
     const { model, vehicleIdentificationNumber } = Object.fromEntries(formData);
 
-    const searchData = { model };
+    const searchData = { model, vehicleIdentificationNumber };
 
     console.log(searchData);
     console.log(offers.length);
@@ -24,45 +24,21 @@ export const Search = () => {
     <div className="container mt-5">
       <div className="row d-flex justify-content-center">
         <div className="col-md-10">
-          <div className="card p-3  py-4">
-            <h5>An Easier way to find your Housing</h5>
+          <div className="card-search p-3  py-2">
+            <h5>
+              Find your part easily by model and Vehicle Identification Number
+            </h5>
             <form method="GET" onSubmit={onSearch}>
               <div className="row g-3 mt-2">
-                <div className="col-md-3">
-                  <div className="dropdown">
-                    <button
-                      className="btn btn-secondary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Any Status
-                    </button>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <li>
-                        <a className="dropdown-item" href="/">
-                          Rural
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/">
-                          Urban
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/">
-                          All
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="search col-md-6">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search by vehicle Identification Number"
+                    name="vehicleIdentificationNumber"
+                  />
                 </div>
-
-                <div className="col-md-6">
+                <div className="search-col col-md-3">
                   <input
                     type="text"
                     className="form-control"
@@ -71,8 +47,8 @@ export const Search = () => {
                   />
                 </div>
 
-                <div className="col-md-3">
-                  <button className="btn btn-secondary btn-block">
+                <div className="search-col col-md-3">
+                  <button className="searchBtn btn-outline-secondary">
                     Search Results
                   </button>
                 </div>
@@ -86,7 +62,9 @@ export const Search = () => {
           {offers.length !== 0 ? (
             offers.map((offer) => <OfferView offer={offer} key={offer.id} />)
           ) : (
-            <p>No Results</p>
+            <div className="searchResult">
+              <p>No Results</p>
+            </div>
           )}
         </div>
       </div>
