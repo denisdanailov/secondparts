@@ -5,7 +5,7 @@ export const About = () => {
         <div className="row">
           <div className="col-md-6 col-lg-5">
             <div className="img-box">
-              <img src="images/mechanic.png" alt="" />
+              <img src="images/about-img.png" alt="" />
             </div>
           </div>
           <div className="col-md-6 col-lg-7">
@@ -14,12 +14,11 @@ export const About = () => {
                 <h2>About Us</h2>
               </div>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there isn't anything embarrassing
-                hidden in the middle of text. All
+                The idea of collecting used spare parts from different car
+                chippers and selling them across borders started already in 2022
+                as University Project. SecondParts wanted to make it cheap and
+                convenient for the customer to find the right used spare parts
+                in one and the same marketplace.
               </p>
               <a href="/"> Read More </a>
             </div>

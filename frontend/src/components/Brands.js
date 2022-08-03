@@ -16,77 +16,78 @@ export const Brands = () => {
       <div className="container">
         <div className="heading_container heading_center">
           <h2>Brands with we work</h2>
+          <p>
+            We work currently only with the most well-known German brands on the
+            car market. In the future we will partner with other brands around
+            the world.
+          </p>
         </div>
         <div className="row">
-          <div className="col-md-6">
-            <div className="box">
-              <Link to="/catalog">
-                <div className="img-box">
-                  <img src="images/mechanic_2.png" alt="" />
-                </div>
-                <div className="detail-box">
-                  <h6>Available parts:</h6>
-                  <h6>
-                    {offersCount}
-                    <span> Parts </span>
-                  </h6>
-                </div>
-                <div className="new">
-                  <span> All offers </span>
-                </div>
-              </Link>
-            </div>
-          </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/mercedes-benz">
                 <div className="img-box">
-                  <img src="images/mercedes-benz-logo.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564730/brands-seconsparts/mercedes-benz-logo1_rlj5rx.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/audi">
                 <div className="img-box">
-                  <img src="images/audi-logo.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564731/brands-seconsparts/audi-logo_x2bube.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/bmw">
                 <div className="img-box">
-                  <img src="images/bmw-logo.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564729/brands-seconsparts/bmw-logo1_tbwwrg.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/vw">
                 <div className="img-box">
-                  <img src="images/vw-logo.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564730/brands-seconsparts/vw-logo1_hurg1g.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/porsche">
                 <div className="img-box">
-                  <img src="images/porshe-logo.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564729/brands-seconsparts/porshe-logo_ujcf8w.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-sm-6 col-xl-3">
+          <div className="col-sm-6 col-xl-4">
             <div className="box">
               <Link to="/models/opel">
                 <div className="img-box">
-                  <img src="images/opel-logo.png" alt="" />
+                  <img src="images/opel-logo1.png" alt="" />
                 </div>
               </Link>
             </div>

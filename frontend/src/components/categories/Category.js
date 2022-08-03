@@ -19,8 +19,8 @@ export const Category = () => {
         <div className="heading_container">
           <h2>Categories</h2>
           <p>
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
+            We have currently 20 categories of auto parts in our online
+            marketplace and over 300 offers
           </p>
         </div>
         <div className="row">

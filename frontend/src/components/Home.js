@@ -1,7 +1,7 @@
 import { Slider } from "./Slider";
 import { Brands } from "./Brands";
 import { Category } from "./categories/Category";
-import { Clients } from "./Clients";
+import { Clients } from "./testimonial/Clients";
 
 export const Home = () => {
   return (

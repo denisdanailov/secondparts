@@ -25,7 +25,7 @@ export const Contact = () => {
               <br />
               <a href="/">
                 <i className="fa fa-envelope" aria-hidden="true"></i>
-                <span> demo@gmail.com </span>
+                <span> secondparts@gmail.com </span>
               </a>
             </div>
           </div>

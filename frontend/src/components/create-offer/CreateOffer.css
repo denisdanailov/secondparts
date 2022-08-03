@@ -1,3 +1,12 @@
+.title-create {
+  font-size: 39px;
+  font-weight: bold;
+  color: rgb(106, 106, 106);
+}
+.create-steps {
+  font-size: 17px;
+}
+
 .register {
   background: #a69f8a;
   padding: 3%;

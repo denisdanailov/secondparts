@@ -143,8 +143,8 @@ export const CreateOffer = () => {
     <div className="register">
       <div className="row">
         <div className="col-md-3 register-left">
-          <h3>How to sell?</h3>
-          <p>
+          <h3 className="title-create">How to sell?</h3>
+          <p className="create-steps">
             1.Create your Offer
             <br />
             2.Contact with Buyer <br />
@@ -152,7 +152,12 @@ export const CreateOffer = () => {
             4.Shipping and delivery
           </p>
           <Link to="/catalog">
-            <input type="submit" name="" value="Catalog" />
+            <input
+              className="catalog-btn"
+              type="submit"
+              name=""
+              value="Catalog"
+            />
           </Link>
           <br />
         </div>

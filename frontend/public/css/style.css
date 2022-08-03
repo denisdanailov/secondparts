@@ -540,6 +540,19 @@ a:focus {
   border: 1px solid #f0d43a;
   margin-top: 15px;
 }
+.heading_container h2 {
+  font-size: 35px;
+}
+
+.detail-box {
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  border-radius: 0.25rem;
+  padding: 30px;
+}
+
+#root > section > div > div > div > div > a > span {
+  font-size: 18px;
+}
 
 .about_section .detail-box a:hover {
   color: #ffffff;
@@ -645,6 +658,7 @@ a:focus {
 
 .contact_section {
   position: relative;
+  height: 60vh;
 }
 
 .contact_section .row {
@@ -710,10 +724,14 @@ a:focus {
 }
 
 .contact_section .img-box img {
-  width: 100%;
+  width: 170%;
 }
 
 /* Search */
+
+.search-container {
+  height: 100vh;
+}
 
 .card-search {
   width: 100%;
@@ -829,7 +847,6 @@ a:focus {
 .footer_section {
   background-color: #0d0d0d;
   color: #ffffff;
-  margin-top: 350px;
   padding-top: 60px;
 }
 

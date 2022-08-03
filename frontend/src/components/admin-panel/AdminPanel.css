@@ -62,7 +62,7 @@ ul {
   line-height: 50px;
   font-size: 2em;
   border-radius: 50%;
-  background-color: rgba(77, 75, 75, 0.76);
+  background-color: #2a87a5;
   color: white;
   text-align: center;
   border: none;
@@ -73,8 +73,8 @@ ul {
 }
 
 .btn-add:hover {
-  background: rgb(42, 41, 41);
-  color: rgb(238, 135, 135);
+  background: #0f4c60;
+  color: white;
 }
 
 .btn {
@@ -203,6 +203,7 @@ ul {
   overflow: auto;
   width: 100%;
   margin-bottom: 5px;
+  height: 100vh;
 }
 
 .table {
