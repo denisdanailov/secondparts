@@ -33,12 +33,8 @@ logging:
 
 # App Properties
 jwt:
-  bezkoder.app.jwtSecret= bezKoderSecretKey
-  bezkoder.app.jwtExpirationMs= 86400000
-
-
-
-
+  secondparts.app.jwtSecret= bezKoderSecretKey
+  secondparts.app.jwtExpirationMs= 86400000
 
 management:
   endpoints:
