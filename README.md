@@ -23,7 +23,7 @@ url http://localhost:8080/api/offers/all
 ```
 After starting the server you can install and run the client from the `frontend` folder:
 
-1. `npm install` (installs the node modules and the TypeScript definition files)
+1. `npm install` (installs the node modules)
 2. `PORT=8081 npm start` 
 3. Open `http://localhost:8081`
 
