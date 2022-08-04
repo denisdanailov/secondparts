@@ -97,6 +97,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsByEmail(email);
     }
 
+    @Override
+    public void clearRemovedUsers() {
+        userRepository.clearRemovedUsers();
+    }
+
     private UserViewDTO mapUser(UserEntity userEntity) {
         UserViewDTO userViewDTO = this.modelMapper.map(userEntity, UserViewDTO.class);
 

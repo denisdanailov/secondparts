@@ -153,6 +153,13 @@ public class OfferServiceImpl implements OfferService {
         }
     }
 
+
+
+    @Override
+    public void clearRemovedOffers() {
+          offerRepository.clearRemovedOffers();
+    }
+
     @Override
     public boolean isOwnerOrAdmin(String username, Long offerId) {
 

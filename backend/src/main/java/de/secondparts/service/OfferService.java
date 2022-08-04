@@ -28,7 +28,11 @@ public interface OfferService {
 
     void deactivateOffer(Long id);
 
+    void clearRemovedOffers();
+
     boolean isOwnerOrAdmin(String userName, Long offerId);
+
+
 
 
 

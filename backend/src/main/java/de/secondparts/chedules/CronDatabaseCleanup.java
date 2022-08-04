@@ -22,11 +22,12 @@ public class CronDatabaseCleanup {
         this.userService = userService;
     }
 
-    @Scheduled(fixedDelay = 5000, initialDelay = 10000)
+//    sec, min, hour,day/month,month, ?-day of week
+    @Scheduled(cron ="0 0  20 1 * ?")
     public void showTimeWithCron() {
 
-//        offerService.clearRemovedOffers();
-//        userService.clearRemovedUsers();
+        offerService.clearRemovedOffers();
+        userService.clearRemovedUsers();
 
         LOGGER.info("Database cleared successfully at {}", LocalDateTime.now());
     }
