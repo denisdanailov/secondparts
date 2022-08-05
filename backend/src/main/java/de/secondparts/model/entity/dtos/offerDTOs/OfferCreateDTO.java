@@ -4,20 +4,30 @@ package de.secondparts.model.entity.dtos.offerDTOs;
 import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class OfferCreateDTO {
 
+    @NotBlank
+    @Size(max = 50)
     private String title;
 
+    @NotBlank
     private BigDecimal price;
 
+    @NotBlank
     private EngineEnum engine;
 
+    @NotBlank
     private TransmissionEnum transmission;
 
+    @NotBlank
+    @Size(max = 50)
     private String vehicleIdentificationNumber;
 
+    @NotBlank
     private Integer year;
 
     private Integer kilometers;
@@ -26,8 +36,10 @@ public class OfferCreateDTO {
 
     private String description;
 
+    @NotBlank
     private String category;
 
+    @NotBlank
     private String model;
 
     private Long sellerId;
