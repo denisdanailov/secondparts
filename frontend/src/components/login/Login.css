@@ -24,7 +24,7 @@
   background: #f8f9fa;
   font-weight: bold;
   color: #383d41;
-  margin-top: 30%;
+
   margin-bottom: 3%;
   cursor: pointer;
 }
@@ -116,7 +116,7 @@
 
 .login_section {
   position: relative;
-  height: 100vh;
+  min-height: 750px;
   background-color: #d9d9d9;
 }
 
@@ -186,6 +186,22 @@
 
 .btn-login:hover {
   background-color: #383d41;
+}
+
+.btn-login-delete:hover {
+  background-color: rgb(184, 12, 12);
+}
+
+.btn-login-delete {
+  margin-top: 2%;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 2%;
+  background: red;
+  color: #fff;
+  font-weight: 600;
+  width: 98%;
+  cursor: pointer;
 }
 
 .reg-verlink {

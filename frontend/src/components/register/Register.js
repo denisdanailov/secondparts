@@ -26,6 +26,18 @@ export const Register = () => {
     }
   };
 
+  const handleBlurPassword = (event) => {
+    if (event.target.value.length < 6) {
+      return setError(
+        <Stack sx={{ width: "100%", p: 2 }} spacing={2}>
+          <Alert severity="error">Password musst containt 6 charachters</Alert>
+        </Stack>
+      );
+    } else {
+      setError("");
+    }
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -132,6 +144,7 @@ export const Register = () => {
                         className="form-control"
                         placeholder="* Password"
                         required
+                        onBlur={handleBlurPassword}
                       />
                     </div>
                   </div>

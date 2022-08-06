@@ -18,13 +18,13 @@
 }
 .register-left input {
   border: none;
-  border-radius: 1.5rem;
+  border-radius: 0.25rem;
   padding: 2%;
   width: 60%;
   background: #f8f9fa;
   font-weight: bold;
   color: #383d41;
-  margin-top: 30%;
+
   margin-bottom: 3%;
   cursor: pointer;
 }
@@ -116,7 +116,7 @@
 
 .register_section {
   position: relative;
-  height: 100vh;
+  min-height: 750px;
   background-color: #d9d9d9;
 }
 
