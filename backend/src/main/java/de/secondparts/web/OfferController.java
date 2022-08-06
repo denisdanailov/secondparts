@@ -108,6 +108,8 @@ public class OfferController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> createOffer(@Valid @RequestBody OfferCreateDTO offerCreateDTO) {
 
+        System.out.println(offerCreateDTO);
+
         try {
             offerService.createOffer(offerCreateDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

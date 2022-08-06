@@ -3,8 +3,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
-import OfferService from "../../services/offer.service";
-import ModelService from "../../services/models.service";
+import OfferService from "../../../services/offer.service";
+import ModelService from "../../../services/models.service";
 
 export const OfferEdit = ({ onClose, offer, onChange }) => {
   const [transmissions, setTransmissions] = useState([]);
@@ -128,6 +128,7 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                       placeholder="Product Title *"
                       name="title"
                       defaultValue={offer.data.title}
+                      required
                     />
                   </div>
                   <div className="form-group-1">
@@ -136,7 +137,9 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                       className="form-control"
                       placeholder="Suggested price *"
                       name="price"
+                      min="1"
                       defaultValue={offer.data.price}
+                      required
                     />
                   </div>
                   <div className="form-group-1">
@@ -260,15 +263,18 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                       className="form-control"
                       placeholder="Vehicle Identification Number *"
                       defaultValue={offer.data.vehicleIdentificationNumber}
+                      required
                     />
                   </div>
                   <div className="form-group-1">
                     <input
-                      type="text"
+                      type="number"
                       name="year"
+                      min="1877"
                       className="form-control"
                       placeholder="Year *"
                       defaultValue={offer.data.year}
+                      required
                     />
                   </div>
                   <div className="form-group-1">
@@ -282,8 +288,9 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                   </div>
                   <div className="form-group-1">
                     <input
-                      type="text"
+                      type="number"
                       name="kilometers"
+                      min="1"
                       className="form-control"
                       placeholder="Kilometers"
                       defaultValue={offer.data.kilometers}

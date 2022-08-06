@@ -1,7 +1,12 @@
-import AuthService from "../../services/auth.service";
+import { Link } from "react-router-dom";
+
+import AuthService from "../../../services/auth.service";
 import { OfferActions } from "./OfferListConstants";
 
 export const OfferView = ({ offer, onActionClick }) => {
+  const BLANK_OFFER_URL =
+    "https://res.cloudinary.com/diozchjq4/image/upload/v1659788464/secondparts-blankimges/no-img_ax6rdv.png";
+
   const currentUserId = AuthService.getUserId();
   const admin = AuthService.getAdmin();
 
@@ -13,7 +18,7 @@ export const OfferView = ({ offer, onActionClick }) => {
         ""
       )}
       <div className="product-tumb">
-        <img src={offer.imageUrl} alt="offer-img" />
+        <img src={offer.imageUrl || BLANK_OFFER_URL} alt="offer-img" />
       </div>
       <div className="product-details">
         <span className="product-catagory">
@@ -73,9 +78,12 @@ export const OfferView = ({ offer, onActionClick }) => {
 
             return (
               <div className="product-links">
-                <a href="/">
-                  <i className="fa fa-shopping-cart"></i>
-                </a>
+                <Link
+                  className="btn-item auction-btn mr-2"
+                  to={`/offer/details/${offer.id}`}
+                >
+                  <input type="submit" value="Details" className="btn-login" />
+                </Link>
               </div>
             );
           })()}

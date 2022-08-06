@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import OfferService from "../../services/offer.service";
+import OfferService from "../../../services/offer.service";
 
 export const OfferDelete = ({ offer, onClose, deleteHandler }) => {
   const onDelete = () => {
@@ -30,16 +30,21 @@ export const OfferDelete = ({ offer, onClose, deleteHandler }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Close</Button>
-          <Button
+          <input
+            type="submit"
+            value="Close"
+            className="btn-login"
+            onClick={onClose}
+          />
+          <input
+            type="submit"
+            value="Delete"
+            className="btn-login-delete"
             onClick={() => {
               onDelete();
               deleteHandler(offer.data.id);
             }}
-            autoFocus
-          >
-            Delete
-          </Button>
+          />
         </DialogActions>
       </Dialog>
     </div>

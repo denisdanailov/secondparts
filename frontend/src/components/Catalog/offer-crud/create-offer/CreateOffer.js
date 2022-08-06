@@ -5,11 +5,11 @@ import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 
-import OfferService from "../../services/offer.service";
-import ModelService from "../../services/models.service";
+import OfferService from "../../../../services/offer.service";
+import ModelService from "../../../../services/models.service";
 import "./CreateOffer.css";
 
-import AuthService from "../../services/auth.service";
+import AuthService from "../../../../services/auth.service";
 
 export const CreateOffer = () => {
   const [transmissions, setTransmissions] = useState([]);
@@ -192,6 +192,7 @@ export const CreateOffer = () => {
                         className="form-control"
                         placeholder="* Suggested price"
                         name="price"
+                        min="1"
                         required
                       />
                     </div>
@@ -328,6 +329,7 @@ export const CreateOffer = () => {
                       <input
                         type="number"
                         name="year"
+                        min="1788"
                         className="form-control"
                         placeholder="* Year"
                         required
@@ -344,6 +346,7 @@ export const CreateOffer = () => {
                     <div className="form-group-1">
                       <input
                         type="number"
+                        min="1"
                         name="kilometers"
                         className="form-control"
                         placeholder="Kilometers"
@@ -357,7 +360,11 @@ export const CreateOffer = () => {
                         name="description"
                       />
                     </div>
-                    <input type="submit" className="btnRegister" />
+                    <input
+                      type="submit"
+                      value="Create offer"
+                      className="btnRegister"
+                    />
                   </div>
                 </div>
               </form>

@@ -4,44 +4,49 @@ import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class OfferEditDTO {
 
+    @NotNull
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     private String title;
 
-    @NotBlank
+    @NotNull
+    @Positive
     private BigDecimal price;
 
-    @NotBlank
+    @NotNull
     private EngineEnum engine;
 
-    @NotBlank
+    @NotNull
     private TransmissionEnum transmission;
 
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     private String vehicleIdentificationNumber;
 
-    @NotBlank
+    @NotNull
+    @Positive
     private Integer year;
 
+    @Positive
     private Integer kilometers;
 
     private String imageUrl;
 
     private String description;
 
-    @NotBlank
+    @NotNull
     private String category;
 
-    @NotBlank
+    @NotNull
     private String model;
 
     private Long sellerId;

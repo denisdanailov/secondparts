@@ -5,10 +5,11 @@
 }
 .create-steps {
   font-size: 17px;
+  color: black;
 }
 
 .register {
-  background: #a69f8a;
+  background: #d9d9d9;
   padding: 3%;
 }
 .register-left {
@@ -18,16 +19,21 @@
 }
 .register-left input {
   border: none;
-  border-radius: 1.5rem;
+  border-radius: 0.25rem;
   padding: 2%;
   width: 60%;
-  background: #f8f9fa;
+  background: #383d41;
   font-weight: bold;
-  color: #383d41;
-  margin-top: 30%;
+  color: #f8f9fa;
+
   margin-bottom: 3%;
   cursor: pointer;
 }
+
+.register-left input:hover {
+  background-color: #495057;
+}
+
 .register-right {
   background: #f8f9fa;
   border-top-left-radius: 10% 50%;
@@ -73,13 +79,17 @@
   float: right;
   margin-top: 10%;
   border: none;
-  border-radius: 1.5rem;
+  border-radius: 0.25rem;
   padding: 2%;
-  background: #0062cc;
-  color: #fff;
+  background: #383d41;
+  color: #f8f9fa;
   font-weight: 600;
   width: 50%;
   cursor: pointer;
+}
+
+.btnRegister:hover {
+  background-color: #495057;
 }
 .register .nav-tabs {
   margin-top: 3%;
@@ -111,5 +121,7 @@
   text-align: center;
   margin-top: 8%;
   margin-bottom: -15%;
-  color: #495057;
+  color: black;
+
+  font-weight: 600;
 }

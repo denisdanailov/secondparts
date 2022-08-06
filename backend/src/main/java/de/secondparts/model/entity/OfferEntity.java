@@ -5,6 +5,7 @@ import de.secondparts.model.enums.EngineEnum;
 import de.secondparts.model.enums.TransmissionEnum;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 @Entity
@@ -31,6 +32,7 @@ public class OfferEntity extends BaseEntity {
     @Column(nullable = false)
     private Integer year;
 
+    @Positive
     private Integer kilometers;
 
     private String imageUrl;
