@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import UserService from "../../services/admin.service";
 import "./AdminPanel.css";
+
+import { useState, useEffect } from "react";
 
 import { UserItem } from "../../components/admin-panel/user-crud/UserItem";
 import { UserActions } from "./user-crud/UserListConstants";
@@ -9,7 +9,7 @@ import { UserDelete } from "./user-crud/UserDelte";
 import { UserEdit } from "./user-crud/UserEdit";
 import { UserCreate } from "./user-crud/UserCreate";
 
-import Button from "@mui/material/Button";
+import UserService from "../../services/admin.service";
 
 export const AdminPanel = () => {
   const [users, setUsers] = useState([]);

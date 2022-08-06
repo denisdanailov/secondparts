@@ -30,17 +30,22 @@ export const UserDelete = ({ user, onClose, deleteHandler }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Close</Button>
-          <Button
+          <input
+            type="submit"
+            value="Close"
+            className="btn-login"
+            onClick={onClose}
+          />
+          <input
+            type="submit"
+            value="Delete"
+            className="btn-login-delete"
             onClick={() => {
               onDelete();
               deleteHandler(user.data.id);
               onClose();
             }}
-            autoFocus
-          >
-            Delete
-          </Button>
+          />
         </DialogActions>
       </Dialog>
     </div>

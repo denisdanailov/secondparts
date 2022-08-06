@@ -13,7 +13,7 @@ import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
 import { AdminPanel } from "./components/admin-panel/AdminPanel";
-import { CreateOffer } from "./components/create-offer/CreateOffer";
+import { CreateOffer } from "./components/catalog/offer-crud/create-offer/CreateOffer";
 import { ModelViewAudi } from "./components/car-models/ModelViewAudi";
 import { ModelViewVw } from "./components/car-models/ModelViewVw";
 import { ModelViewMercedesBenz } from "./components/car-models/ModelViewMercedesBenz";
@@ -23,6 +23,7 @@ import { ModelViewOpel } from "./components/car-models/ModelViewOpel";
 import { Logout } from "./components/Logout";
 import { Checkout } from "./components/checkout/Checkout";
 import { Search } from "./components/search/Search";
+import { OfferDetails } from "./components/catalog/offer-crud/offer-details/OfferDetails";
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/models/opel" element={<ModelViewOpel />} />
           <Route path="/models/porsche" element={<ModelViewPorsche />} />
           <Route path="/search" element={<Search />} />
+          <Route exact path="offer/details/:id" element={<OfferDetails />} />
           <Route
             path="/checkout"
             element={

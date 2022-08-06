@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import OfferService from "../../services/offer.service";
-import { OfferActions } from "./OfferListConstants";
-import { OfferDelete } from "./OfferDelete";
-import { OfferEdit } from "./OfferEdit";
+import { OfferActions } from "./offer-crud/OfferListConstants";
+import { OfferDelete } from "./offer-crud/OfferDelete";
+import { OfferEdit } from "./offer-crud/OfferEdit";
 import "./Catalog.css";
 
-import { OfferView } from "./OfferView";
+import { OfferView } from "./offer-crud/OfferView";
 
 export function Catalog() {
   const [offers, setOffers] = useState([]);
@@ -53,16 +53,17 @@ export function Catalog() {
           onChange={onChangeHandler}
         />
       )}
-
-      <div className="container mt-100">
-        <div className="row">
-          {offers.map((offer) => (
-            <OfferView
-              offer={offer}
-              key={offer.id}
-              onActionClick={userActionClickHandler}
-            />
-          ))}
+      <div className="catalog-section">
+        <div className="container mt-100">
+          <div className="row">
+            {offers.map((offer) => (
+              <OfferView
+                offer={offer}
+                key={offer.id}
+                onActionClick={userActionClickHandler}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

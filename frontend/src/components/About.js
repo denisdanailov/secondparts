@@ -19,8 +19,16 @@ export const About = () => {
                 as University Project. SecondParts wanted to make it cheap and
                 convenient for the customer to find the right used spare parts
                 in one and the same marketplace.
+                <br />
+                <br />
+                At SecondParts, you can find over 1,500 different auto parts for
+                the most popular car brands in Germany. We have the strongest
+                network of suppliers in all of Europe, which gives us an
+                extensive range of quality auto parts. We exclusively sell
+                second-hand and refurbished replacement parts of the highest
+                quality, meaning that you can buy second-hand replacement parts
+                for your car from us with confidence. It is safe, and easy.
               </p>
-              <a href="/"> Read More </a>
             </div>
           </div>
         </div>

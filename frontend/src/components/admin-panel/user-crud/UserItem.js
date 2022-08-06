@@ -2,7 +2,7 @@ import { UserActions } from "./UserListConstants";
 
 export const UserItem = ({ user, onActionClick }) => {
   const BLANK_PROFIL_URL =
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+    "https://res.cloudinary.com/diozchjq4/image/upload/v1659788286/secondparts-blankimges/blank-profil_jtwg3q.webp";
 
   return (
     <>
