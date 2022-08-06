@@ -50,6 +50,10 @@ body {
   align-items: flex-start;
 }
 
+.detail-box p {
+  font-size: 16px;
+}
+
 .heading_container h2 {
   position: relative;
   font-weight: bold;
@@ -93,9 +97,6 @@ a:focus {
 .searchBtn:hover {
   background-color: rgb(142, 139, 139);
   color: white;
-}
-
-.search-col {
 }
 
 .btn,
@@ -502,6 +503,7 @@ a:focus {
 
 .about_section {
   color: black;
+  min-height: 800px;
 }
 
 .about_section .row {
@@ -574,14 +576,14 @@ a:focus {
   margin-top: 45px;
   padding: 15px;
   border-radius: 10px;
-  -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25),
-    -2px -2px 3px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25),
-    -2px -2px 3px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border: 1px solid rgb(176, 176, 176);
   position: relative;
   overflow: hidden;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  cursor: pointer;
+  max-height: 250px;
 }
 
 .feature_section .box .img-box {
@@ -620,13 +622,7 @@ a:focus {
 }
 
 .feature_section .box:hover {
-  background-color: #3b4a6b;
-  color: #ffffff;
-}
-
-.feature_section .box:hover img {
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  background-color: #cecfd1;
 }
 
 .feature_section .btn-box {
@@ -658,7 +654,7 @@ a:focus {
 
 .contact_section {
   position: relative;
-  height: 60vh;
+  min-height: 800px;
 }
 
 .contact_section .row {
@@ -730,7 +726,8 @@ a:focus {
 /* Search */
 
 .search-container {
-  height: 100vh;
+  height: auto;
+  min-height: 700px;
 }
 
 .card-search {
@@ -764,6 +761,14 @@ a:focus {
   margin-bottom: 0;
 }
 /* End Search */
+
+/* Catalog */
+
+.catalog-section {
+  min-height: 750px;
+}
+
+/* End Catalog */
 
 .client_section .box {
   display: -webkit-box;
@@ -848,6 +853,9 @@ a:focus {
   background-color: #0d0d0d;
   color: #ffffff;
   padding-top: 60px;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer_section h4 {
