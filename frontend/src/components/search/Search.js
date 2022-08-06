@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { OfferView } from "../catalog/OfferView";
+import { OfferView } from "../catalog/offer-crud/OfferView";
 import OfferService from "../../services/offer.service";
 
 export const Search = () => {
@@ -57,7 +57,7 @@ export const Search = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-100">
+      <div className="container-md">
         <div className="row">
           {offers.length !== 0 ? (
             offers.map((offer) => <OfferView offer={offer} key={offer.id} />)
