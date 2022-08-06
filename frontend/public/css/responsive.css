@@ -43,6 +43,11 @@
     margin-bottom: 10px;
   }
 
+  .login-img-r,
+  .register-img-r {
+    display: none;
+  }
+
   .searchBtn {
     margin-top: 10px;
   }

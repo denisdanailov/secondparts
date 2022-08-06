@@ -4,8 +4,8 @@ import { GuestRoute } from "./routing/GuestRoute";
 import { LoggedUserRoute } from "./routing/LoggedUserRoute";
 import { ProtectedRoute } from "./routing/ProtectedRoute";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
+import { Login } from "./components/login/Login";
+import { Register } from "./components/register/Register";
 import { Catalog } from "./components/catalog/Catalog";
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
@@ -23,6 +23,7 @@ import { ModelViewOpel } from "./components/car-models/ModelViewOpel";
 import { Logout } from "./components/Logout";
 import { Checkout } from "./components/checkout/Checkout";
 import { Search } from "./components/search/Search";
+
 export default function App() {
   return (
     <>

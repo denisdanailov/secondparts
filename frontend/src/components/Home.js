@@ -1,7 +1,7 @@
 import { Slider } from "./Slider";
 import { Brands } from "./Brands";
 import { Category } from "./categories/Category";
-import { Clients } from "./testimonial/Clients";
+import { Steps } from "./steps/Steps";
 
 export const Home = () => {
   return (
@@ -9,7 +9,7 @@ export const Home = () => {
       <Slider />
       <Brands />
       <Category />
-      <Clients />
+      <Steps />
     </div>
   );
 };

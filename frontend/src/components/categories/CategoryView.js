@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import OfferService from "../../services/offer.service";
 
 export const CategoryView = ({ category }) => {
-  console.log(category);
   return (
     <div className="col-sm-6 col-lg-4">
       <div className="box">
