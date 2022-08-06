@@ -101,47 +101,45 @@ public class AdminPanelController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<UserViewDTO> editUser(@Valid @PathVariable("id") Long id, @RequestBody UserViewDTO userViewDTO ) {
+    public ResponseEntity<MessageResponse> editUser(@Valid @PathVariable("id") Long id, @RequestBody UserEditDTO userEditDTO ) {
 
         UserEntity userToEdit = userService.findById(id).orElse(null);
         UserEditDTO editedUser = new UserEditDTO();
 
+        System.out.println(userEditDTO);
+
         if (userToEdit != null) {
-            editedUser.setFirstName(userViewDTO.getFirstName());
-            editedUser.setLastName(userViewDTO.getLastName());
+            editedUser.setFirstName(userEditDTO.getFirstName());
+            editedUser.setLastName(userEditDTO.getLastName());
 
 //          Check if Username is not exists in DataBase, because usernames is unique.
-            if (!userToEdit.getUsername().equals(userViewDTO.getUsername())) {
-                Optional<UserViewDTO> byUsername = userService.findByUsername(userViewDTO.getUsername()).map(userEntity -> {
-                    return this.modelMapper.map(userEntity, UserViewDTO.class);
-                });
-
-                if (byUsername.isPresent()) {
-                    return new ResponseEntity<>(HttpStatus.CONFLICT);
-                }
+            if (userService.existsByUsername(userEditDTO.getUsername()) &&
+                    !userToEdit.getUsername().equals(userEditDTO.getUsername())) {
+                return ResponseEntity
+                        .badRequest()
+                        .body(new MessageResponse("Error: Username is already taken!"));
             }
-            editedUser.setUsername(userViewDTO.getUsername());
+            editedUser.setUsername(userEditDTO.getUsername());
 
 //          Check if Email is not exists in DataBase, because Email is unique.
-            if (!userToEdit.getEmail().equals(userViewDTO.getEmail())) {
-                Optional<UserViewDTO> byEmail = userService.findByEmail(userViewDTO.getEmail()).map(userEntity -> {
-                    return this.modelMapper.map(userEntity, UserViewDTO.class);
-                });
-
-                if (byEmail.isPresent()) {
-                    return new ResponseEntity<>(HttpStatus.CONFLICT);
-                }
+            if (userService.existsByEmail(userEditDTO.getEmail()) &&
+                    !userToEdit.getEmail().equals(userEditDTO.getEmail())) {
+                return ResponseEntity
+                        .badRequest()
+                        .body(new MessageResponse("Error: Email is already in use!"));
             }
-            editedUser.setEmail(userViewDTO.getEmail());
+            editedUser.setEmail(userEditDTO.getEmail());
 
 //          set Password by Default, because Admin cannot edit a users passwords.
-            editedUser.setPassword(userViewDTO.getPassword());
+            editedUser.setPassword(userEditDTO.getPassword());
 
-            editedUser.setImageUrl(userViewDTO.getImageUrl());
+            editedUser.setImageUrl(userEditDTO.getImageUrl());
+        } else {
+            return ResponseEntity.ok(new MessageResponse("User not exists!"));
         }
-        adminService.editUser(id, editedUser);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        adminService.editUser(id, editedUser);
+        return ResponseEntity.ok(new MessageResponse("User edited successfully!"));
     }
 
 
