@@ -67,16 +67,15 @@ public class AdminServiceImpl implements AdminService {
 
                 offerRepository.saveAll(deactivateOffers);
 
-                userRepository.save(userToDelete.get());
-            }
 
-//            offerRepository.clearRemovedOffers();
+            }
+            userRepository.save(userToDelete.get());
+
         }
     }
 
     @Override
     public void editUser(Long id, UserEditDTO userEditDTO) {
-//        TODO: Check return type void, UserEditDTO, or Boolean ?
 
         UserEntity user = userRepository.findById(id).orElse(null);
 

@@ -19,7 +19,7 @@ import java.util.Set;
 public class UserEntity extends BaseEntity {
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min= 5, max = 20)
     private String username;
 
     @NotBlank
@@ -28,7 +28,7 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     @NotBlank
-    @Size(max = 120)
+    @Size(min= 6, max = 120)
     private String password;
 
     private String firstName;

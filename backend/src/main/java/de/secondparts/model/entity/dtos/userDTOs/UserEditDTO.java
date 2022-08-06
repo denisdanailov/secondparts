@@ -1,18 +1,19 @@
 package de.secondparts.model.entity.dtos.userDTOs;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UserEditDTO {
 
+    @NotNull
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Size(min = 3, max = 20)
     private String username;
 
-    @NotBlank
+    @NotNull
     @Size(max = 50)
     @Email
     private String email;
@@ -21,6 +22,7 @@ public class UserEditDTO {
 
     private String lastName;
 
+    @NotNull
     private String password;
 
     private String imageUrl;
