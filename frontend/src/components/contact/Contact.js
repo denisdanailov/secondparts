@@ -44,7 +44,7 @@ export const Contact = () => {
           <div className="col-md-6">
             <div className="img-box">
               <img
-                src="https://res.cloudinary.com/diozchjq4/image/upload/v1659902793/cars/mercedes-car-1_ixzkql.png"
+                src="https://res.cloudinary.com/diozchjq4/image/upload/v1659906847/cars/mercedes-benz/kisspng-mercedes-benz-m-class-sport-utility-vehicle-merced-mercedes-5b50c3565c8111.8684943315320195423789_sjaglf.png"
                 alt=""
               />
             </div>

@@ -101,7 +101,7 @@ export const Login = () => {
             <div className="img-box">
               <img
                 className="login-img-r"
-                src="images/mercedes-car-1.png"
+                src="https://res.cloudinary.com/diozchjq4/image/upload/v1659902793/cars/mercedes-car-1_ixzkql.png"
                 alt="login-img"
               />
             </div>

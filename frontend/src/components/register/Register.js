@@ -205,7 +205,7 @@ export const Register = () => {
             <div className="img-box">
               <img
                 className="register-img-r"
-                src="images/mercedes-car-1.png"
+                src="https://res.cloudinary.com/diozchjq4/image/upload/v1659902793/cars/mercedes-car-1_ixzkql.png"
                 alt="reg-img"
               />
             </div>
