@@ -51,6 +51,16 @@ export const OfferView = ({ offer, onActionClick }) => {
                   <a onClick={() => onActionClick(offer.id, OfferActions.Edit)}>
                     <i className="fa fa-edit"></i>
                   </a>
+                  <Link
+                    className="btn-item auction-btn mr-2"
+                    to={`/offer/details/${offer.id}`}
+                  >
+                    <input
+                      type="submit"
+                      value="Details"
+                      className="btn-login"
+                    />
+                  </Link>
                 </div>
               );
             }
