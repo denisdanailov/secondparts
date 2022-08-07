@@ -1,4 +1,5 @@
 # secondparts-app
+Аpplication for buying and selling for used car parts.
 
 
 ### Technology Stack
