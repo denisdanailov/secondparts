@@ -51,12 +51,16 @@ export const OfferDetails = () => {
               </h5>
             </div>
             <div className="product-price-btn">
-              <input type="submit" value="Add to Card" className="btn-login" />
+              <div className="checkout-btn">
+                <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                <span>Add to Bag</span>
+              </div>
+
               <Link to="/catalog">
                 <input
                   type="submit"
                   value="&#8249; Back to Catalog"
-                  className="btn-login"
+                  className="btn-back"
                 />
               </Link>
             </div>

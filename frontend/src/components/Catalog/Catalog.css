@@ -37,13 +37,14 @@ a {
   align-items: center;
   justify-content: center;
   height: 300px;
-  padding: 50px;
+
   background: #f0f0f0;
 }
 
 .product-tumb img {
   max-width: 100%;
   max-height: 100%;
+  object-fit: cover;
 }
 
 .product-details {
@@ -55,7 +56,7 @@ a {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ccc;
+  color: black;
   margin-bottom: 18px;
 }
 
@@ -93,8 +94,12 @@ a {
 
 .product-price {
   font-size: 18px;
-  color: #fbb72c;
+  color: rgb(88, 86, 86);
   font-weight: 600;
+}
+
+.product-price span {
+  color: red;
 }
 
 .product-price small {
@@ -115,6 +120,7 @@ a {
   color: #e1e1e1;
   transition: 0.3s;
   font-size: 17px;
+  cursor: pointer;
 }
 
 .product-links a:hover {

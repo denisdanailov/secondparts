@@ -10,6 +10,8 @@ export const OfferView = ({ offer, onActionClick }) => {
   const currentUserId = AuthService.getUserId();
   const admin = AuthService.getAdmin();
 
+  console.log(offer.category.name);
+
   return (
     <div className="product-card">
       {currentUserId === offer.seller.id ? (
@@ -24,21 +26,17 @@ export const OfferView = ({ offer, onActionClick }) => {
         <span className="product-catagory">
           {offer.model.brand.name} ,{offer.model.name}
         </span>
-        <h4>{offer.title}</h4>
 
+        <h4>{offer.title}</h4>
+        <p>Category: {offer.category.name}</p>
         <p>{offer.description}</p>
-        <details>
-          <summary>Details</summary>
-          <p>Category: {offer.category.name}</p>
-          <p>Year: {offer.year}</p>
-          <p>Engine: {offer.engine}</p>
-          <p>Transmission: {offer.transmission}</p>
-          <p>Kilometers: {offer.kilometers}</p>
-          <p>ID Nummber: {offer.vehicleIdentificationNumber}</p>
-          <p>Seller: {offer.seller.firstName}</p>
-        </details>
+
+        <p>Seller: {offer.seller.firstName}</p>
+
         <div className="product-bottom-details">
-          <div className="product-price">$ {offer.price}</div>
+          <div className="product-price">
+            Price:<span> {offer.price} € </span>
+          </div>
           {(() => {
             if (currentUserId === offer.seller.id) {
               return (
@@ -58,7 +56,7 @@ export const OfferView = ({ offer, onActionClick }) => {
                     <input
                       type="submit"
                       value="Details"
-                      className="btn-login"
+                      className="btn-details"
                     />
                   </Link>
                 </div>
@@ -88,11 +86,12 @@ export const OfferView = ({ offer, onActionClick }) => {
 
             return (
               <div className="product-links">
-                <Link
-                  className="btn-item auction-btn mr-2"
-                  to={`/offer/details/${offer.id}`}
-                >
-                  <input type="submit" value="Details" className="btn-login" />
+                <Link to={`/offer/details/${offer.id}`}>
+                  <input
+                    type="submit"
+                    value="Details"
+                    className="btn-details"
+                  />
                 </Link>
               </div>
             );

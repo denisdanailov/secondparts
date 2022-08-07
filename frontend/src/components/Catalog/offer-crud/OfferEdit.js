@@ -305,7 +305,7 @@ export const OfferEdit = ({ onClose, offer, onChange }) => {
                       defaultValue={offer.data.description}
                     />
                   </div>
-                  <input type="submit" className="btnRegister" />
+                  <input type="submit" value="Save" className="btnRegister" />
                 </div>
               </div>
             </form>

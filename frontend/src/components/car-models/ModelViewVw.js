@@ -13,19 +13,26 @@ export const ModelViewVw = () => {
   }, []);
 
   return (
-    <div className="container py-5">
-      <div className="row text-center text-white mb-5">
-        <div className="col-lg-7 mx-auto">
-          <h1 className="display-4">Product List</h1>
+    <div className="catalog-section">
+      <div className="container mt-100">
+        <div className="heading_container heading_center">
+          <div className="img-box">
+            <img
+              src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564730/brands-seconsparts/vw-logo1_hurg1g.png"
+              alt=""
+            />
+          </div>
+          <p>
+            Volkswagen, abbreviated VW, is a German automobile brand, one of
+            many belonging to the Volkswagen AG group. It is headquartered in
+            Wolfsburg. The group's main market is China, which generates 40% of
+            sales and revenue
+          </p>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-8 mx-auto">
-          <ul key={models.id} className="list-group shadow">
-            {models.map((models) => (
-              <ModelItem models={models} />
-            ))}
-          </ul>
+        <div className="row">
+          {models.map((models) => (
+            <ModelItem key={models.id} models={models} />
+          ))}
         </div>
       </div>
     </div>

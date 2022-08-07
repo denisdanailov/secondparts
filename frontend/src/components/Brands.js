@@ -13,7 +13,7 @@ export const Brands = () => {
 
   return (
     <section className="shop_section layout_padding">
-      <div className="container">
+      <div className="container mt-100">
         <div className="heading_container heading_center">
           <h2>Brands with we work</h2>
           <p>
@@ -87,7 +87,10 @@ export const Brands = () => {
             <div className="box">
               <Link to="/models/opel">
                 <div className="img-box">
-                  <img src="images/opel-logo1.png" alt="" />
+                  <img
+                    src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564729/brands-seconsparts/opel-logo1_tu3qnz.png"
+                    alt=""
+                  />
                 </div>
               </Link>
             </div>

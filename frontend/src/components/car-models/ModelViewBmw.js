@@ -13,19 +13,25 @@ export const ModelViewBmw = () => {
   }, []);
 
   return (
-    <div className="container py-5">
-      <div className="row text-center text-white mb-5">
-        <div className="col-lg-7 mx-auto">
-          <h1 className="display-4">Product List</h1>
+    <div className="catalog-section">
+      <div className="container mt-100">
+        <div className="heading_container heading_center">
+          <div className="img-box">
+            <img
+              src="https://res.cloudinary.com/diozchjq4/image/upload/v1659564729/brands-seconsparts/bmw-logo1_tbwwrg.png"
+              alt=""
+            />
+          </div>
+          <p>
+            BMW is a German company active in the manufacture and sale of motor
+            vehicles, spare parts and accessories for motor vehicles,
+            engineering products and related services.
+          </p>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-8 mx-auto">
-          <ul key={models.id} className="list-group shadow">
-            {models.map((models) => (
-              <ModelItem models={models} />
-            ))}
-          </ul>
+        <div className="row">
+          {models.map((models) => (
+            <ModelItem key={models.id} models={models} />
+          ))}
         </div>
       </div>
     </div>

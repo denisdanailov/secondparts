@@ -14,13 +14,15 @@ export const MoreProducts = ({ params }) => {
 
   return (
     <>
-      <div className="more-products-wrapper">
-        {offers
-          .splice(0, 3)
-          .filter((offers) => offers.id !== Number(params.id))
-          .map((offer) => (
-            <MoreProductView key={offer.id} offer={offer} />
-          ))}
+      <div className="container mt-100r">
+        <div class="row">
+          {offers
+            .splice(0, 3)
+            .filter((offers) => offers.id !== Number(params.id))
+            .map((offer) => (
+              <MoreProductView key={offer.id} offer={offer} />
+            ))}
+        </div>
       </div>
     </>
   );

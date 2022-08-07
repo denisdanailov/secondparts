@@ -231,3 +231,12 @@
   height: 35px;
 }
 /* ------testimonial  close-------*/
+
+.img-steps img {
+  width: 200px;
+}
+
+.img-steps h4 {
+  color: white;
+  font-weight: bold;
+}

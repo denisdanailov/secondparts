@@ -50,6 +50,10 @@ body {
   align-items: flex-start;
 }
 
+.heading_container img {
+  max-width: 200px;
+}
+
 .detail-box p {
   font-size: 16px;
 }
