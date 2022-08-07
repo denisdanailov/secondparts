@@ -6,8 +6,6 @@ import OfferService from "../../../services/offer.service";
 export const MoreProducts = ({ params }) => {
   const [offers, setoffers] = useState([]);
 
-  console.log(params);
-
   useEffect(() => {
     OfferService.getAllOffers().then((offer) => setoffers(offer.data));
   }, []);
@@ -15,7 +13,7 @@ export const MoreProducts = ({ params }) => {
   return (
     <>
       <div className="container mt-100r">
-        <div class="row">
+        <div className="row">
           {offers
             .splice(0, 3)
             .filter((offers) => offers.id !== Number(params.id))

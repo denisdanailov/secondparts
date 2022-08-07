@@ -20,6 +20,14 @@ a {
   background: #fafafa;
 }
 
+.product-card-models {
+  width: 380px;
+  position: relative;
+  box-shadow: 0 2px 7px #dfdfdf;
+  margin: 20px auto;
+  background: #fafafa;
+}
+
 .badge {
   position: absolute;
   left: 0;
@@ -27,9 +35,9 @@ a {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
-  background: red;
+  background: #990516;
   color: #fff;
-  padding: 3px 10px;
+  padding: 5px 10px;
 }
 
 .product-tumb {
@@ -99,7 +107,7 @@ a {
 }
 
 .product-price span {
-  color: red;
+  color: #990516;
 }
 
 .product-price small {

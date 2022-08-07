@@ -15,44 +15,45 @@ export const OfferDetails = () => {
   }, []);
 
   return (
-    <div className="offers-details">
-      <div className="details-wrapper">
-        <div className="wrapper">
-          <div className="product-img">
+    <div classNameName="offers-details">
+      <div classNameName="details-wrapper">
+        <div classNameName="wrapper">
+          <div classNameName="product-img">
             <img src={offer.imageUrl} height="420" width="327" />
           </div>
-          <div className="product-info">
-            <div className="product-title">
+          <div classNameName="product-info">
+            <div classNameName="product-title">
               <h1>{offer.title}</h1>
             </div>
-            <div className="product-text">
+            <div classNameName="product-text">
               <h5>
-                <span class="bold">Year: </span>
+                <span className="bold">Year: </span>
                 {offer.year}
               </h5>
               <h5>
-                <span class="bold">Engine: </span> {offer.engine}
+                <span className="bold">Engine: </span> {offer.engine}
               </h5>
               <h5>
-                <span class="bold">Transmission: </span> {offer.transmission}
+                <span className="bold">Transmission: </span>{" "}
+                {offer.transmission}
               </h5>
               <h5>
-                <span class="bold">Kilometers: </span> {offer.kilometers}
+                <span className="bold">Kilometers: </span> {offer.kilometers}
               </h5>
               <h5>
-                <span class="bold">ID Nummber: </span>
+                <span className="bold">ID Nummber: </span>
                 {offer.vehicleIdentificationNumber}
               </h5>
               <p>
-                <span class="bold">Description: </span> {offer.description}
+                <span className="bold">Description: </span> {offer.description}
               </p>
               <h5>
-                <span class="bold">Price: </span> {offer.price}$
+                <span className="bold">Price: </span> {offer.price}$
               </h5>
             </div>
-            <div className="product-price-btn">
-              <div className="checkout-btn">
-                <i className="fa fa-cart-plus" aria-hidden="true"></i>
+            <div classNameName="product-price-btn">
+              <div classNameName="checkout-btn">
+                <i classNameName="fa fa-cart-plus" aria-hidden="true"></i>
                 <span>Add to Bag</span>
               </div>
 
@@ -60,15 +61,15 @@ export const OfferDetails = () => {
                 <input
                   type="submit"
                   value="&#8249; Back to Catalog"
-                  className="btn-back"
+                  classNameName="btn-back"
                 />
               </Link>
             </div>
           </div>
         </div>
       </div>
-      <div class="more-products">
-        <div class="heading_container heading_center">
+      <div className="more-products">
+        <div className="heading_container heading_center">
           <h2>More products</h2>
           <p>
             We work currently only with the most well-known German brands on the

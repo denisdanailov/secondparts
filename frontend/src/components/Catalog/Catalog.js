@@ -56,13 +56,19 @@ export function Catalog() {
       <div className="catalog-section">
         <div className="container mt-100">
           <div className="row">
-            {offers.map((offer) => (
-              <OfferView
-                offer={offer}
-                key={offer.id}
-                onActionClick={userActionClickHandler}
-              />
-            ))}
+            {offers.length != 0 ? (
+              offers.map((offer) => (
+                <OfferView
+                  offer={offer}
+                  key={offer.id}
+                  onActionClick={userActionClickHandler}
+                />
+              ))
+            ) : (
+              <div className="searchResult">
+                <p>No Results</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

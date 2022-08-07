@@ -54,6 +54,13 @@ body {
   max-width: 200px;
 }
 
+.detail-box-contact {
+  border: 1px solid rgb(209, 209, 209);
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
 .detail-box p {
   font-size: 16px;
 }
@@ -322,7 +329,7 @@ a:focus {
   -ms-flex-align: center;
   align-items: center;
   padding: 45px 0;
-  background-color: #a69f8a;
+  background-color: #595959;
   border-radius: 0 0 0 250px;
   background: #0d0d0d;
 }
@@ -364,12 +371,12 @@ a:focus {
 .slider_section .detail-box .btn-box .btn1 {
   display: inline-block;
   padding: 12px 15px;
-  background-color: #a69f8a;
+  background-color: #595959;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #a69f8a;
+  border: 1px solid #595959;
 }
 
 .slider_section .detail-box .btn-box .btn1:hover {
@@ -405,7 +412,7 @@ a:focus {
 .slider_section .carousel-indicators li.active {
   width: 23px;
   height: 23px;
-  background-color: #a69f8a;
+  background-color: #595959;
 }
 
 .shop_section .heading_container {
@@ -661,6 +668,11 @@ a:focus {
   min-height: 800px;
 }
 
+.contact-info li {
+  font-size: 17px;
+  padding: 5px;
+}
+
 .contact_section .row {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -860,6 +872,7 @@ a:focus {
   position: relative;
   bottom: 0px;
   width: 100%;
+  font-family: "Quicksand", sans-serif;
 }
 
 .footer_section h4 {
@@ -891,7 +904,7 @@ a:focus {
 }
 
 .footer_section .footer_contact .contact_link_box a:hover {
-  color: #f0d43a;
+  color: #595959;
 }
 
 .footer_section .footer_social {
@@ -923,13 +936,13 @@ a:focus {
 }
 
 .footer_section .footer_social a:hover {
-  color: #f0d43a;
+  color: #990516;
 }
 
 .footer_section form input {
   border: none;
   padding: 10px;
-  background-color: #4d618c;
+  background-color: #595959;
   width: 100%;
   height: 45px;
   color: #ffffff;
@@ -957,12 +970,12 @@ a:focus {
   text-align: center;
   display: inline-block;
   padding: 10px 55px;
-  background-color: #f0d43a;
+  background-color: #595959;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #f0d43a;
+  border: 1px solid #595959;
   margin-top: 15px;
 }
 

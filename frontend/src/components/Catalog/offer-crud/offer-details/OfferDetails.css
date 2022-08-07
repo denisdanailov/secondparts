@@ -126,7 +126,7 @@
   border: none;
   border-radius: 0.25rem;
   padding: 2%;
-  background: #a69f8a;
+  background: #595959;
   color: #fff;
   font-weight: 600;
   width: 98%;
@@ -134,7 +134,7 @@
 }
 
 .btn-back:hover {
-  background-color: #474747;
+  background-color: black;
 }
 
 .product-links .btn-details {
@@ -145,6 +145,11 @@
   padding: 3px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.btn-details:hover {
+  background-color: #595959;
+  color: white;
 }
 
 .checkout-btn {

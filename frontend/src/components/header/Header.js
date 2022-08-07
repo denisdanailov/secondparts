@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 export const Header = () => {
   const navigate = useNavigate();

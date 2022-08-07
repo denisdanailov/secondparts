@@ -1,4 +1,4 @@
-import { HeroSocial } from "./HeroSocial";
+import { HeroSocial } from "../hero/HeroSocial";
 export const Slider = () => {
   return (
     <div className="hero_area">

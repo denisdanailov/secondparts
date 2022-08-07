@@ -10,8 +10,6 @@ export const OfferView = ({ offer, onActionClick }) => {
   const currentUserId = AuthService.getUserId();
   const admin = AuthService.getAdmin();
 
-  console.log(offer.category.name);
-
   return (
     <div className="product-card">
       {currentUserId === offer.seller.id ? (

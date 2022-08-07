@@ -170,11 +170,20 @@ export const AdminPanel = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <UserItem user={user} onActionClick={userActionClickHandler} />
-              </tr>
-            ))}
+            {users.length !== 0 ? (
+              users.map((user) => (
+                <tr key={user.id}>
+                  <UserItem
+                    user={user}
+                    onActionClick={userActionClickHandler}
+                  />
+                </tr>
+              ))
+            ) : (
+              <div className="searchResult">
+                <p>No Users</p>
+              </div>
+            )}
           </tbody>
         </table>
         <div className="btn-wrapper">

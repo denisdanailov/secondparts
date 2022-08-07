@@ -5,10 +5,10 @@ export const Footer = () => {
         <div className="row">
           <div className="col-md-6 col-lg-3 footer-col">
             <div className="footer_detail">
-              <h4>About</h4>
+              <h4>SecondParts</h4>
               <p>
-                Necessary, making this the first true generator on the Internet.
-                It uses a dictionary of over 200 Latin words, combined with
+                We wanted to make it cheap and convenient for the customer to
+                find the right used spare parts in one and the same marketplace.
               </p>
               <div className="footer_social">
                 <a href="/">
@@ -32,15 +32,15 @@ export const Footer = () => {
               <div className="contact_link_box">
                 <a href="/">
                   <i className="fa fa-map-marker" aria-hidden="true"></i>
-                  <span> Location </span>
+                  <span> Frankfrut Am Main </span>
                 </a>
                 <a href="/">
                   <i className="fa fa-phone" aria-hidden="true"></i>
-                  <span> Call +01 1234567890 </span>
+                  <span> Call +49 1234567890 </span>
                 </a>
                 <a href="/">
                   <i className="fa fa-envelope" aria-hidden="true"></i>
-                  <span> demo@gmail.com </span>
+                  <span> secondparts@gmail.com </span>
                 </a>
               </div>
             </div>
@@ -64,8 +64,8 @@ export const Footer = () => {
         </div>
         <div className="footer-info">
           <p>
-            &copy; <span id="displayYear"></span> All Rights Reserved By
-            <a href="https://html.design/">Free Html Templates</a>
+            &copy; <span id="displayYear"></span> 2022 SecondParts All Rights
+            Reserved
           </p>
         </div>
       </div>

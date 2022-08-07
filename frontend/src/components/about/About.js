@@ -5,7 +5,10 @@ export const About = () => {
         <div className="row">
           <div className="col-md-6 col-lg-5">
             <div className="img-box">
-              <img src="images/about-img.png" alt="" />
+              <img
+                src="https://res.cloudinary.com/diozchjq4/image/upload/v1659902833/cars/about-img_owkrc7.png"
+                alt=""
+              />
             </div>
           </div>
           <div className="col-md-6 col-lg-7">
