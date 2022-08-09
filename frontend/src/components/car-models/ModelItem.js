@@ -1,5 +1,5 @@
 export const ModelItem = ({ models }) => {
-  console.log(models);
+  
   return (
     <>
       <div className="product-card-models">

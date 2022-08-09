@@ -4,11 +4,14 @@ import OfferService from "../../services/offer.service";
 
 export const Brands = () => {
   const [offersCount, setOffersCount] = useState([]);
+  
 
   useEffect(() => {
+
     OfferService.getOffersCount().then((offersCount) =>
       setOffersCount(offersCount.data)
     );
+    
   }, []);
 
   return (

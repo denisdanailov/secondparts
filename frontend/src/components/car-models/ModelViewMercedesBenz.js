@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 
+import LoadingSpinner from "../spinner/LoadingSpinner";
 import ModelService from "../../services/models.service";
 import { ModelItem } from "./ModelItem";
 
 export const ModelViewMercedesBenz = () => {
   const [models, setModels] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     ModelService.getModelsFromBrandMercedesBenz().then((models) =>
       setModels(models.data)
     );
+    setIsLoading(false);
   }, []);
 
   return (
@@ -29,11 +33,13 @@ export const ModelViewMercedesBenz = () => {
             vans
           </p>
         </div>
+        {isLoading || models.length == 0 ? <LoadingSpinner /> : 
         <div className="row">
           {models.map((models) => (
             <ModelItem key={models.id} models={models} />
           ))}
         </div>
+        }
       </div>
     </div>
   );
