@@ -1,31 +1,39 @@
 package de.secondparts.web;
 
+import de.secondparts.service.CategoryService;
+import de.secondparts.service.ModelService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AuthControllerIT {
+public class CategoryControllerTest {
+
+    @Autowired
+    private CategoryController categoryController;
 
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private CategoryService categoryService;
+
 
     @Test
-    void testRegistrationPageShow() throws Exception {
+    void getAllCategories() throws Exception {
+        this.mockMvc
+                .perform(get("/api/category/all"))
+                .andExpect(status().isOk());
 
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/auth/signup"));
-        response.andExpect(MockMvcResultMatchers.status().isOk());
 
     }
-
 }

@@ -1,6 +1,5 @@
 package de.secondparts.web;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.secondparts.model.entity.dtos.CategoryViewDTO;
 import de.secondparts.service.CategoryService;
 import org.springframework.http.ResponseEntity;
