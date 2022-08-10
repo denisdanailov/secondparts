@@ -1,9 +1,6 @@
 package de.secondparts.service;
 
-import de.secondparts.model.entity.BrandEntity;
-import de.secondparts.model.entity.UserEntity;
 import de.secondparts.model.entity.dtos.userDTOs.UserEditDTO;
-import de.secondparts.repository.BrandRepository;
 import de.secondparts.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,10 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

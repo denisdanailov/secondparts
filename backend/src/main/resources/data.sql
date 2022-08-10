@@ -13,7 +13,7 @@ VALUES (1, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259638/catego
  (3, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259622/category-img/brake_dzk0ep.png', 'Brake'),
  (4, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259625/category-img/gearbox_cnix4w.png', 'Gearbox'),
  (5, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259621/category-img/chassis_c9l1yk.png', 'Chassis'),
- (6, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259627/category-img/switches_eskylc.png', 'Locks'),
+ (6, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259634/category-img/locks_nxhybc.png', 'Locks'),
  (7, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259632/category-img/interiors_xwxxks.png', 'Interiors'),
  (8, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259630/category-img/exhausts_jegvfc.png', 'Exhausts'),
  (9, 'https://res.cloudinary.com/diozchjq4/image/upload/v1659259627/category-img/switches_eskylc.png', 'Switches'),
