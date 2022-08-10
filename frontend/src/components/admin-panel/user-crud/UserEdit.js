@@ -12,6 +12,9 @@ import userService from "../../../services/admin.service";
 export const UserEdit = ({ onClose, user, onChange }) => {
   const [error, setError] = useState("");
 
+  const BLANK_PROFIL_URL =
+    "https://res.cloudinary.com/diozchjq4/image/upload/v1659788286/secondparts-blankimges/blank-profil_jtwg3q.webp";
+
   const handleBlurUsername = (event) => {
     if (event.target.value.length < 6) {
       return setError(
@@ -99,7 +102,7 @@ export const UserEdit = ({ onClose, user, onChange }) => {
           >
             <div className="image-container">
               <img
-                src={user.data.imageUrl}
+                src={user.data.imageUrl || BLANK_PROFIL_URL}
                 alt="user-profil-img"
                 className="image"
               />

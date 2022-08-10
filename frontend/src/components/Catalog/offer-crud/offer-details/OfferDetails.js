@@ -15,17 +15,17 @@ export const OfferDetails = () => {
   }, []);
 
   return (
-    <div classNameName="offers-details">
-      <div classNameName="details-wrapper">
-        <div classNameName="wrapper">
-          <div classNameName="product-img">
+    <div className="offers-details">
+      <div className="details-wrapper">
+        <div className="wrapper">
+          <div className="product-img">
             <img src={offer.imageUrl} height="420" width="327" />
           </div>
-          <div classNameName="product-info">
-            <div classNameName="product-title">
+          <div className="product-info">
+            <div className="product-title">
               <h1>{offer.title}</h1>
             </div>
-            <div classNameName="product-text">
+            <div className="product-text">
               <h5>
                 <span className="bold">Year: </span>
                 {offer.year}
@@ -51,9 +51,9 @@ export const OfferDetails = () => {
                 <span className="bold">Price: </span> {offer.price}$
               </h5>
             </div>
-            <div classNameName="product-price-btn">
-              <div classNameName="checkout-btn">
-                <i classNameName="fa fa-cart-plus" aria-hidden="true"></i>
+            <div className="product-price-btn">
+              <div className="checkout-btn">
+                <i className="fa fa-cart-plus" aria-hidden="true"></i>
                 <span>Add to Bag</span>
               </div>
 
@@ -61,7 +61,7 @@ export const OfferDetails = () => {
                 <input
                   type="submit"
                   value="&#8249; Back to Catalog"
-                  classNameName="btn-back"
+                  className="btn-back"
                 />
               </Link>
             </div>

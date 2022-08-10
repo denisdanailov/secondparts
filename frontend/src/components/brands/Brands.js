@@ -1,19 +1,6 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import OfferService from "../../services/offer.service";
 
 export const Brands = () => {
-  const [offersCount, setOffersCount] = useState([]);
-  
-
-  useEffect(() => {
-
-    OfferService.getOffersCount().then((offersCount) =>
-      setOffersCount(offersCount.data)
-    );
-    
-  }, []);
-
   return (
     <section className="shop_section layout_padding">
       <div className="container mt-100">
