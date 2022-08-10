@@ -1,14 +1,16 @@
 package de.secondparts.web;
 
+
 import de.secondparts.model.entity.dtos.CategoryViewDTO;
 import de.secondparts.service.CategoryService;
+import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -17,8 +19,11 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    public CategoryController(CategoryService categoryService) {
+    private final ModelMapper modelMapper;
+
+    public CategoryController(CategoryService categoryService, ModelMapper modelMapper) {
         this.categoryService = categoryService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
@@ -26,5 +31,19 @@ public class CategoryController {
 
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryViewDTO> getCategoryById(@PathVariable("id") Long id) {
+        Optional<CategoryViewDTO> category = categoryService.findById(id).map(categoryEntity -> {
+            CategoryViewDTO categoryViewDTO = modelMapper.map(categoryEntity, CategoryViewDTO.class);
+
+            return categoryViewDTO;
+        });
+
+        return category.map(categoryViewDTO
+                -> new ResponseEntity<>(categoryViewDTO, HttpStatus.OK)).orElseGet(()
+                -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
 
 }
