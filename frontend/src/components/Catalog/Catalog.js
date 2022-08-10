@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 import OfferService from "../../services/offer.service";
 import { OfferActions } from "./offer-crud/OfferListConstants";
 import { OfferDelete } from "./offer-crud/OfferDelete";
@@ -58,8 +57,7 @@ export function Catalog() {
       <div className="catalog-section">
         <div className="container mt-100">
           <div className="row">
-            {offers.length != 0 ? (
-
+            {offers.length !== 0 ? (
               offers.map((offer) => (
                 <OfferView
                   offer={offer}
@@ -69,7 +67,10 @@ export function Catalog() {
               ))
             ) : (
               <div className="searchResult">
-                <p>No Results</p>
+                <img
+                  src="https://res.cloudinary.com/diozchjq4/image/upload/v1660078952/clipart2883707_hfxkar.png"
+                  alt="no-results-img"
+                />
               </div>
             )}
           </div>
