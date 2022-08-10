@@ -47,7 +47,6 @@ public class OfferController {
         return ResponseEntity.ok(offerService.getAllActiveOffers());
     }
 
-
     @PostMapping("/search")
     public ResponseEntity<List<OfferViewDTO>> searchOffer(@Valid @RequestBody SearchOfferDTO searchOfferDTO) {
 
@@ -55,7 +54,6 @@ public class OfferController {
 
         return ResponseEntity.ok(offerService.searchOffer(searchOfferDTO));
     }
-
 
     @GetMapping("/count")
     public ResponseEntity<Integer> getOffersCount() {
@@ -118,19 +116,6 @@ public class OfferController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("/category/{name}")
-    public ResponseEntity<List<OfferViewDTO>> getAllOffersByCategory(@PathVariable("name") String name) {
-        Optional<CategoryEntity> category = categoryService.findByName(name);
-
-        List<OfferViewDTO> allByCategory = offerService.getAllByCategory(category.get());
-
-        return new ResponseEntity<>(allByCategory, HttpStatus.OK);
-
-    }
-
-
-//   TODO:  types for Create Form. Create a Types Controller for them->
 
     @GetMapping("/transmissions")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
