@@ -3,16 +3,41 @@ import "./OfferDetails.css";
 import { Link, useParams } from "react-router-dom";
 
 import OfferService from "../../../../services/offer.service";
-import { useEffect, useState } from "react";
+import AuthService from "../../../../services/auth.service";
+import CheckoutService from "../../../../services/checkout.service";
+import { useEffect, useState, useContext } from "react";
 import { MoreProducts } from "../../more-products/MoreProudcts";
+
+import { ShoppingCartContext } from "../../../../contexts/ShoppingCartContext";
 
 export const OfferDetails = () => {
   const params = useParams();
   const [offer, setOffer] = useState([]);
 
+  const { onUpdate } = useContext(ShoppingCartContext);
+
   useEffect(() => {
     OfferService.getOfferById(params.id).then((offer) => setOffer(offer.data));
   }, []);
+
+  const offerId = offer.id;
+  const buyerId = AuthService.getCurrentUser()
+    ? AuthService.getCurrentUser().id
+    : "";
+  const offerTitle = offer.title;
+  const offerPrice = offer.price;
+
+  const data = {
+    offerId,
+    buyerId,
+    offerTitle,
+    offerPrice,
+  };
+
+  const onCreate = () => {
+    onUpdate();
+    CheckoutService.addOfferToCard(data);
+  };
 
   return (
     <div className="offers-details">
@@ -52,7 +77,7 @@ export const OfferDetails = () => {
               </h5>
             </div>
             <div className="product-price-btn">
-              <div className="checkout-btn">
+              <div className="checkout-btn" onClick={onCreate}>
                 <i className="fa fa-cart-plus" aria-hidden="true"></i>
                 <span>Add to Bag</span>
               </div>

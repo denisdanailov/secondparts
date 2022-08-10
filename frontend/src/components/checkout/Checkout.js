@@ -1,13 +1,48 @@
 import "./Checkout.css";
+import { useState, useEffect, useContext } from "react";
 
-// TODO: implments checkout..
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import CheckoutService from "../../services/checkout.service";
+
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 export const Checkout = () => {
+  const [offers, setOffers] = useState([]);
+  const [error, setError] = useState("");
+
+  const { onClean } = useContext(ShoppingCartContext);
+
+  useEffect(() => {
+    CheckoutService.getAllOffersFromCard().then((offer) =>
+      setOffers(offer.data)
+    );
+  }, []);
+
+  let totalSum = 0;
+  offers.map((offer) => {
+    return (totalSum += Number(offer.offerPrice));
+  });
+
+  const onSold = () => {
+    if (offers.length === 0) {
+      return setError(
+        <Stack sx={{ width: "100%", p: 2 }} spacing={2}>
+          <Alert severity="error">Shopping Cart is Empty! Go shopping..</Alert>
+        </Stack>
+      );
+    } else {
+      CheckoutService.soldOffers();
+      setOffers([]);
+      onClean();
+    }
+  };
+
   return (
     <section className="payment-form dark">
       <div className="container">
         <div className="block-heading">
-          <h2>Payment</h2>
+          <h2>Shopping Cart</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
             urna, dignissim nec auctor in, mattis vitae leo.
@@ -16,24 +51,23 @@ export const Checkout = () => {
         <form>
           <div className="products">
             <h3 className="title">Checkout</h3>
-            <div className="item">
-              <span className="price">$200</span>
-              <p className="item-name">Product 1</p>
-              <p className="item-description">Lorem ipsum dolor sit amet</p>
-            </div>
-            <div className="item">
-              <span className="price">$120</span>
-              <p className="item-name">Product 2</p>
-              <p className="item-description">Lorem ipsum dolor sit amet</p>
-            </div>
+
+            {offers.map((offer) => (
+              <div className="item" key={offer.id}>
+                <span className="price">{offer.offerPrice} €</span>
+                <p className="item-name">{offer.offerTitle}</p>
+              </div>
+            ))}
             <div className="total">
-              Total<span className="price">$320</span>
+              Total<span className="price">{totalSum} €</span>
             </div>
+            {error ? error : null}
           </div>
           <div className="card-details">
-            <h3 className="title">Credit Card Details</h3>
+            {/* <h3 className="title">Credit Card Details</h3> */}
             <div className="row">
-              <div className="form-group col-sm-7">
+              {/* Futures! to be impl... */}
+              {/* <div className="form-group col-sm-7">
                 <label htmlFor="card-holder">Card Holder</label>
                 <input
                   id="card-holder"
@@ -85,10 +119,10 @@ export const Checkout = () => {
                   aria-label="Card Holder"
                   aria-describedby="basic-addon1"
                 />
-              </div>
+              </div> */}
               <div className="form-group col-sm-12">
-                <button type="button" className="btn btn-primary btn-block">
-                  Proceed
+                <button type="button" className="btn-login" onClick={onSold}>
+                  Place order
                 </button>
               </div>
             </div>

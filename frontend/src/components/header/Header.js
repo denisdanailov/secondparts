@@ -1,9 +1,12 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 
 import AuthService from "../../services/auth.service";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { offers } = useContext(ShoppingCartContext);
 
   const currentUser = AuthService.getCurrentUser();
 
@@ -77,6 +80,12 @@ export const Header = () => {
                   )}
                   <Link to="/checkout">
                     <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span
+                      class="badge-checkout badge-warning"
+                      id="lblCartCount"
+                    >
+                      {offers.length}
+                    </span>
                   </Link>
                   <Link to="/search">
                     <i className="fa fa-search" aria-hidden="true"></i>

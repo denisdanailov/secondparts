@@ -800,6 +800,31 @@ a:focus {
 .contact_section .img-box img {
   width: 170%;
 }
+/* Checkout */
+
+.badge-checkout {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+  font-size: 10px;
+  background: #ff0000;
+  color: #fff;
+  padding: 1px 5px;
+  vertical-align: top;
+  margin-left: -8px;
+}
+
+/* End Checkout */
 
 /* Search */
 

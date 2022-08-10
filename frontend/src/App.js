@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
 
 import { GuestRoute } from "./routing/GuestRoute";
 import { LoggedUserRoute } from "./routing/LoggedUserRoute";
@@ -30,80 +31,81 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <ShoppingCartProvider>
+          <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/models/vw" element={<ModelViewVw />} />
-          <Route
-            path="/models/mercedes-benz"
-            element={<ModelViewMercedesBenz />}
-          />
-          <Route path="/models/bmw" element={<ModelViewBmw />} />
-          <Route path="/models/audi" element={<ModelViewAudi />} />
-          <Route path="/models/opel" element={<ModelViewOpel />} />
-          <Route path="/models/porsche" element={<ModelViewPorsche />} />
-          <Route path="/search" element={<Search />} />
-          <Route exact path="offer/details/:id" element={<OfferDetails />} />
-          <Route
-            exact
-            path="category/offers/:id"
-            element={<CategortOffersList />}
-          />
-          <Route
-            path="/checkout"
-            element={
-              <LoggedUserRoute>
-                <Checkout />
-              </LoggedUserRoute>
-            }
-          />
-          <Route
-            path="/logout"
-            element={
-              <LoggedUserRoute>
-                <Logout />
-              </LoggedUserRoute>
-            }
-          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/models/vw" element={<ModelViewVw />} />
+            <Route
+              path="/models/mercedes-benz"
+              element={<ModelViewMercedesBenz />}
+            />
+            <Route path="/models/bmw" element={<ModelViewBmw />} />
+            <Route path="/models/audi" element={<ModelViewAudi />} />
+            <Route path="/models/opel" element={<ModelViewOpel />} />
+            <Route path="/models/porsche" element={<ModelViewPorsche />} />
+            <Route path="/search" element={<Search />} />
+            <Route exact path="offer/details/:id" element={<OfferDetails />} />
+            <Route
+              exact
+              path="category/offers/:id"
+              element={<CategortOffersList />}
+            />
+            <Route
+              path="/checkout"
+              element={
+                <LoggedUserRoute>
+                  <Checkout />
+                </LoggedUserRoute>
+              }
+            />
+            <Route
+              path="/logout"
+              element={
+                <LoggedUserRoute>
+                  <Logout />
+                </LoggedUserRoute>
+              }
+            />
 
-          <Route
-            path="/create"
-            element={
-              <LoggedUserRoute>
-                <CreateOffer />
-              </LoggedUserRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminPanel />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <GuestRoute>
-                <Login />
-              </GuestRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <GuestRoute>
-                <Register />
-              </GuestRoute>
-            }
-          />
-        </Routes>
-
+            <Route
+              path="/create"
+              element={
+                <LoggedUserRoute>
+                  <CreateOffer />
+                </LoggedUserRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <GuestRoute>
+                  <Login />
+                </GuestRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <GuestRoute>
+                  <Register />
+                </GuestRoute>
+              }
+            />
+          </Routes>
+        </ShoppingCartProvider>
         <Footer />
       </BrowserRouter>
     </>
