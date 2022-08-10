@@ -16,12 +16,6 @@ class OfferService {
     });
   }
 
-  getAllOfferByCategory(offerName) {
-    return axios.get(`${API_URL}${offerName}`, {
-      headers: authHeader(),
-    });
-  }
-
   getOfferById(offerId) {
     return axios.get(`${API_URL}${offerId}`, {
       headers: authHeader(),
