@@ -33,7 +33,7 @@ export const ModelViewPorsche = () => {
             holistic and innovative spirit.
           </p>
         </div>
-        {isLoading || models.length == 0 ? <LoadingSpinner /> : 
+        {isLoading || models.length === 0 ? <LoadingSpinner /> : 
         <div className="row">
           {models.map((models) => (
             <ModelItem key={models.id} models={models} />

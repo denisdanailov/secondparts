@@ -32,7 +32,7 @@ export const ModelViewBmw = () => {
             engineering products and related services.
           </p>
         </div>
-        {isLoading || models.length == 0 ? <LoadingSpinner /> : 
+        {isLoading || models.length === 0 ? <LoadingSpinner /> : 
         <div className="row">
           {models.map((models) => (
             <ModelItem key={models.id} models={models} />
