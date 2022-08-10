@@ -80,12 +80,16 @@ export const Header = () => {
                   )}
                   <Link to="/checkout">
                     <i className="fa fa-cart-plus" aria-hidden="true"></i>
-                    <span
-                      class="badge-checkout badge-warning"
-                      id="lblCartCount"
-                    >
-                      {offers.length}
-                    </span>
+                    {offers.length > 0 ? (
+                      <span
+                        class="badge-checkout badge-warning"
+                        id="lblCartCount"
+                      >
+                        {offers.length}
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </Link>
                   <Link to="/search">
                     <i className="fa fa-search" aria-hidden="true"></i>
