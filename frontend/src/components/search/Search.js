@@ -14,9 +14,6 @@ export const Search = () => {
 
     const searchData = { model, vehicleIdentificationNumber };
 
-    console.log(searchData);
-    console.log(offers.length);
-
     OfferService.searchOffer(searchData).then((offer) => setOffers(offer.data));
   };
 
@@ -63,7 +60,10 @@ export const Search = () => {
             offers.map((offer) => <OfferView offer={offer} key={offer.id} />)
           ) : (
             <div className="searchResult">
-              <p>No Results</p>
+              <img
+                src="https://res.cloudinary.com/diozchjq4/image/upload/v1660078952/clipart2883707_hfxkar.png"
+                alt="no-result-img"
+              />
             </div>
           )}
         </div>
