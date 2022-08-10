@@ -36,7 +36,7 @@ export const ModelItem = ({ models }) => {
 
         <img
           src={models.imageUrl}
-          alt="Generic placeholder image"
+          alt="model-img"
           width="200"
           className="ml-lg-5 order-1 order-lg-2"
         />
