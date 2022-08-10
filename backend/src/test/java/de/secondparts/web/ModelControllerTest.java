@@ -34,7 +34,6 @@ public class ModelControllerTest {
                 .perform(get("/api/models/vw"))
                 .andExpect(status().isOk());
 
-
     }
 
     @Test
@@ -42,7 +41,6 @@ public class ModelControllerTest {
         this.mockMvc
                 .perform(get("/api/models/audi"))
                 .andExpect(status().isOk());
-
 
     }
 
@@ -52,7 +50,6 @@ public class ModelControllerTest {
                 .perform(get("/api/models/mercedes-benz"))
                 .andExpect(status().isOk());
 
-
     }
 
     @Test
@@ -60,7 +57,6 @@ public class ModelControllerTest {
         this.mockMvc
                 .perform(get("/api/models/opel"))
                 .andExpect(status().isOk());
-
 
     }
 

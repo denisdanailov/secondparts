@@ -40,9 +40,6 @@ public class AuthControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private ObjectMapper mapper = new ObjectMapper();
-
-
     @Test
     void testUserExistsByEmail() throws Exception {
         when(userService.existsByEmail((String) any())).thenReturn(true);
@@ -57,18 +54,6 @@ public class AuthControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/auth/signup"))
                 .andExpect(status().isMethodNotAllowed());
     }
-
-    @Test
-    void test_signup_returnsOk() throws Exception {
-
-        UserRegistrationDTO user = new UserRegistrationDTO();
-        mockMvc.perform(post("/api/auth/sign")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-    }
-
-
 
 
 }
