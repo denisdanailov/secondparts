@@ -7,10 +7,15 @@ export const CategoryView = ({ category }) => {
         <div className="img-box">
           <img src={category.imageUrl} alt="category-img" />
         </div>
-        <div className="detail-box">
+        <div className="detail-box-category">
           <h5>{category.name}</h5>
-          <Link to="/category-offer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+
+          <Link className="offers-btn" to={`/category/offers/${category.id}`}>
+            <p className="offers-btn">
+              &#8594; view all offers in this category
+            </p>
           </Link>
         </div>
       </div>

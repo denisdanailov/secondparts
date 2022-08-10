@@ -7,5 +7,11 @@ class CategoryService {
   getAllViewCategories() {
     return axios.get(API_URL + "all", { headers: authHeader() });
   }
+
+  getCategoryById(categoryId) {
+    return axios.get(`${API_URL}${categoryId}`, {
+      headers: authHeader(),
+    });
+  }
 }
 export default new CategoryService();

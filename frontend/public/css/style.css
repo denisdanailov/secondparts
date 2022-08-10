@@ -61,6 +61,33 @@ body {
   padding: 20px;
 }
 
+.category-offer-list {
+  height: 800px;
+  
+}
+
+.category-offer-list .container{
+  margin-top: 100px;
+  
+}
+
+/* Offers List */
+
+.offer_list {
+  margin: 0 auto;
+}
+
+.offers-btn:hover  {
+ 
+ text-decoration: underline;
+}
+
+.offers-btn  {
+ font-size: 15px;
+ font-weight: bold;
+
+ }
+
 .detail-box p {
   font-size: 16px;
 }
@@ -417,7 +444,16 @@ a:focus {
 
 .shop_section .heading_container {
   margin-bottom: 20px;
+  
 }
+
+.heading_container h2,h3 {
+  
+  font-family: "Michroma", sans-serif;
+}
+
+
+
 
 .shop_section .box {
   background-color: #faf9fa;
@@ -563,6 +599,8 @@ a:focus {
   padding: 30px;
 }
 
+
+
 #root > section > div > div > div > div > a > span {
   font-size: 18px;
 }
@@ -588,13 +626,34 @@ a:focus {
   padding: 15px;
   border-radius: 10px;
   box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
-  border: 1px solid rgb(176, 176, 176);
+  border: 1px solid rgba(226, 223, 223, 0.765);
   position: relative;
   overflow: hidden;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  cursor: pointer;
+  height: 220px;
+  
+}
+
+.feature_section .box-count {
+  margin-top: 45px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border: 1px solid rgb(215 215 215);
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   max-height: 250px;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  color: white;
+  
+}
+.feature_section .box-count span {
+  font-size: 21px;
+  color:red;
+  
 }
 
 .feature_section .box .img-box {
@@ -611,10 +670,13 @@ a:focus {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   margin: 15px 0;
+  height: 30px;
+  margin-bottom: 25px;
 }
 
 .feature_section .box .img-box img {
   width: 75px;
+  
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
@@ -632,9 +694,9 @@ a:focus {
   color: inherit;
 }
 
-.feature_section .box:hover {
+/* .feature_section .box:hover {
   background-color: #cecfd1;
-}
+} */
 
 .feature_section .btn-box {
   display: -webkit-box;
@@ -767,7 +829,7 @@ a:focus {
   margin: 0 auto;
   margin-bottom: 0;
 
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  
   margin-top: 20px;
 }
 
@@ -874,10 +936,14 @@ a:focus {
   width: 100%;
   font-family: "Quicksand", sans-serif;
 }
+.footer_detail h4 {
+  font-family: "Michroma", sans-serif;
+}
 
 .footer_section h4 {
   font-weight: 600;
   margin-bottom: 20px;
+  
 }
 
 .footer_section .footer-col {

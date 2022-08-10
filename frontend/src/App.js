@@ -24,6 +24,7 @@ import { Logout } from "./components/logout/Logout";
 import { Checkout } from "./components/checkout/Checkout";
 import { Search } from "./components/search/Search";
 import { OfferDetails } from "./components/catalog/offer-crud/offer-details/OfferDetails";
+import { CategortOffersList } from "./components/categories/CategoryOffersList";
 
 export default function App() {
   return (
@@ -47,6 +48,11 @@ export default function App() {
           <Route path="/models/porsche" element={<ModelViewPorsche />} />
           <Route path="/search" element={<Search />} />
           <Route exact path="offer/details/:id" element={<OfferDetails />} />
+          <Route
+            exact
+            path="category/offers/:id"
+            element={<CategortOffersList />}
+          />
           <Route
             path="/checkout"
             element={
