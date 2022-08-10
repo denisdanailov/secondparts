@@ -56,7 +56,8 @@ public class OfferServiceImpl implements OfferService {
                 && category.isPresent()
                 && seller.isPresent()) {
 
-            newOffer.setTitle(offerCreateDTO.getTitle())
+            newOffer
+                    .setTitle(offerCreateDTO.getTitle())
                     .setPrice(offerCreateDTO.getPrice())
                     .setYear(offerCreateDTO.getYear())
                     .setImageUrl(offerCreateDTO.getImageUrl())
@@ -69,6 +70,7 @@ public class OfferServiceImpl implements OfferService {
                     .setTransmission(transmission.get())
                     .setSeller(seller.get())
                     .setActive(true);
+
 
             offerRepository.save(newOffer);
         }
@@ -121,7 +123,7 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<OfferViewDTO> searchOffer(SearchOfferDTO searchOfferDTO) {
         return offerRepository.findAll(new OfferSpecification(searchOfferDTO))
-                .stream().map(offerEntity -> {
+                .stream().filter(OfferEntity::isActive).map(offerEntity -> {
                     OfferViewDTO offerViewDTO = modelMapper.map(offerEntity, OfferViewDTO.class);
 
                     return offerViewDTO;
