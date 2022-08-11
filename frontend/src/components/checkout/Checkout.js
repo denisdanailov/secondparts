@@ -7,6 +7,7 @@ import AuthService from "../../services/auth.service";
 
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import maintenanceService from "../../services/maintenance.service";
 
 export const Checkout = () => {
   const [offers, setOffers] = useState([]);
@@ -73,6 +74,7 @@ export const Checkout = () => {
             {feed ? feed : null}
             {error ? error : null}
           </div>
+
           <div className="card-details">
             {/* <h3 className="title">Credit Card Details</h3> */}
             <div className="row">

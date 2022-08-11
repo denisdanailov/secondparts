@@ -57,4 +57,5 @@ public class ShoppingCardServiceImpl implements ShoppingCardService {
 
         shoppingCardRepository.saveAll(soldOffers);
     }
+
 }

@@ -2,7 +2,6 @@ package de.secondparts.web;
 
 
 import de.secondparts.model.entity.ShoppingCardEntity;
-import de.secondparts.model.entity.dtos.offerDTOs.OfferViewDTO;
 import de.secondparts.payment.response.MessageResponse;
 import de.secondparts.service.ShoppingCardService;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
+
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -29,7 +28,7 @@ public class ShoppingCardController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<ShoppingCardEntity> getAllOffersByBuyerId(@PathVariable("id") Long id) {
 
-                  return shoppingCardService.getAllActiveOfferByBuyerId(id);
+        return shoppingCardService.getAllActiveOfferByBuyerId(id);
     }
 
     @PostMapping("/add")
@@ -56,4 +55,5 @@ public class ShoppingCardController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }
