@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import CheckoutService from "../../services/checkout.service";
+import AuthService from "../../services/auth.service";
 
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
@@ -10,11 +11,14 @@ import Stack from "@mui/material/Stack";
 export const Checkout = () => {
   const [offers, setOffers] = useState([]);
   const [error, setError] = useState("");
+  const [feed, setFeed] = useState("");
 
   const { onClean } = useContext(ShoppingCartContext);
 
+  const currentUserId = AuthService.getUserId();
+
   useEffect(() => {
-    CheckoutService.getAllOffersFromCard().then((offer) =>
+    CheckoutService.getAllOffersForCurrentUser(currentUserId).then((offer) =>
       setOffers(offer.data)
     );
   }, []);
@@ -35,6 +39,11 @@ export const Checkout = () => {
       CheckoutService.soldOffers();
       setOffers([]);
       onClean();
+      return setFeed(
+        <Stack sx={{ width: "100%", p: 2 }} spacing={2}>
+          <Alert severity="success">Thank you for your order.</Alert>
+        </Stack>
+      );
     }
   };
 
@@ -61,6 +70,7 @@ export const Checkout = () => {
             <div className="total">
               Total<span className="price">{totalSum} €</span>
             </div>
+            {feed ? feed : null}
             {error ? error : null}
           </div>
           <div className="card-details">

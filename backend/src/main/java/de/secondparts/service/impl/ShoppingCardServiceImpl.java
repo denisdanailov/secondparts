@@ -41,6 +41,13 @@ public class ShoppingCardServiceImpl implements ShoppingCardService {
     }
 
     @Override
+    public List<ShoppingCardEntity> getAllActiveOfferByBuyerId(Long id) {
+        return shoppingCardRepository.findShoppingCardEntityByBuyerId(id)
+                .stream()
+                .filter(shoppingCardEntity -> !shoppingCardEntity.isSold()).collect(Collectors.toList());
+    }
+
+    @Override
     public void setOffersToSold() {
         List<ShoppingCardEntity> soldOffers =
                 shoppingCardRepository.findAll().stream().map(shoppingCardEntity -> {

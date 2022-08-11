@@ -9,8 +9,8 @@ class CheckoutService {
       headers: authHeader(),
     });
   }
-  getAllOffersFromCard() {
-    return axios.get(API_URL + "all", {
+  getAllOffersForCurrentUser(userId) {
+    return axios.get(`${API_URL}${userId}`, {
       headers: authHeader(),
     });
   }

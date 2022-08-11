@@ -10,5 +10,7 @@ public interface ShoppingCardService {
 
     List<ShoppingCardEntity> getAllActiveOfferFromCard();
 
+    List<ShoppingCardEntity> getAllActiveOfferByBuyerId(Long id);
+
     void setOffersToSold();
 }

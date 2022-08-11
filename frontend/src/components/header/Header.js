@@ -84,9 +84,7 @@ export const Header = () => {
                       <span
                         class="badge-checkout badge-warning"
                         id="lblCartCount"
-                      >
-                        {offers.length}
-                      </span>
+                      ></span>
                     ) : (
                       ""
                     )}

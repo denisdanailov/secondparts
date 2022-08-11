@@ -17,6 +17,7 @@ export const OfferDetails = () => {
   const { onUpdate } = useContext(ShoppingCartContext);
 
   useEffect(() => {
+    // onUpdate();
     OfferService.getOfferById(params.id).then((offer) => setOffer(offer.data));
   }, []);
 
@@ -34,9 +35,10 @@ export const OfferDetails = () => {
     offerPrice,
   };
 
-  const onCreate = () => {
-    onUpdate();
+  const onCreate = (e) => {
+    e.preventDefault();
     CheckoutService.addOfferToCard(data);
+    onUpdate();
   };
 
   return (
@@ -77,11 +79,19 @@ export const OfferDetails = () => {
               </h5>
             </div>
             <div className="product-price-btn">
-              <div className="checkout-btn" onClick={onCreate}>
-                <i className="fa fa-cart-plus" aria-hidden="true"></i>
-                <span>Add to Bag</span>
-              </div>
-
+              {AuthService.getUserId() !== null ? (
+                <div className="checkout-btn" onClick={onCreate}>
+                  <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                  <span>Add to Bag</span>
+                </div>
+              ) : (
+                <Link to="/login">
+                  <div className="checkout-btn" onClick={onCreate}>
+                    <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span>Add to Bag</span>
+                  </div>
+                </Link>
+              )}
               <Link to="/catalog">
                 <input
                   type="submit"

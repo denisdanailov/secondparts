@@ -25,11 +25,11 @@ public class ShoppingCardController {
         this.shoppingCardService = shoppingCardService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<List<ShoppingCardEntity>> getAllOfferFromCard() {
+    public List<ShoppingCardEntity> getAllOffersByBuyerId(@PathVariable("id") Long id) {
 
-        return ResponseEntity.ok(shoppingCardService.getAllActiveOfferFromCard());
+                  return shoppingCardService.getAllActiveOfferByBuyerId(id);
     }
 
     @PostMapping("/add")

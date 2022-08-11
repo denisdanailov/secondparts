@@ -1,5 +1,5 @@
 import "./Login.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import Alert from "@mui/material/Alert";
@@ -30,6 +30,7 @@ export const Login = () => {
       } else {
         setError("");
         await AuthService.login(username, password);
+
         navigate("/");
       }
     } catch {

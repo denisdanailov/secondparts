@@ -62,4 +62,15 @@ public class ShoppingCardEntity extends BaseEntity{
         isSold = sold;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "ShoppingCardEntity{" +
+                "buyerId=" + buyerId +
+                ", offerId=" + offerId +
+                ", offerTitle='" + offerTitle + '\'' +
+                ", offerPrice=" + offerPrice +
+                ", isSold=" + isSold +
+                '}';
+    }
 }
