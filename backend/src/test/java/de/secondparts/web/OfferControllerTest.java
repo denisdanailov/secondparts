@@ -4,26 +4,11 @@ package de.secondparts.web;
 import de.secondparts.model.entity.CategoryEntity;
 import de.secondparts.model.entity.OfferEntity;
 import de.secondparts.model.entity.UserEntity;
-import de.secondparts.model.entity.UserRoleEntity;
-import de.secondparts.model.enums.UserRoleEnum;
-import de.secondparts.repository.UserRepository;
-import de.secondparts.repository.UserRoleRepository;
-import de.secondparts.service.BrandService;
-import de.secondparts.service.CategoryService;
-import de.secondparts.service.OfferService;
-import de.secondparts.util.TestDataUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.Set;
 
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -37,31 +22,10 @@ public class OfferControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-//    @Autowired
-//    private TestDataUtils testDataUtils;
-
-    private UserEntity testUser;
-
-    private OfferEntity testOffer;
-
-    private CategoryEntity testCategory;
-
-    @BeforeEach
-    void setUp() {
-
-//        testUser = testDataUtils.createTestUser("adminaa");
-//        testAdmin = testDataUtils.createTestAdmin("admin@example.com");
-//        var testModel =
-//                testDataUtils.createTestModel(testDataUtils.createTestBrand());
-//
-//        testOffer = testDataUtils.createTestOffer(testUser, testModel);
-//        testAdminOffer = testDataUtils.createTestOffer(testAdmin, testModel);
-
-
-    }
-
     @Test
-    void testCreateOffer() throws Exception {
+    void testCreateOfferWithoutAuthenticate() throws Exception {
+
+
         mockMvc.perform(post("/api/offers/create").
                         param("modelId", "1").
                         param("price", "11200").
@@ -74,7 +38,7 @@ public class OfferControllerTest {
                         param("imageUrl", "image://test.png").
                         with(csrf())
                 ).
-                andExpect(status().isOk());
+                andExpect(status().is4xxClientError());
 
         }
 
@@ -109,10 +73,5 @@ public class OfferControllerTest {
                 ).
                 andExpect(status().is4xxClientError());
     }
-
-
-
-
-
 
 }

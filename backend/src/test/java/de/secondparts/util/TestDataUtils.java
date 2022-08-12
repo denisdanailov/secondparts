@@ -67,13 +67,11 @@ public class TestDataUtils {
 
         return userRepository.save(admin);
     }
-
-
+    
     public UserEntity createTestUser(String username) {
-//
-//
-//        initRoles();
-//        UserRoleEntity userRole = new UserRoleEntity().setName(UserRoleEnum.ROLE_USER);
+        
+        initRoles();
+        UserRoleEntity userRole = new UserRoleEntity().setName(UserRoleEnum.ROLE_USER);
 
         var user = new UserEntity()
                 .setUsername(username)

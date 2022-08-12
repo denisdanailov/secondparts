@@ -8,6 +8,7 @@ import de.secondparts.repository.UserRepository;
 import de.secondparts.repository.UserRoleRepository;
 import de.secondparts.service.AdminService;
 import de.secondparts.service.UserService;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,10 @@ public class AdminControllerTest {
 
     public static final Long TEST_ADMIN_ID= 13L;
     public static final String TEST_ADMIN_EMAIL="admin@admina.com";
-    private static final String TEST_ADMIN__PASSWORD = "123456";
-    private static final String TEST_ADMIN__FIRST_NAME = "Test";
-    private static final String TEST_ADMIN__LAST_NAME = "Test";
-    private static final String TEST_ADMIN__USERNAME = "imadmin";
+    private static final String TEST_ADMIN_PASSWORD = "123456";
+    private static final String TEST_ADMIN_FIRST_NAME = "Test";
+    private static final String TEST_ADMIN_LAST_NAME = "Test";
+    private static final String TEST_ADMIN_USERNAME = "imadmin";
 
     @Autowired
     private AdminPanelController adminPanelController;
@@ -61,22 +62,21 @@ public class AdminControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-
     @Autowired
     private MockMvc mockMvc;
 
 
+
     @Test
-    @WithMockUser(value = TEST_ADMIN__USERNAME)
+    @WithMockUser(value = TEST_ADMIN_USERNAME)
     void testGetAllUsers() throws Exception {
 
         MockHttpServletRequestBuilder getResult = MockMvcRequestBuilders.get("/api/users/all");
-
     }
 
 
     @Test
-    @WithMockUser(value = TEST_ADMIN__USERNAME)
+    @WithMockUser(value = TEST_ADMIN_USERNAME)
     void testGetUsersDetails() throws Exception {
 
 //        Not authorizated..
@@ -84,7 +84,7 @@ public class AdminControllerTest {
         Long id = 13L;
         this.mockMvc
                 .perform(get("/api/users/"+id))
-                .andExpect(status().isForbidden());
+                .andExpect(status().is4xxClientError());
     }
 
 
@@ -95,7 +95,7 @@ public class AdminControllerTest {
 
         this.mockMvc
                 .perform(post("/api/users/create"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().is4xxClientError());
 
     }
 
@@ -105,12 +105,12 @@ public class AdminControllerTest {
         UserRoleEntity roleUser = this.roleRepository.save(new UserRoleEntity().setName(UserRoleEnum.ROLE_ADMIN));
 
         UserEntity testUser =  new UserEntity()
-                .setFirstName(TEST_ADMIN__FIRST_NAME)
-                .setLastName(TEST_ADMIN__LAST_NAME)
-                .setUsername(TEST_ADMIN__USERNAME)
+                .setFirstName(TEST_ADMIN_FIRST_NAME)
+                .setLastName(TEST_ADMIN_LAST_NAME)
+                .setUsername(TEST_ADMIN_USERNAME)
                 .setRoles(Set.of(roleUser))
                 .setEmail(TEST_ADMIN_EMAIL)
-                .setPassword(passwordEncoder.encode(TEST_ADMIN__PASSWORD));
+                .setPassword(passwordEncoder.encode(TEST_ADMIN_PASSWORD));
         UserEntity savedUser = this.userRepository.save(testUser);
         return savedUser;
     }

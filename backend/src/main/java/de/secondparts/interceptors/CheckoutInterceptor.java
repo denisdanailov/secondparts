@@ -1,4 +1,4 @@
-package de.secondparts.service.impl;
+package de.secondparts.interceptors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
