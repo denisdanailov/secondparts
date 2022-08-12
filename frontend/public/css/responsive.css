@@ -43,6 +43,20 @@
     margin-bottom: 10px;
   }
 
+  .table-wrapper  {
+  display: grid;
+  grid-template-columns: 1fr;
+    
+  }
+
+  .table-wrapper table {
+    height: 300px;
+    width: 300px;
+      
+    }
+  
+
+
   .login-img-r,
   .register-img-r {
     display: none;

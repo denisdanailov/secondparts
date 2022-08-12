@@ -64,9 +64,13 @@ export const OfferView = ({ offer, onActionClick }) => {
               return (
                 <div className="product-links">
                   {currentUserId !== offer.seller.id ? (
-                    <a href="/">
-                      <i className="fa fa-shopping-cart"></i>
-                    </a>
+                    <Link to={`/offer/details/${offer.id}`}>
+                      <input
+                        type="submit"
+                        value="Details"
+                        className="btn-details"
+                      />
+                    </Link>
                   ) : (
                     ""
                   )}

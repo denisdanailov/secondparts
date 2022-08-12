@@ -15,7 +15,13 @@ export const Header = () => {
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg custom_nav-container">
           <Link className="navbar-brand" to="/">
-            <span> SecondParts </span>
+            Sec
+            <img
+              class="header-logo"
+              src="https://res.cloudinary.com/diozchjq4/image/upload/v1660316070/Logo-SecondParts_arwqo3.png"
+              alt="logo"
+            />
+            ndParts
           </Link>
 
           <button

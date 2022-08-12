@@ -145,6 +145,13 @@ a:focus {
 }
 
 /*header section*/
+.header-logo {
+  width: 60px;
+  
+  
+}
+
+
 .hero_area {
   position: relative;
   min-height: 100vh;
@@ -199,7 +206,7 @@ a:focus {
 }
 
 .header_section {
-  padding: 15px 0;
+  padding: 5px 0;
   font-family: "Michroma", sans-serif;
 }
 

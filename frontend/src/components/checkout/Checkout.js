@@ -7,7 +7,6 @@ import AuthService from "../../services/auth.service";
 
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
-import maintenanceService from "../../services/maintenance.service";
 
 export const Checkout = () => {
   const [offers, setOffers] = useState([]);

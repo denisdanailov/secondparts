@@ -1,5 +1,4 @@
 export const ModelItem = ({ models }) => {
-  
   return (
     <>
       <div className="product-card-models">
@@ -9,7 +8,7 @@ export const ModelItem = ({ models }) => {
           </h5>
           <p className="font-italic text-muted mb-0 small">
             <h6 className="font-weight-bold my-2">Model: {models.name}</h6>
-            <span>Strat year: {models.startYear}</span>
+            <span>Start year: {models.startYear}</span>
             <br />
             <span>End year: {models.endYear}</span>
           </p>

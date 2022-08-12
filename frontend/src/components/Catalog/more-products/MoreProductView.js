@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom";
-
 export const MoreProductView = ({ offer }) => {
   return (
     <div className="product-card">
-      <div className="badge">Your Offer</div>
       <div className="product-tumb">
         <img src={offer.imageUrl} alt="offer-img" />
       </div>

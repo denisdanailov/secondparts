@@ -16,6 +16,8 @@ export const OfferDetails = () => {
 
   const { onUpdate } = useContext(ShoppingCartContext);
 
+  console.log(AuthService.getUserId());
+
   useEffect(() => {
     // onUpdate();
     OfferService.getOfferById(params.id).then((offer) => setOffer(offer.data));
@@ -86,7 +88,7 @@ export const OfferDetails = () => {
                 </div>
               ) : (
                 <Link to="/login">
-                  <div className="checkout-btn" onClick={onCreate}>
+                  <div className="checkout-btn">
                     <i className="fa fa-cart-plus" aria-hidden="true"></i>
                     <span>Add to Bag</span>
                   </div>
