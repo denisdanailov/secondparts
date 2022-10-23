@@ -34,7 +34,7 @@ After starting the server you can install and run the client from the `frontend`
 
 
 ### Live Preview
-[secondParts](https://secondparts.netlify.app/).
+Link: [secondParts](https://secondparts.netlify.app/)
 
 
 ## Feedback
