@@ -33,6 +33,9 @@ After starting the server you can install and run the client from the `frontend`
 - password : topsecreet
 
 
+### Live Preview
+[secondParts](https://secondparts.netlify.app/).
+
 
 ## Feedback
 
